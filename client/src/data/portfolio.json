@@ -66,28 +66,16 @@
   ],
   "achievements": [
     {
-      "title": "Discord Bot Developer Certification",
-      "organization": "Discord Developers",
-      "date": "2023",
-      "description": "Certified for creating advanced Discord bots with over 50,000 active users"
+  "title": "Certiport IT Specialist – Databases",
+  "organization": "Certiport (issued via Credly)",
+  "date": "2025",
+  "description": "Demonstrated foundational knowledge in relational database design, querying, administration, including MySQL, Microsoft SQL Server, and Oracle."
     },
     {
-      "title": "Google Play Developer Award",
-      "organization": "Google Play Store",
-      "date": "2023",
-      "description": "Featured app with 100K+ downloads and 4.8-star rating"
-    },
-    {
-      "title": "Roblox Developer Contest Winner",
-      "organization": "Roblox Corporation",
-      "date": "2022",
-      "description": "1st place in Roblox Game Jam 2022 for innovative gameplay mechanics"
-    },
-    {
-      "title": "React.js Expert Certification",
-      "organization": "Meta",
-      "date": "2023",
-      "description": "Advanced certification in React.js development and best practices"
+  "title": "Registered Intellectual Property – ADHS: Advanced Drainage Hygiene System (Concept)",
+  "organization": "Intellectual Property Office of the Philippines (IPOPHL)",
+  "date": "2024",
+  "description": "Created and registered the conceptual design for the Advanced Drainage Hygiene System (ADHS), a proposed innovative approach to improve sanitation and hygiene in drainage infrastructure."
     }
   ],
   "experience": [
@@ -104,13 +92,6 @@
       "period": "2021 - 2022",
       "description": "Developed native Android applications using Kotlin and Jetpack Compose. Published 3 apps with combined 200K+ downloads.",
       "technologies": ["Kotlin", "Jetpack Compose", "Firebase", "Room Database"]
-    },
-    {
-      "position": "Game Developer",
-      "company": "U.N.I",
-      "period": "2020 - 2021",
-      "description": "Created multiplayer Roblox games with custom scripting and monetization systems.",
-      "technologies": ["LuaU", "Roblox Studio", "Game Design", "UI/UX"]
     }
   ],
   "skills": [
