@@ -80,19 +80,19 @@
   ],
   "experience": [
     {
-      "position": "Senior Full-Stack Developer",
-      "company": "TechStart Solutions",
-      "period": "2022 - Present",
-      "description": "Lead developer for React.js and Node.js applications serving 100K+ users. Built scalable microservices architecture and mentored junior developers.",
-      "technologies": ["React.js", "Node.js", "TypeScript", "AWS", "Docker"]
+      "position": "Discord Bot Developer",
+      "company": "Freelance / Community Projects",
+      "period": "2021 - Present",
+      "description": "Designed and developed custom Discord bots for multiple communities and servers to automate processes such as moderation, ticketing system, data tracking, and user engagement.",
+      "technologies": ["JavaScript", "Node.js", "Discord.js", "MongoDB", "REST APIs"]
     },
     {
-      "position": "Android Developer",
-      "company": "MobileFirst Inc",
-      "period": "2021 - 2022",
-      "description": "Developed native Android applications using Kotlin and Jetpack Compose. Published 3 apps with combined 200K+ downloads.",
-      "technologies": ["Kotlin", "Jetpack Compose", "Firebase", "Room Database"]
-    }
+    "position": "Mobile Application Developer",
+    "company": "13th IT Skills Olympic",
+    "period": "November 2024",
+    "description": "Competed in the Android Development – IoT category, developing a prototype Android app integrated with IoT functionalities.",
+    "technologies": ["Android Studio", "Kotlin", "IoT Devices", "Firebase"]
+    },
   ],
   "skills": [
     {
@@ -100,6 +100,12 @@
       "level": 92,
       "color": "#E94560",
       "icon": "fab fa-js-square"
+    },
+    {
+      "name": "Python",
+      "level": 90,
+      "color": "#3776AB",
+      "icon": "fab fa-python"
     },
     {
       "name": "React.js",
@@ -112,12 +118,6 @@
       "level": 85,
       "color": "#F39C12",
       "icon": "fab fa-node-js"
-    },
-    {
-      "name": "TypeScript",
-      "level": 80,
-      "color": "#9B59B6",
-      "icon": "fab fa-js"
     },
     {
       "name": "Kotlin",
@@ -138,13 +138,19 @@
       "icon": "fas fa-database"
     },
     {
+      "name": "Firebase",
+      "level": 75,
+      "color": "#F39C12",
+      "icon": "fas fa-database"
+    },
+    {
       "name": "MySQL",
       "level": 72,
       "color": "#9B59B6",
       "icon": "fas fa-database"
     },
     {
-      "name": "LuaU",
+      "name": "Luau",
       "level": 88,
       "color": "#E94560",
       "icon": "fas fa-gamepad"
