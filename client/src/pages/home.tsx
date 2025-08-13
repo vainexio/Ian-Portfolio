@@ -5,6 +5,7 @@ import Skills from "@/components/sections/skills";
 import Projects from "@/components/sections/projects";
 import Contact from "@/components/sections/contact";
 import FloatingNav from "@/components/ui/floating-nav";
+import MobileMenu from "@/components/ui/mobile-menu";
 import SectionDivider from "@/components/ui/section-divider";
 import { PortfolioData } from "@shared/schema";
 
@@ -15,10 +16,10 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-space flex items-center justify-center">
-        <div className="glass rounded-3xl p-8">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-coral mx-auto"></div>
-          <p className="text-white mt-4 text-center">Loading portfolio...</p>
+      <div className="min-h-screen bg-space flex items-center justify-center px-4">
+        <div className="glass rounded-2xl md:rounded-3xl p-6 md:p-8">
+          <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-b-2 border-coral mx-auto"></div>
+          <p className="text-white mt-4 text-center text-sm md:text-base">Loading portfolio...</p>
         </div>
       </div>
     );
@@ -52,6 +53,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 text-white">
         <FloatingNav />
+        <MobileMenu />
         <Hero personal={portfolio.personal} />
         <SectionDivider direction="down" color="coral" />
         <About achievements={portfolio.achievements} experience={portfolio.experience} />
