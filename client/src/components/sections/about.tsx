@@ -45,7 +45,7 @@ export default function About({ achievements, experience }: AboutProps) {
             Passionate developer with expertise across multiple platforms, creating solutions that bridge creativity and functionality.
           </p>
         </div>
-        
+
         {/* Development Categories */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {categories.map((category, index) => (
@@ -83,10 +83,10 @@ export default function About({ achievements, experience }: AboutProps) {
         <div className={`mb-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Professional Experience</h3>
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-coral via-cyan to-purple rounded-full opacity-30"></div>
-            
-            <div className="space-y-12">
+            {/* Timeline Line - placed behind cards */}
+            <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-1 h-full bg-gradient-to-b from-coral via-cyan to-purple rounded-full opacity-30 z-0 pointer-events-none"></div>
+
+            <div className="space-y-12 relative z-10">
               {experience.map((exp, index) => (
                 <div 
                   key={index}
@@ -95,16 +95,16 @@ export default function About({ achievements, experience }: AboutProps) {
                   } ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
                   style={{ transitionDelay: `${(index + 3) * 150}ms` }}
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-coral rounded-full z-10 animate-pulse"></div>
-                  
+                  {/* Timeline Dot - moved behind by lowering z-index and responsive positioning */}
+                  <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 bg-coral rounded-full z-0 animate-pulse pointer-events-none"></div>
+
                   {/* Job Icon */}
-                  <div className={`w-16 h-16 bg-gradient-to-br from-coral to-purple rounded-full flex items-center justify-center text-white text-xl mx-8 shadow-lg ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
+                  <div className={`w-16 h-16 bg-gradient-to-br from-coral to-purple rounded-full flex items-center justify-center text-white text-xl mx-8 shadow-lg relative z-20 ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
                     <i className="fas fa-briefcase"></i>
                   </div>
-                  
+
                   {/* Content Card */}
-                  <div className={`glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-500 flex-1 max-w-md ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
+                  <div className={`glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-500 flex-1 max-w-md relative z-20 ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
                     <div className="mb-4">
                       <h4 className="text-xl font-bold text-coral mb-1">{exp.position}</h4>
                       <p className="text-cyan font-medium">{exp.company}</p>
