@@ -1,27 +1,21 @@
-import { Project } from "@shared/schema";
+import { Project, ProjectCategory } from "@shared/schema";
 
 interface ProjectCardProps {
   project: Project;
+  projectCategories: ProjectCategory[];
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "web": return "coral";
-      case "android": return "amber";
-      case "game": return "purple";
-      default: return "cyan";
-    }
+export default function ProjectCard({ project, projectCategories }: ProjectCardProps) {
+  const getCategoryConfig = (categoryId: string) => {
+    return projectCategories?.find(cat => cat.id === categoryId) || {
+      id: categoryId,
+      label: categoryId,
+      color: "cyan",
+      colorClass: "bg-cyan/20 text-cyan"
+    };
   };
 
-  const getCategoryColorClass = (category: string) => {
-    switch (category) {
-      case "web": return "bg-coral/20 text-coral";
-      case "android": return "bg-amber/20 text-amber";
-      case "game": return "bg-purple/20 text-purple";
-      default: return "bg-cyan/20 text-cyan";
-    }
-  };
+  const categoryConfig = getCategoryConfig(project.category);
 
   const getActionIcon = () => {
     if (project.playStore) return "fab fa-google-play";
@@ -52,9 +46,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <div className="p-4 md:p-6">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-lg md:text-xl font-bold text-white flex-1 mr-2">{project.title}</h3>
-          <span className={`px-2 py-1 rounded-full text-xs flex-shrink-0 ${getCategoryColorClass(project.category)}`}>
-            {project.category === "web" ? "Web" : 
-             project.category === "android" ? "Android" : "Game"}
+          <span className={`px-2 py-1 rounded-full text-xs flex-shrink-0 ${categoryConfig.colorClass}`}>
+            {categoryConfig.label}
           </span>
         </div>
         <p className="text-white mb-4 text-sm leading-relaxed line-clamp-3">{project.description}</p>
@@ -85,7 +78,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <div className="flex justify-between items-center">
           <div className="flex space-x-1 md:space-x-2">
-            {[getCategoryColor(project.category), "cyan", "amber"].map((color, index) => (
+            {[categoryConfig.color, "cyan", "amber"].map((color, index) => (
               <span key={index} className={`w-2 h-2 md:w-3 md:h-3 bg-${color} rounded-full animate-pulse`} style={{ animationDelay: `${index * 0.5}s` }}></span>
             ))}
           </div>

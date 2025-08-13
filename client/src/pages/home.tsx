@@ -56,11 +56,11 @@ export default function Home() {
         <MobileMenu />
         <Hero personal={portfolio.personal} />
         <SectionDivider direction="down" color="coral" />
-        <About achievements={portfolio.achievements} experience={portfolio.experience} />
+        <About specialties={portfolio.specialties} achievements={portfolio.achievements} experience={portfolio.experience} />
         <SectionDivider direction="up" color="purple" />
         <Skills skills={portfolio.skills} />
         <SectionDivider direction="down" color="cyan" />
-        <Projects projects={portfolio.projects} />
+        <Projects projects={portfolio.projects} projectCategories={portfolio.projectCategories} />
         <SectionDivider direction="up" color="amber" />
         <Contact contact={portfolio.contact} />
         

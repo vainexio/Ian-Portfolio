@@ -1,40 +1,14 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { Achievement, Experience } from "@shared/schema";
+import { Achievement, Experience, Specialty } from "@shared/schema";
 
 interface AboutProps {
+  specialties: Specialty[];
   achievements: Achievement[];
   experience: Experience[];
 }
 
-export default function About({ achievements, experience }: AboutProps) {
+export default function About({ specialties, achievements, experience }: AboutProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
-
-  const categories = [
-    {
-      icon: "fas fa-code",
-      title: "Web Development",
-      description: "Crafting responsive web applications with modern technologies including React.js, Node.js, and MongoDB.",
-      tagline: "Crafting digital experiences that matter",
-      color: "coral",
-      technologies: ["JavaScript", "React.js", "Node.js", "MongoDB"]
-    },
-    {
-      icon: "fab fa-android",
-      title: "Android Development",
-      description: "Building native Android applications with Kotlin and Jetpack Compose for modern, performant mobile experiences.",
-      tagline: "Mobile-first solutions for everyone",
-      color: "amber",
-      technologies: ["Kotlin", "Jetpack Compose", "Android SDK"]
-    },
-    {
-      icon: "fas fa-gamepad",
-      title: "Game Development",
-      description: "Creating engaging Roblox games with Lua scripting, focusing on immersive gameplay and user interaction.",
-      tagline: "Where creativity meets technology",
-      color: "purple",
-      technologies: ["Roblox Studio", "Lua", "Game Design"]
-    }
-  ];
 
   return (
     <section id="about" ref={ref} className="py-24 relative">
@@ -48,7 +22,7 @@ export default function About({ achievements, experience }: AboutProps) {
 
         {/* Development Categories */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {categories.map((category, index) => (
+          {specialties.map((category, index) => (
             <div 
               key={category.title}
               className={`glass-dark rounded-3xl p-8 hover:scale-105 hover:shadow-2xl hover:shadow-${category.color}/20 transition-all duration-700 group ${

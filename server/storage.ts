@@ -1,4 +1,4 @@
-import { type Portfolio, type InsertPortfolio, type PersonalInfo, type Achievement, type Experience, type Skill, type Project, type ContactInfo } from "@shared/schema";
+import { type Portfolio, type InsertPortfolio, type PersonalInfo, type Achievement, type Experience, type Skill, type Project, type ContactInfo, type Specialty, type ProjectCategory } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
@@ -34,6 +34,25 @@ export class MemStorage implements IStorage {
             twitter: "twitter.com/ianiglipa",
             discord: "discord.com/users/ianiglipa"
           },
+          specialties: [
+            {
+              id: "web",
+              icon: "fas fa-code",
+              title: "Web Development",
+              description: "Crafting responsive web applications with modern technologies.",
+              tagline: "Crafting digital experiences that matter",
+              color: "coral",
+              technologies: ["JavaScript", "React.js", "Node.js"]
+            }
+          ],
+          projectCategories: [
+            {
+              id: "web",
+              label: "Web Dev",
+              color: "coral",
+              colorClass: "bg-coral/20 text-coral"
+            }
+          ],
           achievements: [],
           experience: [],
           skills: [],

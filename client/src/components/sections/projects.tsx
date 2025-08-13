@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { Project } from "@shared/schema";
+import { Project, ProjectCategory } from "@shared/schema";
 import ProjectCard from "@/components/ui/project-card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 interface ProjectsProps {
   projects: Project[];
+  projectCategories: ProjectCategory[];
 }
 
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects({ projects, projectCategories }: ProjectsProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
   const filters = [
     { id: "all", label: "All Projects" },
-    { id: "web", label: "Web Dev" },
-    { id: "android", label: "Android" },
-    { id: "game", label: "Games" },
+    ...(projectCategories || []).map(cat => ({ id: cat.id, label: cat.label }))
   ];
 
   const filteredProjects = activeFilter === "all" 
@@ -86,7 +85,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   height: 'auto'
                 }}
               >
-                <ProjectCard project={project} />
+                <ProjectCard project={project} projectCategories={projectCategories} />
               </div>
             ))
           )}

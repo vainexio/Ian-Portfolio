@@ -6,6 +6,8 @@ import { z } from "zod";
 export const portfolio = pgTable("portfolio", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   personal: jsonb("personal").notNull(),
+  specialties: jsonb("specialties").notNull(),
+  projectCategories: jsonb("projectCategories").notNull(),
   achievements: jsonb("achievements").notNull(),
   experience: jsonb("experience").notNull(),
   skills: jsonb("skills").notNull(),
@@ -73,10 +75,17 @@ export interface ProjectStats {
   volume?: string;
 }
 
+export interface ProjectCategory {
+  id: string;
+  label: string;
+  color: string;
+  colorClass: string;
+}
+
 export interface Project {
   id: string;
   title: string;
-  category: "web" | "android" | "game";
+  category: string;
   featured?: boolean;
   description: string;
   technologies: string[];
@@ -86,6 +95,16 @@ export interface Project {
   playStore?: string;
   roblox?: string;
   stats?: ProjectStats;
+}
+
+export interface Specialty {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  tagline: string;
+  color: string;
+  technologies: string[];
 }
 
 export interface ContactInfo {
@@ -98,6 +117,8 @@ export interface ContactInfo {
 
 export interface PortfolioData {
   personal: PersonalInfo;
+  specialties: Specialty[];
+  projectCategories: ProjectCategory[];
   achievements: Achievement[];
   experience: Experience[];
   skills: Skill[];
