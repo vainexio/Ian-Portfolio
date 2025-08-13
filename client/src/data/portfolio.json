@@ -1,0 +1,371 @@
+{
+  "personal": {
+    "name": "Ian Iglipa",
+    "title": "Full-Stack Developer & Game Creator",
+    "bio": "Passionate developer with 5+ years of experience across web development, mobile apps, and game creation. I specialize in building scalable applications and immersive gaming experiences that blend creativity with cutting-edge technology.",
+    "email": "ian.iglipa@email.com",
+    "github": "github.com/ianiglipa",
+    "linkedin": "linkedin.com/in/ianiglipa",
+    "twitter": "twitter.com/ianiglipa",
+    "discord": "discord.com/users/ianiglipa"
+  },
+  "achievements": [
+    {
+      "title": "Discord Bot Developer Certification",
+      "organization": "Discord Developers",
+      "date": "2023",
+      "description": "Certified for creating advanced Discord bots with over 50,000 active users"
+    },
+    {
+      "title": "Google Play Developer Award",
+      "organization": "Google Play Store",
+      "date": "2023",
+      "description": "Featured app with 100K+ downloads and 4.8-star rating"
+    },
+    {
+      "title": "Roblox Developer Contest Winner",
+      "organization": "Roblox Corporation",
+      "date": "2022",
+      "description": "1st place in Roblox Game Jam 2022 for innovative gameplay mechanics"
+    },
+    {
+      "title": "React.js Expert Certification",
+      "organization": "Meta",
+      "date": "2023",
+      "description": "Advanced certification in React.js development and best practices"
+    }
+  ],
+  "experience": [
+    {
+      "position": "Senior Full-Stack Developer",
+      "company": "TechStart Solutions",
+      "period": "2022 - Present",
+      "description": "Lead developer for React.js and Node.js applications serving 100K+ users. Built scalable microservices architecture and mentored junior developers.",
+      "technologies": ["React.js", "Node.js", "TypeScript", "AWS", "Docker"]
+    },
+    {
+      "position": "Android Developer",
+      "company": "MobileFirst Inc",
+      "period": "2021 - 2022",
+      "description": "Developed native Android applications using Kotlin and Jetpack Compose. Published 3 apps with combined 200K+ downloads.",
+      "technologies": ["Kotlin", "Jetpack Compose", "Firebase", "Room Database"]
+    },
+    {
+      "position": "Game Developer",
+      "company": "Indie Game Studio",
+      "period": "2020 - 2021",
+      "description": "Created multiplayer Roblox games with custom scripting and monetization systems. Achieved 1M+ total visits across all games.",
+      "technologies": ["Lua", "Roblox Studio", "Game Design", "UI/UX"]
+    }
+  ],
+  "skills": [
+    {
+      "name": "JavaScript",
+      "level": 92,
+      "color": "#E94560",
+      "icon": "fab fa-js-square"
+    },
+    {
+      "name": "React.js",
+      "level": 88,
+      "color": "#3498DB",
+      "icon": "fab fa-react"
+    },
+    {
+      "name": "Node.js",
+      "level": 85,
+      "color": "#F39C12",
+      "icon": "fab fa-node-js"
+    },
+    {
+      "name": "TypeScript",
+      "level": 80,
+      "color": "#9B59B6",
+      "icon": "fab fa-js"
+    },
+    {
+      "name": "Kotlin",
+      "level": 78,
+      "color": "#E94560",
+      "icon": "fab fa-android"
+    },
+    {
+      "name": "HTML/CSS",
+      "level": 95,
+      "color": "#3498DB",
+      "icon": "fab fa-html5"
+    },
+    {
+      "name": "MongoDB",
+      "level": 75,
+      "color": "#F39C12",
+      "icon": "fas fa-database"
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 72,
+      "color": "#9B59B6",
+      "icon": "fas fa-database"
+    },
+    {
+      "name": "Lua",
+      "level": 88,
+      "color": "#E94560",
+      "icon": "fas fa-gamepad"
+    },
+    {
+      "name": "Jetpack Compose",
+      "level": 75,
+      "color": "#3498DB",
+      "icon": "fab fa-android"
+    },
+    {
+      "name": "AWS",
+      "level": 70,
+      "color": "#F39C12",
+      "icon": "fab fa-aws"
+    },
+    {
+      "name": "Docker",
+      "level": 68,
+      "color": "#9B59B6",
+      "icon": "fab fa-docker"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "ModMaster Discord Bot",
+      "category": "web",
+      "featured": true,
+      "description": "Advanced Discord bot with React.js dashboard for server management, featuring real-time analytics, custom commands, and AI-powered moderation. Serves 50,000+ users across 200+ servers.",
+      "technologies": [
+        "React.js",
+        "Node.js",
+        "Discord.js",
+        "WebSocket",
+        "MongoDB",
+        "OpenAI API"
+      ],
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/modmaster-bot",
+      "demo": "https://modmaster.ianiglipa.dev",
+      "stats": {
+        "users": "50K+",
+        "servers": "200+",
+        "uptime": "99.9%"
+      }
+    },
+    {
+      "id": "2",
+      "title": "ShopFlow E-commerce",
+      "category": "web",
+      "featured": true,
+      "description": "Full-stack e-commerce platform with advanced inventory management, Stripe payments, and admin analytics. Built with microservices architecture and deployed on AWS.",
+      "technologies": [
+        "React.js",
+        "Node.js",
+        "TypeScript",
+        "Stripe",
+        "PostgreSQL",
+        "AWS",
+        "Docker"
+      ],
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/shopflow-platform",
+      "demo": "https://shopflow.ianiglipa.dev",
+      "stats": {
+        "revenue": "$50K+",
+        "orders": "1.2K+",
+        "merchants": "25+"
+      }
+    },
+    {
+      "id": "3",
+      "title": "FitTrack Pro",
+      "category": "android",
+      "featured": true,
+      "description": "Comprehensive fitness tracking app with Jetpack Compose UI, health data sync, social challenges, and AI workout recommendations. Featured on Google Play Store.",
+      "technologies": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Room Database",
+        "Health Connect",
+        "Firebase",
+        "TensorFlow Lite"
+      ],
+      "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/fittrack-pro",
+      "playStore": "https://play.google.com/store/apps/details?id=com.ianiglipa.fittrack",
+      "stats": {
+        "downloads": "100K+",
+        "rating": "4.8/5",
+        "reviews": "2.5K+"
+      }
+    },
+    {
+      "id": "4",
+      "title": "Battle Royale Arena",
+      "category": "game",
+      "featured": false,
+      "description": "Epic multiplayer battle royale game on Roblox featuring custom weapons, dynamic weather system, and competitive tournaments. Winner of 2022 Roblox Game Jam.",
+      "technologies": [
+        "Lua",
+        "Roblox Studio",
+        "DataStore2",
+        "ProfileService",
+        "ReplicatedStorage"
+      ],
+      "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "roblox": "https://www.roblox.com/games/battle-royale-arena",
+      "stats": {
+        "visits": "2.5M+",
+        "favorites": "45K+",
+        "concurrent": "500+"
+      }
+    },
+    {
+      "id": "11",
+      "title": "CryptoWatch Mobile",
+      "category": "android",
+      "featured": false,
+      "description": "Real-time cryptocurrency portfolio tracker with price alerts, news feed, and portfolio analytics. Clean Material Design 3 interface with dark mode support.",
+      "technologies": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Retrofit",
+        "Room",
+        "WorkManager",
+        "Hilt"
+      ],
+      "image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/cryptowatch-android",
+      "playStore": "https://play.google.com/store/apps/details?id=com.ianiglipa.cryptowatch",
+      "stats": {
+        "downloads": "25K+",
+        "rating": "4.6/5",
+        "reviews": "800+"
+      }
+    },
+    {
+      "id": "6",
+      "title": "Mystic Realms RPG",
+      "category": "game",
+      "featured": true,
+      "description": "Epic multiplayer Roblox RPG with custom combat system, guild wars, and economy simulation. Winner of Roblox Game Jam 2022 with 1M+ visits and active community.",
+      "technologies": [
+        "Lua",
+        "Roblox Studio",
+        "DataStore",
+        "RemoteEvents",
+        "HttpService",
+        "GUI Design"
+      ],
+      "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/mystic-realms",
+      "roblox": "https://www.roblox.com/games/mystic-realms",
+      "stats": {
+        "visits": "1M+",
+        "concurrent": "500+",
+        "rating": "95%"
+      }
+    },
+    {
+      "id": "10",
+      "title": "TaskSync Collaborative",
+      "category": "android",
+      "description": "Advanced project management app with real-time collaboration, Gantt charts, and team analytics. Integrates with popular tools like Slack, Google Calendar, and Jira.",
+      "technologies": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Firebase",
+        "Room",
+        "Retrofit",
+        "Calendar API"
+      ],
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/tasksync-app",
+      "playStore": "https://play.google.com/store/apps/details?id=com.ianiglipa.tasksync",
+      "stats": {
+        "downloads": "25K+",
+        "rating": "4.6/5",
+        "teams": "500+"
+      }
+    },
+    {
+      "id": "7",
+      "title": "DevTools API Manager",
+      "category": "web",
+      "description": "Professional API testing and documentation platform with automated testing, team collaboration, and performance monitoring. Used by 100+ development teams.",
+      "technologies": [
+        "Node.js",
+        "Express",
+        "React.js",
+        "TypeScript",
+        "Swagger",
+        "Jest",
+        "Docker",
+        "Redis"
+      ],
+      "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/devtools-api",
+      "demo": "https://devtools.ianiglipa.dev",
+      "stats": {
+        "teams": "100+",
+        "apis": "5K+",
+        "tests": "50K+"
+      }
+    },
+    {
+      "id": "8",
+      "title": "CryptoTrader Dashboard",
+      "category": "web",
+      "description": "Real-time cryptocurrency trading dashboard with portfolio tracking, price alerts, and advanced charting. Supports multiple exchanges and automated trading strategies.",
+      "technologies": [
+        "React.js",
+        "TypeScript",
+        "WebSocket",
+        "Chart.js",
+        "Node.js",
+        "Redis",
+        "PostgreSQL"
+      ],
+      "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/crypto-dashboard",
+      "demo": "https://crypto.ianiglipa.dev",
+      "stats": {
+        "users": "10K+",
+        "volume": "$2M+",
+        "exchanges": "8"
+      }
+    },
+    {
+      "id": "9",
+      "title": "Space Conquest Strategy",
+      "category": "game",
+      "description": "Large-scale strategy game in Roblox featuring planet colonization, fleet battles, and diplomatic systems. Complex economy simulation with 24/7 persistent world.",
+      "technologies": [
+        "Lua",
+        "Roblox Studio",
+        "DataStore",
+        "MessagingService",
+        "HttpService"
+      ],
+      "image": "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+      "github": "https://github.com/ianiglipa/space-conquest",
+      "roblox": "https://www.roblox.com/games/space-conquest",
+      "stats": {
+        "visits": "500K+",
+        "concurrent": "200+",
+        "rating": "92%"
+      }
+    }
+  ],
+  "contact": {
+    "email": "ian.iglipa@email.com",
+    "github": "github.com/ianiglipa",
+    "facebook": "facebook.com/ianiglipa",
+    "viber": "+1234567890",
+    "discord": "discord.com/users/ianiglipa"
+  }
+}

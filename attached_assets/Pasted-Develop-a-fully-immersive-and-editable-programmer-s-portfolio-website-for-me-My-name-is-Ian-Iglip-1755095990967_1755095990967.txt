@@ -1,0 +1,79 @@
+Develop a fully immersive and editable programmer’s portfolio website for me.
+
+My name is: Ian Iglipa
+
+Purpose: Showcase my works, achievements, skills, background information, and other portfolio details in a highly unique, visually engaging way.
+
+Design & Branding:
+
+Primary colors: Dark and vibrant, but comfortable on the eyes.
+
+Typography: Clean and easy to read.
+
+Vibe: Playful and immersive.
+
+Style: Glassmorphism and other fitting modern effects.
+
+Dark mode only.
+
+Overlapping elements allowed (e.g., text overlapping images) but maintain readability and design clarity.
+
+Core Features:
+
+Content Management
+
+Store all portfolio content (projects, achievements, skills, background info) in a single JSON file.
+
+Editing, adding, or deleting entries should only require modifying the JSON file.
+
+No admin panel needed — just code-based modification.
+
+Works/Projects Display
+
+Each entry includes a thumbnail image.
+
+Images must align visually regardless of their size, with lazy loading for performance.
+
+Add smooth hover animations for immersive effects.
+
+Use fade effects on images so they blend into the background.
+
+Interactive Design
+
+3D effects for buttons and interactive elements.
+
+Smooth scrolling with section appearance animations and transitions (e.g., fade-in, slide-up when entering viewport).
+
+Include interactive charts for skills (no skill bars).
+
+Tech Stack
+
+Frontend: React.js, HTML, CSS, JavaScript
+
+Backend: Node.js, Mongoose (MongoDB) to load portfolio data from JSON or DB if needed in the future.
+
+Categories:
+
+Web Development: JavaScript, HTML, CSS, Node.js, Mongoose, React.js (Discord bots, endpoints)
+
+Android Development: Kotlin with Jetpack Compose
+
+Game Development: Roblox games
+
+Hosting
+
+Deploy to GitHub Pages when complete.
+
+Ensure setup is compatible with GitHub Pages deployment from Replit.
+
+Deliverables:
+
+Complete React.js + Node.js + JSON-based portfolio site hosted on Replit.
+
+All content managed in one JSON file for easy modification.
+
+Immersive animations, unique layout design, and overlapping elements done tastefully.
+
+Dark and vibrant color theme with glassmorphism.
+
+Example portfolio entries for each category.

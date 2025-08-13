@@ -1,0 +1,96 @@
+import { useQuery } from "@tanstack/react-query";
+import Hero from "@/components/sections/hero";
+import About from "@/components/sections/about";
+import Skills from "@/components/sections/skills";
+import Projects from "@/components/sections/projects";
+import Contact from "@/components/sections/contact";
+import FloatingNav from "@/components/ui/floating-nav";
+import SectionDivider from "@/components/ui/section-divider";
+import { PortfolioData } from "@shared/schema";
+
+export default function Home() {
+  const { data: portfolio, isLoading } = useQuery<PortfolioData>({
+    queryKey: ["/api/portfolio"],
+  });
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-space flex items-center justify-center">
+        <div className="glass rounded-3xl p-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-coral mx-auto"></div>
+          <p className="text-white mt-4 text-center">Loading portfolio...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!portfolio) {
+    return (
+      <div className="min-h-screen bg-space flex items-center justify-center">
+        <div className="glass rounded-3xl p-8 text-center">
+          <i className="fas fa-exclamation-triangle text-coral text-4xl mb-4"></i>
+          <p className="text-white text-xl">Portfolio data not found</p>
+          <p className="text-gray-300 mt-2">Please check your configuration</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Dark immersive background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-gray-900/50"></div>
+        {/* Animated background orbs */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-coral/30 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-80 h-80 bg-purple/40 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-cyan/30 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-amber/20 rounded-full blur-3xl animate-float" style={{animationDelay: '6s'}}></div>
+        <div className="absolute bottom-1/3 right-10 w-56 h-56 bg-green-400/20 rounded-full blur-3xl animate-float" style={{animationDelay: '8s'}}></div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        <FloatingNav />
+        <Hero personal={portfolio.personal} />
+        <SectionDivider direction="down" color="coral" />
+        <About achievements={portfolio.achievements} experience={portfolio.experience} />
+        <SectionDivider direction="up" color="purple" />
+        <Skills skills={portfolio.skills} />
+        <SectionDivider direction="down" color="cyan" />
+        <Projects projects={portfolio.projects} />
+        <SectionDivider direction="up" color="amber" />
+        <Contact contact={portfolio.contact} />
+        
+        {/* Footer */}
+        <footer className="py-12 border-t border-white/10 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <p className="text-gray-300">© 2024 {portfolio.personal.name}. All rights reserved.</p>
+            </div>
+            <div className="flex space-x-6">
+              <a href={`https://${portfolio.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-coral transition-colors">
+                <i className="fab fa-github text-xl"></i>
+              </a>
+              <a href={`https://${portfolio.contact.facebook}`} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-coral transition-colors">
+                <i className="fab fa-facebook text-xl"></i>
+              </a>
+              {portfolio.contact.viber && (
+                <a href={`viber://chat?number=${encodeURIComponent(portfolio.contact.viber)}`} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-coral transition-colors">
+                  <i className="fab fa-viber text-xl"></i>
+                </a>
+              )}
+              {portfolio.contact.discord && (
+                <a href={`https://${portfolio.contact.discord}`} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-coral transition-colors">
+                  <i className="fab fa-discord text-xl"></i>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+  );
+}
