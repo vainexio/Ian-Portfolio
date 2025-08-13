@@ -46,6 +46,12 @@
       "colorClass": "bg-coral/20 text-coral"
     },
     {
+      "id": "app",
+      "label": "Server App",
+      "color": "coral",
+      "colorClass": "bg-coral/20 text-coral"
+    },
+    {
       "id": "android",
       "label": "Android",
       "color": "amber",
