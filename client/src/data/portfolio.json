@@ -123,31 +123,28 @@
   "projects": [
     {
       "id": "1",
-      "title": "ModMaster Discord Bot",
-      "category": "web",
+      "title": "VALCORE Discord Bot",
+      "category": "app",
       "featured": true,
-      "description": "Advanced Discord bot with React.js dashboard for server management, featuring real-time analytics, custom commands, and AI-powered moderation. Serves 50,000+ users across 200+ servers.",
+      "description": "A Discord backup and assistant bot that uses Open Authorization 2.0 to safely move members to a backup server during critical outages. Used across 850+ servers.",
       "technologies": [
-        "React.js",
+        "OAuth2",
         "Node.js",
         "Discord.js",
-        "WebSocket",
-        "MongoDB",
-        "OpenAI API"
+        "MongoDB"
       ],
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-      "github": "https://github.com/ianiglipa/modmaster-bot",
-      "demo": "https://modmaster.ianiglipa.dev",
+      "image": "https://i.imgur.com/cuLP7mJ.png",
+      "demo": "https://discord.com/api/oauth2/authorize?client_id=968378766260846713&permissions=8&scope=bot",
       "stats": {
-        "users": "50K+",
-        "servers": "200+",
+        "backed up users": "40K+",
+        "servers": "850+",
         "uptime": "99.9%"
       }
     },
     {
       "id": "2",
       "title": "ShopFlow E-commerce",
-      "category": "web",
+      "category": "game",
       "featured": true,
       "description": "Full-stack e-commerce platform with advanced inventory management, Stripe payments, and admin analytics. Built with microservices architecture and deployed on AWS.",
       "technologies": [
