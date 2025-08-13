@@ -2,9 +2,9 @@
   "personal": {
     "name": "Ian Iglipa",
     "title": "Full-Stack Developer & Game Creator",
-    "bio": "Passionate developer with 5+ years of experience across web development, mobile apps, and game creation. I specialize in building scalable applications and immersive gaming experiences that blend creativity with cutting-edge technology.",
-    "email": "ian.iglipa@email.com",
-    "github": "github.com/ianiglipa",
+    "bio": "Passionate developer with 3+ years of experience across web development, mobile apps, and roblox game creation. I specialize in building scalable applications and immersive gaming experiences that blend creativity.",
+    "email": "ian.iglipa@gmail.com",
+    "github": "https://github.com/vainexio",
     "linkedin": "linkedin.com/in/ianiglipa",
     "twitter": "twitter.com/ianiglipa",
     "discord": "discord.com/users/ianiglipa"
@@ -52,10 +52,10 @@
     },
     {
       "position": "Game Developer",
-      "company": "Indie Game Studio",
+      "company": "U.N.I",
       "period": "2020 - 2021",
-      "description": "Created multiplayer Roblox games with custom scripting and monetization systems. Achieved 1M+ total visits across all games.",
-      "technologies": ["Lua", "Roblox Studio", "Game Design", "UI/UX"]
+      "description": "Created multiplayer Roblox games with custom scripting and monetization systems.",
+      "technologies": ["LuaU", "Roblox Studio", "Game Design", "UI/UX"]
     }
   ],
   "skills": [
@@ -102,13 +102,13 @@
       "icon": "fas fa-database"
     },
     {
-      "name": "PostgreSQL",
+      "name": "MySQL",
       "level": 72,
       "color": "#9B59B6",
       "icon": "fas fa-database"
     },
     {
-      "name": "Lua",
+      "name": "LuaU",
       "level": 88,
       "color": "#E94560",
       "icon": "fas fa-gamepad"
@@ -118,18 +118,6 @@
       "level": 75,
       "color": "#3498DB",
       "icon": "fab fa-android"
-    },
-    {
-      "name": "AWS",
-      "level": 70,
-      "color": "#F39C12",
-      "icon": "fab fa-aws"
-    },
-    {
-      "name": "Docker",
-      "level": 68,
-      "color": "#9B59B6",
-      "icon": "fab fa-docker"
     }
   ],
   "projects": [
@@ -362,10 +350,10 @@
     }
   ],
   "contact": {
-    "email": "ian.iglipa@email.com",
-    "github": "github.com/ianiglipa",
-    "facebook": "facebook.com/ianiglipa",
-    "viber": "+1234567890",
-    "discord": "discord.com/users/ianiglipa"
+    "email": "ianpaolo.iglipa170@gmail.com",
+    "github": "github.com/vainexio",
+    "facebook": "facebook.com/ianhehu",
+    "viber": "+63 945 326 3549",
+    "discord": "http://discord.com/users/497918770187075595"
   }
 }
