@@ -2,7 +2,7 @@
   "personal": {
     "name": "Ian Iglipa",
     "title": "Full-Stack Developer & Game Creator",
-    "bio": "Passionate developer with 3+ years of experience across web development, mobile apps, and roblox game creation. I specialize in building scalable applications and immersive gaming experiences that blend creativity.",
+    "bio": "I’m a developer who’s spent the past 3+ years bringing ideas to life — from web apps and mobile tools to immersive Roblox games. My focus is on building smooth, scalable software that’s as fun to use as it is to make.",
     "email": "ian.iglipa@gmail.com",
     "github": "https://github.com/vainexio",
     "linkedin": "linkedin.com/in/ianiglipa",
@@ -92,7 +92,7 @@
     "period": "November 2024",
     "description": "Competed in the Android Development – IoT category, developing a prototype Android app integrated with IoT functionalities.",
     "technologies": ["Android Studio", "Kotlin", "IoT Devices", "Firebase"]
-    },
+    }
   ],
   "skills": [
     {
