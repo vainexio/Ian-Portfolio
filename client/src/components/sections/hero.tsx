@@ -12,60 +12,51 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
   const [displayedName, setDisplayedName] = useState('');
   const [isTypingName, setIsTypingName] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const nameTypewriterRef = useRef<NodeJS.Timeout>();
 
-  // Enhanced human-like typing for name (slower speed)
+  // Enhanced human-like typing for name (slower speed) - no typos to avoid getting stuck
   const typeWriterName = (text: string, index = 0) => {
     if (index < text.length) {
       const char = text[index];
-      let nextDelay = 120 + Math.random() * 180; // Slower base typing speed
+      let nextDelay = 150 + Math.random() * 200; // Slower base typing speed
       
       // Add longer natural pauses for name
-      if (char === ' ') nextDelay += 300;
-      if (char === '.') nextDelay += 500;
+      if (char === ' ') nextDelay += 400;
+      if (char === '.') nextDelay += 600;
       
-      // Simulate occasional typos (3% chance for name - less frequent)
-      if (Math.random() < 0.03 && char.match(/[a-zA-Z]/)) {
-        const typoChars = 'abcdefghijklmnopqrstuvwxyz';
-        const typo = typoChars[Math.floor(Math.random() * typoChars.length)];
-        
-        // Type wrong character
-        setDisplayedName(text.substring(0, index) + typo);
-        
-        nameTypewriterRef.current = setTimeout(() => {
-          // Backspace and correct
-          setDisplayedName(text.substring(0, index));
-          
-          nameTypewriterRef.current = setTimeout(() => {
-            setDisplayedName(text.substring(0, index + 1));
-            nameTypewriterRef.current = setTimeout(() => typeWriterName(text, index + 1), nextDelay);
-          }, 150);
-        }, 400);
-      } else {
-        setDisplayedName(text.substring(0, index + 1));
-        nameTypewriterRef.current = setTimeout(() => typeWriterName(text, index + 1), nextDelay);
-      }
+      // Simple, reliable typing without typos
+      setDisplayedName(text.substring(0, index + 1));
+      nameTypewriterRef.current = setTimeout(() => {
+        typeWriterName(text, index + 1);
+      }, nextDelay);
     } else {
       setIsTypingName(false);
     }
   };
 
-  // Start typing animation when component becomes visible
+  // Start typing animation when component becomes visible (one time only)
   useEffect(() => {
-    if (isVisible && !isTypingName && displayedName === '') {
+    if (isVisible && !hasStarted && personal.name) {
+      setHasStarted(true);
       setIsTypingName(true);
       // Add small delay before starting name typing
-      setTimeout(() => {
+      const startTimeout = setTimeout(() => {
         typeWriterName(personal.name);
       }, 800);
-    }
 
+      return () => clearTimeout(startTimeout);
+    }
+  }, [isVisible, hasStarted, personal.name]);
+
+  // Cleanup on unmount
+  useEffect(() => {
     return () => {
       if (nameTypewriterRef.current) {
         clearTimeout(nameTypewriterRef.current);
       }
     };
-  }, [isVisible, personal.name, isTypingName, displayedName]);
+  }, []);
 
   return (
     <section id="hero" ref={ref} className="min-h-screen relative overflow-hidden flex items-center">
