@@ -261,7 +261,7 @@
       "image": "https://i.imgur.com/NJlOXLh.png",
       "stats": {
         "Conversion Speed": "Instant",
-        "Supported Currencies": "PHP",
+        "Currency": "PHP",
         "QR Scans": "Unlimited"
       }
     }

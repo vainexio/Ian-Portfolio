@@ -710,3 +710,68 @@
 .ribbon-effect {
   animation: ribbonUnfurl 0.6s ease-out forwards;
 }
+
+/* Hexagonal achievements unique animations */
+@keyframes orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(-18px);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) translateY(-18px);
+  }
+}
+
+@keyframes hexagonalFloat {
+  0%, 100% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotateZ(1deg);
+  }
+  66% {
+    transform: translateY(-4px) rotateZ(-1deg);
+  }
+}
+
+@keyframes cosmicPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes constellationFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(5px) translateX(10px) rotate(270deg);
+  }
+}
+
+.hexagonal-achievement {
+  animation: hexagonalFloat 6s ease-in-out infinite;
+}
+
+.cosmic-background {
+  animation: cosmicPulse 4s ease-in-out infinite;
+}
+
+.constellation-trophy {
+  animation: constellationFloat 8s ease-in-out infinite;
+}
+
+/* Gradient radial utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}

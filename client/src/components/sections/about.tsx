@@ -294,166 +294,220 @@ export default function About({ specialties, achievements, experience, interacti
           </div>
         </div>
 
-        {/* Achievements Section */}
-        <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-          <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl font-bold gradient-text mb-4 relative">
-              Achievements & Certifications
-              <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
-                <i className="fas fa-star text-amber"></i>
+        {/* Achievements Section - Hexagonal Design */}
+        <div className={`relative transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+          {/* Cosmic Background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-amber/5 to-transparent rounded-full animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-purple/5 to-transparent rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan/3 to-transparent rounded-full animate-pulse" style={{ animationDelay: '4s' }}></div>
+          </div>
+
+          {/* Title Section with Trophy Constellation */}
+          <div className="relative text-center mb-20">
+            <div className="relative inline-block">
+              <h3 className="text-5xl md:text-7xl font-black mb-6 relative z-10">
+                <span className="bg-gradient-to-r from-amber via-yellow-400 to-amber bg-clip-text text-transparent animate-pulse">
+                  ACHIEVEMENTS
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-purple via-cyan to-purple bg-clip-text text-transparent">
+                  & CERTIFICATIONS
+                </span>
+              </h3>
+              
+              {/* Floating Trophy Constellation */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(12)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute opacity-30 animate-float"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animationDelay: `${i * 0.5}s`,
+                      animationDuration: `${3 + Math.random() * 2}s`
+                    }}
+                  >
+                    <i className="fas fa-trophy text-amber text-xs"></i>
+                  </div>
+                ))}
               </div>
-            </h3>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Recognized excellence and professional milestones that define my journey
-            </p>
+            </div>
+            
+            <div className="relative">
+              <p className="text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                Excellence recognized, milestones conquered, legacy built
+              </p>
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber to-transparent"></div>
+            </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {achievements.map((achievement, index) => (
-              <div 
-                key={index}
-                className={`group relative overflow-hidden transition-all duration-1000 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-                }`}
-                style={{ 
-                  transitionDelay: `${(index + 6) * 200}ms`,
-                  background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  border: '2px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '24px'
-                }}
-                onMouseEnter={(e) => {
-                  const target = e.currentTarget;
-                  target.style.transform = 'translateY(-15px) scale(1.02) rotateX(5deg)';
-                  target.style.boxShadow = '0 30px 60px -10px rgba(255, 193, 7, 0.4)';
-                  target.style.borderColor = 'rgba(255, 193, 7, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.currentTarget;
-                  target.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
-                  target.style.boxShadow = '0 10px 25px -3px rgba(0, 0, 0, 0.1)';
-                  target.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                data-testid={`achievement-card-${index}`}
-              >
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-amber/10 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-amber/15 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-                </div>
-
-                {/* Achievement Ribbon */}
-                <div className="absolute -top-1 -right-1 w-0 h-0 group-hover:w-16 group-hover:h-16 transition-all duration-500" style={{
-                  background: 'linear-gradient(45deg, #FFD700, #FFA500)',
-                  clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)'
-                }}></div>
-
-                {/* Sparkle Effects */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute animate-ping"
+          {/* Hexagonal Achievement Grid */}
+          <div className="relative max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12">
+              {achievements.map((achievement, index) => (
+                <div 
+                  key={index}
+                  className={`group relative transition-all duration-1000 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+                  }`}
+                  style={{ transitionDelay: `${(index + 6) * 300}ms` }}
+                  data-testid={`achievement-card-${index}`}
+                >
+                  {/* Hexagonal Card Container */}
+                  <div className="relative">
+                    {/* Main Hexagonal Shape */}
+                    <div 
+                      className="relative overflow-hidden transition-all duration-700 group-hover:scale-105"
                       style={{
-                        top: `${Math.random() * 80 + 10}%`,
-                        left: `${Math.random() * 80 + 10}%`,
-                        animationDelay: `${i * 200}ms`,
-                        animationDuration: '1.5s'
+                        background: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0.9) 50%, rgba(0,0,0,0.7) 100%)',
+                        backdropFilter: 'blur(25px)',
+                        border: '2px solid rgba(255,255,255,0.1)',
+                        borderRadius: '32px',
+                        clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
+                      }}
+                      onMouseEnter={(e) => {
+                        const target = e.currentTarget;
+                        target.style.background = 'linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(0,0,0,0.8) 50%, rgba(147,51,234,0.1) 100%)';
+                        target.style.borderColor = 'rgba(255,193,7,0.4)';
+                        target.style.boxShadow = '0 0 60px rgba(255,193,7,0.3), 0 0 100px rgba(147,51,234,0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        const target = e.currentTarget;
+                        target.style.background = 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0.9) 50%, rgba(0,0,0,0.7) 100%)';
+                        target.style.borderColor = 'rgba(255,255,255,0.1)';
+                        target.style.boxShadow = 'none';
                       }}
                     >
-                      <i className="fas fa-sparkles text-amber text-xs"></i>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative z-10 p-8">
-                  <div className="flex items-start space-x-6">
-                    {/* Enhanced Trophy Icon */}
-                    <div className="relative flex-shrink-0">
-                      <div className="absolute inset-0 bg-amber/30 rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
-                      <div 
-                        className="relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%)',
-                          border: '2px solid rgba(255, 193, 7, 0.4)'
-                        }}
-                      >
-                        <i className="fas fa-trophy text-amber text-2xl group-hover:animate-bounce"></i>
+                      {/* Geometric Pattern Overlay */}
+                      <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700">
+                        <div className="absolute inset-0" style={{
+                          backgroundImage: `
+                            radial-gradient(circle at 25% 25%, rgba(255,193,7,0.3) 2px, transparent 2px),
+                            radial-gradient(circle at 75% 75%, rgba(147,51,234,0.3) 2px, transparent 2px),
+                            linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%)
+                          `,
+                          backgroundSize: '40px 40px, 40px 40px, 80px 80px'
+                        }}></div>
                       </div>
-                      
-                      {/* Achievement Glow Ring */}
-                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse" style={{
-                        boxShadow: '0 0 20px rgba(255, 193, 7, 0.5), 0 0 40px rgba(255, 193, 7, 0.3)'
-                      }}></div>
-                    </div>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-amber transition-colors duration-300 leading-tight">
-                        {achievement.title}
-                      </h4>
-                      
-                      <div className="flex items-center space-x-2 mb-3">
-                        <div className="flex items-center space-x-2 text-cyan group-hover:text-white transition-colors duration-300">
-                          <i className="fas fa-building text-sm"></i>
-                          <span className="font-medium text-sm">{achievement.organization}</span>
+                      {/* Floating Elements */}
+                      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {[...Array(6)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute animate-ping"
+                            style={{
+                              top: `${20 + Math.random() * 60}%`,
+                              left: `${20 + Math.random() * 60}%`,
+                              animationDelay: `${i * 300}ms`,
+                              animationDuration: '2s'
+                            }}
+                          >
+                            <div className="w-2 h-2 bg-amber rounded-full opacity-60"></div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="relative z-10 p-10">
+                        {/* Central Achievement Icon */}
+                        <div className="text-center mb-8">
+                          <div className="relative inline-block">
+                            {/* Rotating Ring */}
+                            <div className="absolute inset-0 w-24 h-24 mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                              <div className="w-full h-full border-2 border-amber border-dashed rounded-full animate-spin" style={{ animationDuration: '8s' }}></div>
+                            </div>
+                            
+                            {/* Icon Container */}
+                            <div 
+                              className="relative w-24 h-24 mx-auto rounded-full flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-12"
+                              style={{
+                                background: 'conic-gradient(from 0deg, rgba(255,193,7,0.8), rgba(147,51,234,0.8), rgba(34,197,94,0.8), rgba(255,193,7,0.8))',
+                                padding: '3px'
+                              }}
+                            >
+                              <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
+                                <i className="fas fa-trophy text-amber text-3xl group-hover:animate-bounce"></i>
+                              </div>
+                            </div>
+
+                            {/* Orbiting Elements */}
+                            <div className="absolute inset-0 w-24 h-24 mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                              {[0, 120, 240].map((rotation, i) => (
+                                <div
+                                  key={i}
+                                  className="absolute w-3 h-3 bg-gradient-to-r from-amber to-purple rounded-full"
+                                  style={{
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-18px)`,
+                                    animation: `orbit 4s linear infinite`,
+                                    animationDelay: `${i * 1.3}s`
+                                  }}
+                                ></div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
-                        <span className="text-gray-400">•</span>
-                        <div className="flex items-center space-x-1 text-amber">
-                          <i className="fas fa-calendar text-sm"></i>
-                          <span className="font-medium text-sm">{achievement.date}</span>
+
+                        {/* Achievement Content */}
+                        <div className="text-center space-y-6">
+                          <h4 className="text-2xl md:text-3xl font-bold text-white group-hover:text-amber transition-colors duration-500 leading-tight">
+                            {achievement.title}
+                          </h4>
+                          
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-center space-x-3 text-cyan group-hover:text-white transition-colors duration-300">
+                              <i className="fas fa-building-columns text-lg"></i>
+                              <span className="font-semibold text-lg">{achievement.organization}</span>
+                            </div>
+                            
+                            <div className="flex items-center justify-center space-x-2 text-amber">
+                              <i className="fas fa-calendar-star"></i>
+                              <span className="font-medium">{achievement.date}</span>
+                            </div>
+                          </div>
+                          
+                          <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300 text-lg max-w-md mx-auto">
+                            {achievement.description}
+                          </p>
+
+                          {/* Achievement Verification Badge */}
+                          <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-200">
+                            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-amber/20 to-purple/20 backdrop-blur-sm rounded-full px-6 py-3 border border-amber/30">
+                              <i className="fas fa-certificate text-amber text-lg"></i>
+                              <span className="text-amber font-bold text-sm uppercase tracking-wider">Verified Achievement</span>
+                              <i className="fas fa-check-circle text-green-400"></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Corner Accent Elements */}
+                        <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="w-8 h-8 border-l-2 border-t-2 border-amber"></div>
+                        </div>
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="w-8 h-8 border-r-2 border-t-2 border-purple"></div>
+                        </div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="w-8 h-8 border-l-2 border-b-2 border-cyan"></div>
+                        </div>
+                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="w-8 h-8 border-r-2 border-b-2 border-amber"></div>
                         </div>
                       </div>
-                      
-                      <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300 text-sm">
-                        {achievement.description}
-                      </p>
+                    </div>
 
-                      {/* Achievement Badge */}
-                      <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                        <div className="inline-flex items-center space-x-2 bg-amber/20 backdrop-blur-sm rounded-full px-4 py-2 border border-amber/30">
-                          <i className="fas fa-medal text-amber text-sm"></i>
-                          <span className="text-amber font-medium text-xs uppercase tracking-wide">Certified Achievement</span>
-                        </div>
+                    {/* Achievement Position Indicator */}
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-gradient-to-r from-amber to-purple text-black px-4 py-2 rounded-full text-sm font-bold">
+                        Achievement #{index + 1}
                       </div>
                     </div>
                   </div>
-
-                  {/* Animated Bottom Border */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-700 ease-out bg-gradient-to-r from-amber to-yellow-400"></div>
-
-                  {/* Achievement Number */}
-                  <div className="absolute top-4 left-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                    <span className="text-6xl font-bold text-amber">#{index + 1}</span>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Achievement Stats Summary */}
-          <div className={`mt-16 text-center transition-all duration-1000 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-            <div className="glass rounded-3xl p-8 max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center group">
-                  <div className="text-4xl font-bold text-amber mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {achievements.length}
-                  </div>
-                  <div className="text-white font-medium">Total Achievements</div>
-                </div>
-                <div className="text-center group">
-                  <div className="text-4xl font-bold text-cyan mb-2 group-hover:scale-110 transition-transform duration-300">
-                    100%
-                  </div>
-                  <div className="text-white font-medium">Success Rate</div>
-                </div>
-                <div className="text-center group">
-                  <div className="text-4xl font-bold text-purple mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {new Date().getFullYear() - 2020}+
-                  </div>
-                  <div className="text-white font-medium">Years Experience</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
