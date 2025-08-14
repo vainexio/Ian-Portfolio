@@ -146,26 +146,6 @@ export default function Contact({ contact }: ContactProps) {
             ))}
           </div>
           
-          {/* Add Contact CTA */}
-          <div className={`text-center mt-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-              Want to add or modify contact methods? You can easily customize this section by editing the contactMethods array in your portfolio.json file.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-              <span className="flex items-center gap-2">
-                <i className="fas fa-plus text-coral"></i>
-                Add new platforms
-              </span>
-              <span className="flex items-center gap-2">
-                <i className="fas fa-edit text-amber"></i>
-                Customize icons & colors
-              </span>
-              <span className="flex items-center gap-2">
-                <i className="fas fa-sort text-cyan"></i>
-                Reorder by priority
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
