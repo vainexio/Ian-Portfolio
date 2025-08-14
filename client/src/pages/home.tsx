@@ -10,12 +10,9 @@ import CursorFollower from "@/components/ui/cursor-follower";
 import SoundEffects from "@/components/ui/sound-effects";
 import MobileMenu from "@/components/ui/mobile-menu";
 import { 
-  FloatingSkillBubbles, 
-  ProjectConstellation, 
-  CreativeQuoteGenerator, 
-  SkillsRadar 
+  CreativeQuoteGenerator
 } from "@/components/ui/creative-interactions";
-import { TalentDiscovery, ProjectJourney } from "@/components/ui/curiosity-triggers";
+
 
 import SectionDivider from "@/components/ui/section-divider";
 import { PortfolioData } from "@shared/schema";
@@ -88,95 +85,6 @@ export default function Home() {
         <SectionDivider direction="down" color="cyan" />
         <Projects projects={portfolio.projects} projectCategories={portfolio.projectCategories} />
         <SectionDivider direction="up" color="amber" />
-        
-        {/* Enhanced Explore My World Section */}
-        <section className="py-20 relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-coral/10 rounded-full blur-3xl animate-float"></div>
-            <div className="absolute top-1/3 right-20 w-48 h-48 bg-purple/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-            <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-cyan/10 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
-          </div>
-          
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-coral to-purple rounded-full mb-6 animate-pulse">
-                <i className="fas fa-compass text-white text-2xl"></i>
-              </div>
-              <h2 className="text-5xl font-bold gradient-text mb-6">Explore My World</h2>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-                Embark on an interactive journey through my professional universe. 
-                Discover hidden talents, explore project timelines, and experience my creative philosophy.
-              </p>
-            </div>
-            
-            {/* Enhanced grid layout with staggered animations */}
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <div className="space-y-8">
-                <div className="transform hover:scale-105 transition-all duration-700 animate-slide-in-left">
-                  <TalentDiscovery talents={portfolio.interactiveElements.talents} />
-                </div>
-                
-                {/* Additional interactive element */}
-                <div className="glass-dark rounded-2xl p-6 backdrop-blur-lg border border-white/10 hover:border-coral/30 transition-all duration-500 animate-slide-in-left" style={{animationDelay: '0.2s'}}>
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-amber/20 rounded-full mb-4">
-                      <i className="fas fa-lightbulb text-amber text-xl"></i>
-                    </div>
-                    <h4 className="text-lg font-bold text-white mb-3">Innovation Metrics</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-3 glass rounded-lg">
-                        <div className="text-2xl font-bold text-coral">850+</div>
-                        <div className="text-xs text-gray-400">Communities Served</div>
-                      </div>
-                      <div className="text-center p-3 glass rounded-lg">
-                        <div className="text-2xl font-bold text-purple">4K+</div>
-                        <div className="text-xs text-gray-400">Active Players</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-8">
-                <div className="transform hover:scale-105 transition-all duration-700 animate-slide-in-right">
-                  <ProjectJourney journey={portfolio.interactiveElements.journey} />
-                </div>
-                
-                {/* Technology stack showcase */}
-                <div className="glass-dark rounded-2xl p-6 backdrop-blur-lg border border-white/10 hover:border-purple/30 transition-all duration-500 animate-slide-in-right" style={{animationDelay: '0.2s'}}>
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-cyan/20 rounded-full mb-4">
-                      <i className="fas fa-code text-cyan text-xl"></i>
-                    </div>
-                    <h4 className="text-lg font-bold text-white mb-3">Tech Arsenal</h4>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {['React', 'Node.js', 'TypeScript', 'Discord.js', 'Luau', 'PostgreSQL'].map((tech, index) => (
-                        <span 
-                          key={tech}
-                          className="px-3 py-1 bg-gradient-to-r from-cyan/20 to-purple/20 rounded-full text-xs text-white border border-white/10 hover:border-cyan/30 transition-all duration-300 hover:scale-110 cursor-default"
-                          style={{animationDelay: `${index * 100}ms`}}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Call to action */}
-            <div className="text-center mt-16">
-              <div className="inline-flex items-center space-x-2 text-gray-400">
-                <span className="animate-pulse">→</span>
-                <span className="text-sm">Scroll down to see my technical skills visualization</span>
-                <span className="animate-pulse">←</span>
-              </div>
-            </div>
-          </div>
-        </section>
-        
         <SectionDivider direction="down" color="coral" />
         <Contact contact={portfolio.contact} />
         

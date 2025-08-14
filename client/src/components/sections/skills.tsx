@@ -1,8 +1,6 @@
 import { Skill, InteractiveElements } from "@shared/schema";
 import SkillChart from "@/components/ui/skill-chart";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { SkillsRadar } from "@/components/ui/creative-interactions";
-import { TechFactSparker } from "@/components/ui/curiosity-triggers";
 
 interface SkillsProps {
   skills: Skill[];
@@ -47,21 +45,7 @@ export default function Skills({ skills, interactiveElements }: SkillsProps) {
           ))}
         </div>
 
-        {/* Interactive Skills Radar */}
-        <div className={`mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold gradient-text mb-4 text-center md:text-left">Skills Radar</h3>
-              <p className="text-gray-300 text-center md:text-left mb-4">
-                Interactive visualization of my core competencies. Hover over data points to explore proficiency levels.
-              </p>
-              <TechFactSparker facts={interactiveElements.techFacts} />
-            </div>
-            <div>
-              <SkillsRadar skills={interactiveElements.skillsRadar} />
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

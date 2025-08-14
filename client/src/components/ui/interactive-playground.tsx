@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { getHighlightedCodeWithTyping } from '@/utils/syntax-highlighter';
 
 interface PersonalIntroData {
   introduction: {
@@ -52,31 +51,44 @@ interface InteractivePlaygroundProps {
 export default function InteractivePlayground({ introData }: InteractivePlaygroundProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [displayedCode, setDisplayedCode] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const typewriterRef = useRef<NodeJS.Timeout>();
 
   const introduction = introData || defaultIntro;
 
-  // Detect theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsDarkMode(document.documentElement.classList.contains('dark'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { 
-      attributes: true, 
-      attributeFilter: ['class'] 
-    });
-    
-    return () => observer.disconnect();
-  }, []);
-
+  // Enhanced human-like typing with typos and corrections
   const typeWriter = (text: string, index = 0) => {
     if (index < text.length) {
-      setDisplayedCode(text.substring(0, index + 1));
-      typewriterRef.current = setTimeout(() => typeWriter(text, index + 1), 30);
+      const char = text[index];
+      let nextDelay = 50 + Math.random() * 100; // Base typing speed with variation
+      
+      // Add natural pauses
+      if (char === '\n') nextDelay += 200;
+      if (char === ' ') nextDelay += 50;
+      if (char === '.' || char === ',' || char === ';') nextDelay += 300;
+      if (char === '{' || char === '}') nextDelay += 150;
+      
+      // Simulate occasional typos (5% chance)
+      if (Math.random() < 0.05 && char.match(/[a-zA-Z]/)) {
+        const typoChars = 'abcdefghijklmnopqrstuvwxyz';
+        const typo = typoChars[Math.floor(Math.random() * typoChars.length)];
+        
+        // Type wrong character
+        setDisplayedCode(text.substring(0, index) + typo);
+        
+        typewriterRef.current = setTimeout(() => {
+          // Backspace and correct
+          setDisplayedCode(text.substring(0, index));
+          
+          typewriterRef.current = setTimeout(() => {
+            setDisplayedCode(text.substring(0, index + 1));
+            typewriterRef.current = setTimeout(() => typeWriter(text, index + 1), nextDelay);
+          }, 100);
+        }, 200);
+      } else {
+        setDisplayedCode(text.substring(0, index + 1));
+        typewriterRef.current = setTimeout(() => typeWriter(text, index + 1), nextDelay);
+      }
     } else {
       setIsTyping(false);
     }
@@ -129,26 +141,23 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
 
       {/* Code Display */}
       <div className="relative">
-        <div className={`${isDarkMode ? 'bg-black/40' : 'bg-white/90'} backdrop-blur-sm rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} shadow-lg`}>
+        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl">
           <div className="flex items-center mb-2">
             <span className={`text-${introduction.color} text-xs font-semibold`}>
               {introduction.language.toUpperCase()}
             </span>
             <div className="ml-auto flex items-center space-x-2">
               <div className={`w-2 h-2 bg-${introduction.color} rounded-full ${isTyping ? 'animate-pulse' : ''}`}></div>
-              <span className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <span className="text-xs text-gray-400">
                 {isTyping ? 'Typing...' : 'Ready'}
               </span>
             </div>
           </div>
           
-          <div 
-            className="whitespace-pre-wrap break-words leading-relaxed"
-            dangerouslySetInnerHTML={{
-              __html: getHighlightedCodeWithTyping(displayedCode, displayedCode.length, isDarkMode) + 
-                     (isTyping ? '<span class="animate-pulse text-coral">|</span>' : '')
-            }}
-          />
+          <pre className="text-gray-300 whitespace-pre-wrap break-words leading-relaxed">
+            {displayedCode}
+            {isTyping && <span className="animate-pulse text-coral">|</span>}
+          </pre>
         </div>
 
         {/* Preview Badge */}
