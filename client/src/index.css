@@ -783,3 +783,14 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Mobile-specific adjustments */
+@media (max-width: 640px) {
+  .achievement-card {
+    min-height: 120px !important;
+  }
+  
+  .achievement-card .floating-elements {
+    display: none;
+  }
+}

@@ -304,9 +304,9 @@ export default function About({ specialties, achievements, experience, interacti
           </div>
 
           {/* Title Section with Trophy Constellation */}
-          <div className="relative text-center mb-20">
+          <div className="relative text-center mb-12 sm:mb-20">
             <div className="relative inline-block">
-              <h3 className="text-5xl md:text-7xl font-black mb-6 relative z-10">
+              <h3 className="text-3xl sm:text-5xl md:text-7xl font-black mb-4 sm:mb-6 relative z-10">
                 <span className="bg-gradient-to-r from-amber via-yellow-400 to-amber bg-clip-text text-transparent animate-pulse">
                   ACHIEVEMENTS
                 </span>
@@ -336,16 +336,16 @@ export default function About({ specialties, achievements, experience, interacti
             </div>
             
             <div className="relative">
-              <p className="text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed px-4">
                 Excellence recognized, milestones conquered, legacy built
               </p>
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber to-transparent"></div>
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-amber to-transparent"></div>
             </div>
           </div>
           
           {/* Hexagonal Achievement Grid */}
           <div className="relative max-w-6xl mx-auto">
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {achievements.map((achievement, index) => (
                 <div 
                   key={index}
@@ -364,15 +364,16 @@ export default function About({ specialties, achievements, experience, interacti
                         background: 'linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(25,25,25,0.98) 50%, rgba(15,15,15,0.95) 100%)',
                         backdropFilter: 'blur(30px)',
                         border: '1px solid rgba(255,255,255,0.08)',
-                        borderRadius: '24px',
-                        height: '140px',
+                        borderRadius: '16px',
+                        height: 'auto',
+                        minHeight: '120px',
                         boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
                       }}
                       onMouseEnter={(e) => {
                         const target = e.currentTarget;
                         target.style.background = 'linear-gradient(135deg, rgba(255,193,7,0.05) 0%, rgba(25,25,25,0.98) 30%, rgba(147,51,234,0.05) 100%)';
                         target.style.borderColor = 'rgba(255,193,7,0.25)';
-                        target.style.boxShadow = '0 20px 60px rgba(255,193,7,0.15), 0 0 40px rgba(147,51,234,0.1)';
+                        target.style.boxShadow = '0 12px 40px rgba(255,193,7,0.15), 0 0 25px rgba(147,51,234,0.1)';
                       }}
                       onMouseLeave={(e) => {
                         const target = e.currentTarget;
@@ -411,30 +412,30 @@ export default function About({ specialties, achievements, experience, interacti
                         ))}
                       </div>
 
-                      <div className="relative z-10 flex items-center h-full px-8 py-6">
+                      <div className="relative z-10 flex items-center h-full px-4 sm:px-8 py-4 sm:py-6">
                         {/* Circular Achievement Icon */}
-                        <div className="flex-shrink-0 mr-6">
+                        <div className="flex-shrink-0 mr-3 sm:mr-6">
                           <div className="relative">
                             {/* Rotating Ring */}
-                            <div className="absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                            <div className="absolute inset-0 w-12 h-12 sm:w-16 sm:h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                               <div className="w-full h-full border-2 border-amber border-dashed rounded-full animate-spin" style={{ animationDuration: '15s' }}></div>
                             </div>
                             
                             {/* Icon Container */}
                             <div 
-                              className="relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-700 group-hover:scale-110"
+                              className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-700 group-hover:scale-110"
                               style={{
                                 background: 'conic-gradient(from 0deg, rgba(255,193,7,0.9), rgba(147,51,234,0.9), rgba(34,197,94,0.9), rgba(255,193,7,0.9))',
                                 padding: '2px'
                               }}
                             >
                               <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
-                                <i className="fas fa-trophy text-amber text-xl group-hover:animate-bounce transition-transform duration-300"></i>
+                                <i className="fas fa-trophy text-amber text-lg sm:text-xl group-hover:animate-bounce transition-transform duration-300"></i>
                               </div>
                             </div>
 
-                            {/* Floating Orbs */}
-                            <div className="absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            {/* Floating Orbs - Hidden on mobile for cleaner look */}
+                            <div className="hidden sm:block absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                               {[0, 120, 240].map((rotation, i) => (
                                 <div
                                   key={i}
@@ -452,15 +453,30 @@ export default function About({ specialties, achievements, experience, interacti
                           </div>
                         </div>
 
-                        {/* Achievement Content - Horizontal Layout */}
+                        {/* Achievement Content - Responsive Layout */}
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-xl font-bold text-white group-hover:text-amber transition-colors duration-500 leading-tight mb-2 truncate">
-                                {achievement.title}
+                              <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-amber transition-colors duration-500 leading-tight mb-1 sm:mb-2">
+                                <span className="block sm:hidden truncate">{achievement.title}</span>
+                                <span className="hidden sm:block">{achievement.title}</span>
                               </h4>
                               
-                              <div className="flex items-center space-x-4 mb-2">
+                              {/* Mobile: Stacked layout */}
+                              <div className="flex flex-col sm:hidden space-y-1 mb-2">
+                                <div className="flex items-center space-x-2 text-cyan group-hover:text-white transition-colors duration-300">
+                                  <i className="fas fa-building text-xs"></i>
+                                  <span className="font-medium text-xs truncate">{achievement.organization}</span>
+                                </div>
+                                
+                                <div className="flex items-center space-x-1 text-amber">
+                                  <i className="fas fa-calendar text-xs"></i>
+                                  <span className="font-medium text-xs">{achievement.date}</span>
+                                </div>
+                              </div>
+
+                              {/* Desktop: Horizontal layout */}
+                              <div className="hidden sm:flex items-center space-x-4 mb-2">
                                 <div className="flex items-center space-x-2 text-cyan group-hover:text-white transition-colors duration-300">
                                   <i className="fas fa-building text-sm"></i>
                                   <span className="font-medium text-sm">{achievement.organization}</span>
@@ -472,14 +488,14 @@ export default function About({ specialties, achievements, experience, interacti
                                 </div>
                               </div>
                               
-                              <p className="text-gray-300 group-hover:text-white transition-colors duration-300 text-sm leading-relaxed line-clamp-2">
+                              <p className="text-gray-300 group-hover:text-white transition-colors duration-300 text-xs sm:text-sm leading-relaxed line-clamp-2 sm:line-clamp-2">
                                 {achievement.description}
                               </p>
                             </div>
 
                             {/* Circular Achievement Number Badge */}
-                            <div className="ml-4 flex-shrink-0">
-                              <div className="w-10 h-10 bg-gradient-to-br from-amber via-orange-400 to-purple rounded-full flex items-center justify-center text-black text-sm font-bold transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
+                            <div className="mt-2 sm:mt-0 sm:ml-4 flex-shrink-0 self-end sm:self-auto">
+                              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-amber via-orange-400 to-purple rounded-full flex items-center justify-center text-black text-xs sm:text-sm font-bold transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
                                 {index + 1}
                               </div>
                             </div>
