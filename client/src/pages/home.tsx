@@ -9,15 +9,7 @@ import ParticleBackground from "@/components/ui/particle-background";
 import CursorFollower from "@/components/ui/cursor-follower";
 import SoundEffects from "@/components/ui/sound-effects";
 import MobileMenu from "@/components/ui/mobile-menu";
-import { 
-  FloatingCodeSymbol, 
-  DeveloperConsole, 
-  InteractiveConstellation, 
-  AchievementSystem, 
-  FloatingRubberDuck 
-} from "@/components/ui/easter-eggs";
-import { SecretMenu, ScrollSecrets, InteractiveSkillOrbs } from "@/components/ui/secret-menu";
-import { HiddenClickZones, MatrixRain, MotivationalMessages } from "@/components/ui/hidden-interactions";
+
 import SectionDivider from "@/components/ui/section-divider";
 import { PortfolioData } from "@shared/schema";
 
@@ -75,18 +67,7 @@ export default function Home() {
       {/* Optional sound effects */}
       <SoundEffects enabled={false} volume={0.2} />
       
-      {/* Easter Eggs and Interactive Elements */}
-      <FloatingCodeSymbol />
-      <DeveloperConsole />
-      <InteractiveConstellation />
-      <AchievementSystem />
-      <FloatingRubberDuck />
-      <SecretMenu />
-      <ScrollSecrets />
-      <InteractiveSkillOrbs />
-      <HiddenClickZones />
-      <MatrixRain />
-      <MotivationalMessages />
+
       
       {/* Content */}
       <div className="relative z-10 text-white">
