@@ -5,6 +5,9 @@ import Skills from "@/components/sections/skills";
 import Projects from "@/components/sections/projects";
 import Contact from "@/components/sections/contact";
 import FloatingNav from "@/components/ui/floating-nav";
+import ParticleBackground from "@/components/ui/particle-background";
+import CursorFollower from "@/components/ui/cursor-follower";
+import SoundEffects from "@/components/ui/sound-effects";
 import MobileMenu from "@/components/ui/mobile-menu";
 import SectionDivider from "@/components/ui/section-divider";
 import { PortfolioData } from "@shared/schema";
@@ -39,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Dark immersive background */}
+      {/* Enhanced immersive background with particles */}
       <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-gray-900/50"></div>
         {/* Animated background orbs */}
@@ -48,7 +51,20 @@ export default function Home() {
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-cyan/30 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-amber/20 rounded-full blur-3xl animate-float" style={{animationDelay: '6s'}}></div>
         <div className="absolute bottom-1/3 right-10 w-56 h-56 bg-green-400/20 rounded-full blur-3xl animate-float" style={{animationDelay: '8s'}}></div>
+        
+        {/* Interactive particle background */}
+        <ParticleBackground 
+          className="opacity-80" 
+          particleCount={60} 
+          mouseInteraction={true} 
+        />
       </div>
+      
+      {/* Interactive cursor follower */}
+      <CursorFollower size={24} delay={0.1} />
+      
+      {/* Optional sound effects */}
+      <SoundEffects enabled={false} volume={0.2} />
       
       {/* Content */}
       <div className="relative z-10 text-white">

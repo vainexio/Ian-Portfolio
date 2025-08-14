@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Project, ProjectCategory } from "@shared/schema";
 import ProjectCard from "@/components/ui/project-card";
+import EnhancedProjectCard from "@/components/ui/enhanced-project-card";
+import InteractiveCodeBlock from "@/components/ui/interactive-code-block";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { codeExamples } from "@/data/code-examples";
 
 interface ProjectsProps {
   projects: Project[];
@@ -76,19 +79,39 @@ export default function Projects({ projects, projectCategories }: ProjectsProps)
             </div>
           ) : (
             filteredProjects.map((project, index) => (
-              <div 
+              <EnhancedProjectCard 
                 key={`project-${project.id}`}
-                className="opacity-100 translate-y-0"
-                style={{ 
-                  display: 'block',
-                  visibility: 'visible',
-                  height: 'auto'
-                }}
-              >
-                <ProjectCard project={project} projectCategories={projectCategories} />
-              </div>
+                project={project} 
+                projectCategories={projectCategories}
+                index={index}
+              />
             ))
           )}
+        </div>
+
+        {/* Interactive Code Demonstrations */}
+        <div className={`mt-16 md:mt-20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold gradient-text mb-4">Live Code Demonstrations</h3>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Explore interactive examples from my projects. Edit the code and see real-time results!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+            <InteractiveCodeBlock 
+              example={codeExamples.discord}
+              className="lg:col-span-1"
+            />
+            <InteractiveCodeBlock 
+              example={codeExamples.roblox}
+              className="lg:col-span-1"
+            />
+            <InteractiveCodeBlock 
+              example={codeExamples.android}
+              className="lg:col-span-1 xl:col-span-1"
+            />
+          </div>
         </div>
       </div>
     </section>

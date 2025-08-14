@@ -123,6 +123,107 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   }
+
+  /* Floating animation keyframes */
+  @keyframes animate-float {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  .animate-float {
+    animation: animate-float 6s ease-in-out infinite;
+  }
+
+  /* Physics-based hover effects */
+  .hover-float {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-float:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Enhanced button 3D effects */
+  .btn-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-3d:hover {
+    transform: translateY(-4px) rotateX(10deg);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(233, 69, 96, 0.2);
+  }
+
+  .btn-3d:active {
+    transform: translateY(-2px) rotateX(5deg);
+  }
+
+  /* Gradient text animations */
+  .gradient-text {
+    background: linear-gradient(135deg, #E94560, #F39C12, #9B59B6, #3498DB);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Enhanced scroll effects */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Interactive element styles */
+  .interactive {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .interactive:hover {
+    transform: scale(1.05);
+  }
+
+  /* Smooth scrolling for the whole page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Mobile optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .gradient-text,
+    .scroll-reveal {
+      animation: none !important;
+    }
+    
+    .hover-float:hover,
+    .btn-3d:hover,
+    .interactive:hover {
+      transform: none !important;
+    }
+  }
+}
   
   .section-divider {
     position: relative;
