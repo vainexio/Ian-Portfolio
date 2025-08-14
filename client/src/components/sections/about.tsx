@@ -357,15 +357,15 @@ export default function About({ specialties, achievements, experience, interacti
                 >
                   {/* Compact Hexagonal Card Container */}
                   <div className="relative">
-                    {/* Main Hexagonal Shape - Smaller and Wider */}
+                    {/* Main Diamond/Rhombus Shape - Perfect for Wide Cards */}
                     <div 
                       className="relative overflow-hidden transition-all duration-700 group-hover:scale-102"
                       style={{
                         background: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0.9) 50%, rgba(0,0,0,0.7) 100%)',
                         backdropFilter: 'blur(25px)',
                         border: '2px solid rgba(255,255,255,0.1)',
-                        borderRadius: '24px',
-                        clipPath: 'polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%)',
+                        borderRadius: '12px',
+                        clipPath: 'polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%)',
                         height: '140px'
                       }}
                       onMouseEnter={(e) => {
@@ -381,70 +381,89 @@ export default function About({ specialties, achievements, experience, interacti
                         target.style.boxShadow = 'none';
                       }}
                     >
-                      {/* Geometric Pattern Overlay */}
-                      <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-700">
+                      {/* Diamond Pattern Overlay */}
+                      <div className="absolute inset-0 opacity-10 group-hover:opacity-25 transition-opacity duration-700">
                         <div className="absolute inset-0" style={{
                           backgroundImage: `
-                            radial-gradient(circle at 25% 25%, rgba(255,193,7,0.2) 1px, transparent 1px),
-                            radial-gradient(circle at 75% 75%, rgba(147,51,234,0.2) 1px, transparent 1px),
-                            linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%)
+                            linear-gradient(45deg, rgba(255,193,7,0.1) 25%, transparent 25%),
+                            linear-gradient(-45deg, rgba(147,51,234,0.1) 25%, transparent 25%),
+                            linear-gradient(45deg, transparent 75%, rgba(34,197,94,0.1) 75%),
+                            linear-gradient(-45deg, transparent 75%, rgba(255,193,7,0.1) 75%)
                           `,
-                          backgroundSize: '30px 30px, 30px 30px, 60px 60px'
+                          backgroundSize: '20px 20px, 20px 20px, 20px 20px, 20px 20px',
+                          backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
                         }}></div>
                       </div>
 
-                      {/* Floating Elements */}
+                      {/* Floating Diamond Elements */}
                       <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        {[...Array(4)].map((_, i) => (
+                        {[...Array(3)].map((_, i) => (
                           <div
                             key={i}
-                            className="absolute animate-ping"
+                            className="absolute animate-pulse"
                             style={{
-                              top: `${30 + Math.random() * 40}%`,
-                              left: `${20 + Math.random() * 60}%`,
-                              animationDelay: `${i * 400}ms`,
-                              animationDuration: '2s'
+                              top: `${40 + Math.random() * 20}%`,
+                              left: `${15 + i * 25 + Math.random() * 10}%`,
+                              animationDelay: `${i * 600}ms`,
+                              animationDuration: '2.5s'
                             }}
                           >
-                            <div className="w-1.5 h-1.5 bg-amber rounded-full opacity-50"></div>
+                            <div 
+                              className="w-2 h-2 bg-gradient-to-r from-amber to-purple opacity-60"
+                              style={{
+                                clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
+                                transform: 'rotate(45deg)'
+                              }}
+                            ></div>
                           </div>
                         ))}
                       </div>
 
                       <div className="relative z-10 flex items-center h-full px-8 py-6">
-                        {/* Compact Achievement Icon */}
+                        {/* Diamond Achievement Icon */}
                         <div className="flex-shrink-0 mr-6">
                           <div className="relative">
-                            {/* Rotating Ring */}
+                            {/* Rotating Diamond Frame */}
                             <div className="absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                              <div className="w-full h-full border-2 border-amber border-dashed rounded-full animate-spin" style={{ animationDuration: '10s' }}></div>
+                              <div 
+                                className="w-full h-full border-2 border-amber animate-spin" 
+                                style={{ 
+                                  animationDuration: '12s',
+                                  clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                                }}
+                              ></div>
                             </div>
                             
-                            {/* Icon Container */}
+                            {/* Diamond Icon Container */}
                             <div 
-                              className="relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
+                              className="relative w-16 h-16 flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-12"
                               style={{
-                                background: 'conic-gradient(from 0deg, rgba(255,193,7,0.6), rgba(147,51,234,0.6), rgba(34,197,94,0.6), rgba(255,193,7,0.6))',
+                                background: 'linear-gradient(135deg, rgba(255,193,7,0.8), rgba(147,51,234,0.8), rgba(34,197,94,0.8), rgba(255,193,7,0.8))',
+                                clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
                                 padding: '2px'
                               }}
                             >
-                              <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
+                              <div 
+                                className="w-full h-full bg-black flex items-center justify-center"
+                                style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+                              >
                                 <i className="fas fa-trophy text-amber text-xl group-hover:animate-bounce"></i>
                               </div>
                             </div>
 
-                            {/* Orbiting Elements */}
+                            {/* Floating Diamond Elements */}
                             <div className="absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                              {[0, 180].map((rotation, i) => (
+                              {[0, 120, 240].map((rotation, i) => (
                                 <div
                                   key={i}
-                                  className="absolute w-2 h-2 bg-gradient-to-r from-amber to-purple rounded-full"
+                                  className="absolute w-1.5 h-1.5 bg-gradient-to-r from-amber to-purple"
                                   style={{
                                     top: '50%',
                                     left: '50%',
-                                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-12px)`,
-                                    animation: `orbit 3s linear infinite`,
-                                    animationDelay: `${i * 1.5}s`
+                                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-14px)`,
+                                    animation: `orbit 4s linear infinite`,
+                                    animationDelay: `${i * 1.3}s`,
+                                    clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
                                   }}
                                 ></div>
                               ))}
@@ -477,27 +496,42 @@ export default function About({ specialties, achievements, experience, interacti
                               </p>
                             </div>
 
-                            {/* Achievement Number Badge */}
+                            {/* Diamond Achievement Number Badge */}
                             <div className="ml-4 flex-shrink-0">
-                              <div className="w-8 h-8 bg-gradient-to-r from-amber to-purple rounded-full flex items-center justify-center text-black text-xs font-bold">
+                              <div 
+                                className="w-8 h-8 bg-gradient-to-r from-amber to-purple flex items-center justify-center text-black text-xs font-bold transition-transform duration-300 group-hover:rotate-45"
+                                style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+                              >
                                 {index + 1}
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        {/* Corner Accent Elements */}
-                        <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div className="w-4 h-4 border-l border-t border-amber"></div>
+                        {/* Diamond Corner Accents */}
+                        <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div 
+                            className="w-3 h-3 bg-amber"
+                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+                          ></div>
                         </div>
-                        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div className="w-4 h-4 border-r border-t border-purple"></div>
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div 
+                            className="w-3 h-3 bg-purple"
+                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+                          ></div>
                         </div>
-                        <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div className="w-4 h-4 border-l border-b border-cyan"></div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div 
+                            className="w-3 h-3 bg-cyan"
+                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+                          ></div>
                         </div>
-                        <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div className="w-4 h-4 border-r border-b border-amber"></div>
+                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div 
+                            className="w-3 h-3 bg-amber"
+                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+                          ></div>
                         </div>
                       </div>
                     </div>
