@@ -610,3 +610,36 @@
   background-size: 468px 100%;
   animation: shimmer 2s infinite;
 }
+
+/* Specialty cards enhanced animations */
+@keyframes floatSpecialty {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateX(2deg) rotateY(1deg);
+  }
+}
+
+@keyframes orbitParticle {
+  0% {
+    transform: rotate(0deg) translateX(40px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(40px) rotate(-360deg);
+  }
+}
+
+.specialty-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.specialty-card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
+}
+
+.orbit-particle {
+  animation: orbitParticle 3s linear infinite;
+}

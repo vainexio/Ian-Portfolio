@@ -60,13 +60,13 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
   const typeWriter = (text: string, index = 0) => {
     if (index < text.length) {
       const char = text[index];
-      let nextDelay = 50 + Math.random() * 100; // Base typing speed with variation
+      let nextDelay = 20 + Math.random() * 100; // Base typing speed with variation
       
       // Add natural pauses
       if (char === '\n') nextDelay += 200;
-      if (char === ' ') nextDelay += 50;
-      if (char === '.' || char === ',' || char === ';') nextDelay += 300;
-      if (char === '{' || char === '}') nextDelay += 150;
+      if (char === ' ') nextDelay += 20;
+      if (char === '.' || char === ',' || char === ';') nextDelay += 200;
+      if (char === '{' || char === '}') nextDelay += 100;
       
       // Simulate occasional typos (5% chance)
       if (Math.random() < 0.05 && char.match(/[a-zA-Z]/)) {

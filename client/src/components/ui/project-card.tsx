@@ -86,28 +86,8 @@ export default function ProjectCard({ project, projectCategories }: ProjectCardP
           </div>
         )}
 
-        {/* Enhanced Overlay with Project Info */}
+        {/* Enhanced Overlay - Simple gradient only */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-          <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <div className="flex items-center justify-between">
-              <div className="flex flex-wrap gap-1">
-                {project.technologies.slice(0, 3).map((tech, index) => (
-                  <span 
-                    key={tech} 
-                    className="text-xs px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {project.technologies.length > 3 && (
-                  <span className="text-xs px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full">
-                    +{project.technologies.length - 3}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Category Badge */}

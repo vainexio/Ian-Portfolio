@@ -4,18 +4,19 @@
 
 This is a fully immersive and editable programmer's portfolio website for Ian Iglipa. It serves as a comprehensive showcase of his work, achievements, skills, background information, and other portfolio details in a visually engaging, glassmorphism-styled design. The application features a single-page layout with smooth scrolling navigation, interactive 3D elements, and modern animations to create an immersive user experience.
 
-**Latest Update (Aug 14, 2025)**: Enhanced Creative Philosophy and Featured Projects sections:
+**Latest Update (Aug 14, 2025)**: Enhanced specialty cards and fixed project technology display:
 
 **Major Changes Completed:**
+- ✅ Fixed duplicate technology display in project cards (removed from image overlay)
+- ✅ Enhanced About Me specialty cards with 3D hover effects and unique animations
+- ✅ Added floating particles, orbit animations, and dynamic background patterns
+- ✅ Implemented smooth 3D transforms with perspective on specialty card hover
+- ✅ Enhanced technology tags with reveal-on-hover animations
 - ✅ Fixed Creative Philosophy section layout shift issues with fixed height container
 - ✅ Enhanced Creative Philosophy with better design, clickable quote indicators, and smooth transitions
 - ✅ Improved Featured Projects with enhanced animations and proper link handling
 - ✅ Added proper handling for missing demo/repository links in project cards
-- ✅ Enhanced project card hover effects with dynamic shadows and smooth animations
-- ✅ Added image loading states and error handling for project images
-- ✅ Implemented staggered animations for project card appearance
 - ✅ Enhanced contact section with flexible contact methods system
-- ✅ Improved Professional Experience timeline with focus indicators and centered icons
 
 **Previous Improvements:**
 - ✅ Reverted syntax highlighting changes in Personal Introduction section back to simple text
@@ -28,6 +29,8 @@ This is a fully immersive and editable programmer's portfolio website for Ian Ig
 - ✅ Removed syntax-highlighter utility file
 
 **Current Features:**
+- Enhanced About Me specialty cards with 3D hover effects and unique animations
+- Fixed technology display in project cards (no more duplicates)
 - Fixed-height Creative Philosophy section preventing layout shifts
 - Enhanced Featured Projects with proper missing link handling
 - Dynamic project card animations with image loading states
@@ -38,16 +41,18 @@ This is a fully immersive and editable programmer's portfolio website for Ian Ig
 - Clean, streamlined portfolio layout focusing on core content
 
 **Technical Implementation:**
+- 3D transformed specialty cards with perspective and smooth rotations on hover
+- Floating particle animations and orbit effects for enhanced visual appeal
+- Dynamic background patterns with color-matched blur effects
+- Technology tags with reveal-on-hover animations and individual hover states
+- Fixed duplicate technology display issue in project cards
 - Fixed-height Creative Philosophy container (min-h-[200px]) preventing layout shifts
 - Enhanced project cards with proper link validation and fallback states
 - Image loading states and error handling for smoother user experience
 - Staggered animations with proper delay timing for visual appeal
 - ContactMethod interface with flexible platform, icon, and color management
 - Enhanced timeline with centered icons and mobile-first responsive design
-- Dynamic hover effects with color-matched shadows and smooth transitions
-- Focus indicators and hover states for improved user interaction
 - Enhanced typing animation with 5% typo simulation and natural speed variations
-- Dark gradient backgrounds for better contrast with light text
 
 ## User Preferences
 

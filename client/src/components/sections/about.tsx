@@ -27,29 +27,152 @@ export default function About({ specialties, achievements, experience, interacti
           {specialties.map((category, index) => (
             <div 
               key={category.title}
-              className={`glass-dark rounded-3xl p-8 hover:scale-105 hover:shadow-2xl hover:shadow-${category.color}/20 transition-all duration-700 group ${
+              className={`group relative overflow-hidden rounded-3xl transition-all duration-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ 
+                transitionDelay: `${index * 200}ms`,
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)'
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget;
+                target.style.transform = 'translateY(-10px) rotateX(5deg) rotateY(2deg)';
+                target.style.boxShadow = `0 25px 50px -10px var(--${category.color})40`;
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget;
+                target.style.transform = 'translateY(0) rotateX(0deg) rotateY(0deg)';
+                target.style.boxShadow = '0 10px 25px -3px rgba(0, 0, 0, 0.1)';
+              }}
+              data-testid={`specialty-card-${index}`}
             >
-              <div className={`text-${category.color} text-5xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <i className={category.icon}></i>
+              {/* Animated Background Pattern */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div 
+                  className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl"
+                  style={{ backgroundColor: `var(--${category.color})`, opacity: 0.1 }}
+                ></div>
+                <div 
+                  className="absolute bottom-0 left-0 w-24 h-24 rounded-full blur-2xl"
+                  style={{ backgroundColor: `var(--${category.color})`, opacity: 0.15 }}
+                ></div>
               </div>
-              <h3 className={`text-2xl font-bold mb-2 text-${category.color} group-hover:text-white transition-colors duration-300`}>
-                {category.title}
-              </h3>
-              <p className="text-gray-400 text-sm mb-4 italic">{category.tagline}</p>
-              <p className="text-white mb-6 leading-relaxed">{category.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {category.technologies.map((tech, techIndex) => (
-                  <span 
-                    key={tech} 
-                    className={`bg-${category.color}/20 text-${category.color} px-3 py-1 rounded-full text-sm hover:bg-${category.color}/30 hover:scale-105 transition-all duration-300 cursor-default`}
-                    style={{ animationDelay: `${(index * 100) + (techIndex * 50)}ms` }}
-                  >
-                    {tech}
-                  </span>
+
+              {/* Floating Particles */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 rounded-full animate-pulse"
+                    style={{
+                      backgroundColor: `var(--${category.color})`,
+                      top: `${Math.random() * 80 + 10}%`,
+                      left: `${Math.random() * 80 + 10}%`,
+                      animationDelay: `${i * 200}ms`,
+                      animationDuration: '2s'
+                    }}
+                  ></div>
                 ))}
+              </div>
+
+              <div className="relative z-10 p-8">
+                {/* Enhanced Icon Section */}
+                <div className="relative mb-8">
+                  <div 
+                    className="absolute inset-0 w-20 h-20 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 group-hover:animate-pulse"
+                    style={{ backgroundColor: `var(--${category.color})` }}
+                  ></div>
+                  <div 
+                    className="relative w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"
+                    style={{ 
+                      background: `linear-gradient(135deg, var(--${category.color})30, var(--${category.color})10)`,
+                      border: `2px solid var(--${category.color})40`
+                    }}
+                  >
+                    <i 
+                      className={`${category.icon} text-3xl transition-all duration-300 group-hover:scale-110`}
+                      style={{ color: `var(--${category.color})` }}
+                    ></i>
+                  </div>
+                  
+                  {/* Orbit Animation */}
+                  <div className="absolute top-0 left-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div 
+                      className="absolute w-2 h-2 rounded-full animate-spin"
+                      style={{ 
+                        backgroundColor: `var(--${category.color})`,
+                        animationDuration: '3s',
+                        top: '-4px',
+                        left: '50%',
+                        transformOrigin: '0 44px'
+                      }}
+                    ></div>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="space-y-4">
+                  <h3 
+                    className="text-2xl font-bold group-hover:text-white transition-all duration-300 transform group-hover:translate-x-1"
+                    style={{ color: `var(--${category.color})` }}
+                  >
+                    {category.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 text-sm italic leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                    {category.tagline}
+                  </p>
+                  
+                  <p className="text-white leading-relaxed text-sm group-hover:text-gray-100 transition-colors duration-300 min-h-[60px]">
+                    {category.description}
+                  </p>
+                  
+                  {/* Enhanced Technology Tags */}
+                  <div className="pt-2">
+                    <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                      {category.technologies.map((tech, techIndex) => (
+                        <span 
+                          key={tech} 
+                          className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 cursor-default backdrop-blur-sm"
+                          style={{ 
+                            backgroundColor: `var(--${category.color})20`,
+                            color: `var(--${category.color})`,
+                            border: `1px solid var(--${category.color})30`,
+                            animationDelay: `${techIndex * 100}ms`
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = `var(--${category.color})30`;
+                            e.currentTarget.style.borderColor = `var(--${category.color})60`;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = `var(--${category.color})20`;
+                            e.currentTarget.style.borderColor = `var(--${category.color})30`;
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Accent Line */}
+                <div 
+                  className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-700 ease-out"
+                  style={{ backgroundColor: `var(--${category.color})` }}
+                ></div>
+
+                {/* Corner Accent */}
+                <div 
+                  className="absolute top-4 right-4 w-0 h-0 group-hover:w-6 group-hover:h-6 transition-all duration-500"
+                  style={{ 
+                    backgroundColor: `var(--${category.color})`,
+                    clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
+                    opacity: 0.3
+                  }}
+                ></div>
               </div>
             </div>
           ))}
