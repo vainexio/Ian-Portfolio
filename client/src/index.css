@@ -643,3 +643,70 @@
 .orbit-particle {
   animation: orbitParticle 3s linear infinite;
 }
+
+/* Achievements section enhanced animations */
+@keyframes achievementFloat {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(3deg) scale(1.01);
+  }
+}
+
+@keyframes trophyShine {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.6), 0 0 50px rgba(255, 193, 7, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+  }
+}
+
+@keyframes sparkleAnim {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ribbonUnfurl {
+  from {
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%);
+  }
+  to {
+    clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+  }
+}
+
+.achievement-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.achievement-card:hover {
+  animation: achievementFloat 2s ease-in-out infinite;
+}
+
+.trophy-shine {
+  animation: trophyShine 3s ease-in-out infinite;
+}
+
+.sparkle-effect {
+  animation: sparkleAnim 1.5s ease-in-out infinite;
+}
+
+.ribbon-effect {
+  animation: ribbonUnfurl 0.6s ease-out forwards;
+}

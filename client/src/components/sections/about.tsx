@@ -296,28 +296,165 @@ export default function About({ specialties, achievements, experience, interacti
 
         {/* Achievements Section */}
         <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-          <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Achievements & Certifications</h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-5xl font-bold gradient-text mb-4 relative">
+              Achievements & Certifications
+              <div className="absolute -top-2 -right-2 text-2xl animate-bounce">
+                <i className="fas fa-star text-amber"></i>
+              </div>
+            </h3>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Recognized excellence and professional milestones that define my journey
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {achievements.map((achievement, index) => (
               <div 
                 key={index}
-                className={`glass rounded-2xl p-6 project-card transition-all duration-1000 ${
+                className={`group relative overflow-hidden transition-all duration-1000 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
                 }`}
-                style={{ transitionDelay: `${(index + 6) * 150}ms` }}
+                style={{ 
+                  transitionDelay: `${(index + 6) * 200}ms`,
+                  background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '24px'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget;
+                  target.style.transform = 'translateY(-15px) scale(1.02) rotateX(5deg)';
+                  target.style.boxShadow = '0 30px 60px -10px rgba(255, 193, 7, 0.4)';
+                  target.style.borderColor = 'rgba(255, 193, 7, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget;
+                  target.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                  target.style.boxShadow = '0 10px 25px -3px rgba(0, 0, 0, 0.1)';
+                  target.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                data-testid={`achievement-card-${index}`}
               >
-                <div className="flex items-start space-x-4">
-                  <div className="bg-amber/20 p-3 rounded-xl flex-shrink-0">
-                    <i className="fas fa-trophy text-amber text-xl"></i>
+                {/* Animated Background Elements */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-amber/10 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-amber/15 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                </div>
+
+                {/* Achievement Ribbon */}
+                <div className="absolute -top-1 -right-1 w-0 h-0 group-hover:w-16 group-hover:h-16 transition-all duration-500" style={{
+                  background: 'linear-gradient(45deg, #FFD700, #FFA500)',
+                  clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)'
+                }}></div>
+
+                {/* Sparkle Effects */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute animate-ping"
+                      style={{
+                        top: `${Math.random() * 80 + 10}%`,
+                        left: `${Math.random() * 80 + 10}%`,
+                        animationDelay: `${i * 200}ms`,
+                        animationDuration: '1.5s'
+                      }}
+                    >
+                      <i className="fas fa-sparkles text-amber text-xs"></i>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="relative z-10 p-8">
+                  <div className="flex items-start space-x-6">
+                    {/* Enhanced Trophy Icon */}
+                    <div className="relative flex-shrink-0">
+                      <div className="absolute inset-0 bg-amber/30 rounded-2xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+                      <div 
+                        className="relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%)',
+                          border: '2px solid rgba(255, 193, 7, 0.4)'
+                        }}
+                      >
+                        <i className="fas fa-trophy text-amber text-2xl group-hover:animate-bounce"></i>
+                      </div>
+                      
+                      {/* Achievement Glow Ring */}
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse" style={{
+                        boxShadow: '0 0 20px rgba(255, 193, 7, 0.5), 0 0 40px rgba(255, 193, 7, 0.3)'
+                      }}></div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-amber transition-colors duration-300 leading-tight">
+                        {achievement.title}
+                      </h4>
+                      
+                      <div className="flex items-center space-x-2 mb-3">
+                        <div className="flex items-center space-x-2 text-cyan group-hover:text-white transition-colors duration-300">
+                          <i className="fas fa-building text-sm"></i>
+                          <span className="font-medium text-sm">{achievement.organization}</span>
+                        </div>
+                        <span className="text-gray-400">•</span>
+                        <div className="flex items-center space-x-1 text-amber">
+                          <i className="fas fa-calendar text-sm"></i>
+                          <span className="font-medium text-sm">{achievement.date}</span>
+                        </div>
+                      </div>
+                      
+                      <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300 text-sm">
+                        {achievement.description}
+                      </p>
+
+                      {/* Achievement Badge */}
+                      <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                        <div className="inline-flex items-center space-x-2 bg-amber/20 backdrop-blur-sm rounded-full px-4 py-2 border border-amber/30">
+                          <i className="fas fa-medal text-amber text-sm"></i>
+                          <span className="text-amber font-medium text-xs uppercase tracking-wide">Certified Achievement</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-1">{achievement.title}</h4>
-                    <p className="text-cyan text-sm mb-2">{achievement.organization} • {achievement.date}</p>
-                    <p className="text-white text-sm">{achievement.description}</p>
+
+                  {/* Animated Bottom Border */}
+                  <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-700 ease-out bg-gradient-to-r from-amber to-yellow-400"></div>
+
+                  {/* Achievement Number */}
+                  <div className="absolute top-4 left-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                    <span className="text-6xl font-bold text-amber">#{index + 1}</span>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Achievement Stats Summary */}
+          <div className={`mt-16 text-center transition-all duration-1000 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+            <div className="glass rounded-3xl p-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center group">
+                  <div className="text-4xl font-bold text-amber mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {achievements.length}
+                  </div>
+                  <div className="text-white font-medium">Total Achievements</div>
+                </div>
+                <div className="text-center group">
+                  <div className="text-4xl font-bold text-cyan mb-2 group-hover:scale-110 transition-transform duration-300">
+                    100%
+                  </div>
+                  <div className="text-white font-medium">Success Rate</div>
+                </div>
+                <div className="text-center group">
+                  <div className="text-4xl font-bold text-purple mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {new Date().getFullYear() - 2020}+
+                  </div>
+                  <div className="text-white font-medium">Years Experience</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
