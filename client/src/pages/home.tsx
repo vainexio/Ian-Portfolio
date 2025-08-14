@@ -74,18 +74,17 @@ export default function Home() {
       {/* Optional sound effects */}
       <SoundEffects enabled={false} volume={0.2} />
       
-      {/* Creative Interactive Elements */}
-      <FloatingSkillBubbles />
+      {/* Creative Interactive Elements removed */}
       
       {/* Content */}
       <div className="relative z-10 text-white">
         <FloatingNav />
         <MobileMenu />
-        <Hero personal={portfolio.personal} />
+        <Hero personal={portfolio.personal} interactiveElements={portfolio.interactiveElements} />
         <SectionDivider direction="down" color="coral" />
         <About specialties={portfolio.specialties} achievements={portfolio.achievements} experience={portfolio.experience} />
         <SectionDivider direction="up" color="purple" />
-        <Skills skills={portfolio.skills} />
+        <Skills skills={portfolio.skills} interactiveElements={portfolio.interactiveElements} />
         <SectionDivider direction="down" color="cyan" />
         <Projects projects={portfolio.projects} projectCategories={portfolio.projectCategories} />
         <SectionDivider direction="up" color="amber" />
@@ -101,11 +100,17 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <TalentDiscovery />
+                <TalentDiscovery talents={portfolio.interactiveElements.talents} />
               </div>
               <div>
-                <ProjectJourney />
+                <ProjectJourney journey={portfolio.interactiveElements.journey} />
               </div>
+            </div>
+            
+            {/* Creative Philosophy Section */}
+            <div className="mt-16 text-center">
+              <h3 className="text-2xl font-bold gradient-text mb-8">Creative Philosophy</h3>
+              <CreativeQuoteGenerator quotes={portfolio.interactiveElements.quotes} />
             </div>
           </div>
         </section>

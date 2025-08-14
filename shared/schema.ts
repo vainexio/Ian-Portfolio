@@ -13,6 +13,7 @@ export const portfolio = pgTable("portfolio", {
   skills: jsonb("skills").notNull(),
   projects: jsonb("projects").notNull(),
   contact: jsonb("contact").notNull(),
+  interactiveElements: jsonb("interactiveElements").notNull(),
 });
 
 export const insertPortfolioSchema = createInsertSchema(portfolio).omit({
@@ -115,6 +116,44 @@ export interface ContactInfo {
   discord?: string;
 }
 
+export interface InteractiveElements {
+  introduction: {
+    language: string;
+    code: string;
+    preview: string;
+    color: string;
+  };
+  quotes: Array<{
+    text: string;
+    author: string;
+    color: string;
+  }>;
+  skillsRadar: Array<{
+    name: string;
+    level: number;
+    angle: number;
+    color: string;
+  }>;
+  talents: Array<{
+    clue: string;
+    talent: string;
+    description: string;
+  }>;
+  journey: Array<{
+    year: string;
+    title: string;
+    description: string;
+    color: string;
+    icon: string;
+  }>;
+  techFacts: Array<{
+    title: string;
+    fact: string;
+    icon: string;
+    color: string;
+  }>;
+}
+
 export interface PortfolioData {
   personal: PersonalInfo;
   specialties: Specialty[];
@@ -124,4 +163,5 @@ export interface PortfolioData {
   skills: Skill[];
   projects: Project[];
   contact: ContactInfo;
+  interactiveElements: InteractiveElements;
 }

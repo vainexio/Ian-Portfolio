@@ -3,32 +3,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 // Discover Hidden Talents
-export const TalentDiscovery = () => {
+interface TalentDiscoveryProps {
+  talents: Array<{
+    clue: string;
+    talent: string;
+    description: string;
+  }>;
+}
+
+export const TalentDiscovery = ({ talents }: TalentDiscoveryProps) => {
   const [discoveredTalents, setDiscoveredTalents] = useState<string[]>([]);
   const [currentClue, setCurrentClue] = useState(0);
-
-  const talents = [
-    {
-      clue: "I've helped 850+ Discord servers stay connected during outages...",
-      talent: "🤖 Discord Bot Architect",
-      description: "Creating resilient bot ecosystems that keep communities together"
-    },
-    {
-      clue: "My survival game has players fighting through post-apocalyptic trials...",
-      talent: "🎮 Game World Builder", 
-      description: "Crafting immersive experiences that challenge and engage players"
-    },
-    {
-      clue: "I turn complex data into beautiful, interactive visualizations...",
-      talent: "📊 Data Storyteller",
-      description: "Making numbers dance and tell compelling stories"
-    },
-    {
-      clue: "My code bridges creativity and functionality seamlessly...",
-      talent: "✨ Creative Technologist",
-      description: "Where art meets algorithms, magic happens"
-    }
-  ];
 
   const discoverTalent = () => {
     if (!discoveredTalents.includes(talents[currentClue].talent)) {
@@ -90,48 +75,20 @@ export const TalentDiscovery = () => {
 };
 
 // Interactive Project Timeline
-export const ProjectJourney = () => {
+interface ProjectJourneyProps {
+  journey: Array<{
+    year: string;
+    title: string;
+    description: string;
+    color: string;
+    icon: string;
+  }>;
+}
+
+export const ProjectJourney = ({ journey }: ProjectJourneyProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [autoPlay, setAutoPlay] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout>();
-
-  const journey = [
-    {
-      year: "2021",
-      title: "The Beginning",
-      description: "Started coding journey with ambitious projects and endless curiosity",
-      color: "coral",
-      icon: "fas fa-rocket"
-    },
-    {
-      year: "2022", 
-      title: "Discord Revolution",
-      description: "VALCORE Bot launched - transforming how communities handle server outages",
-      color: "purple",
-      icon: "fab fa-discord"
-    },
-    {
-      year: "2023",
-      title: "Game Development",
-      description: "U.N.I. survival game created - bringing post-apocalyptic adventures to life",
-      color: "cyan",
-      icon: "fas fa-gamepad"
-    },
-    {
-      year: "2024",
-      title: "Portfolio Evolution", 
-      description: "Crafting immersive web experiences that showcase creativity and technical skill",
-      color: "amber",
-      icon: "fas fa-code"
-    },
-    {
-      year: "2025",
-      title: "What's Next?",
-      description: "The future is unwritten - ready to collaborate on your next big idea!",
-      color: "purple",
-      icon: "fas fa-question"
-    }
-  ];
 
   const nextStep = () => {
     setCurrentStep((prev) => (prev + 1) % journey.length);
@@ -247,42 +204,18 @@ export const ProjectJourney = () => {
 };
 
 // Curiosity Sparker - Random Tech Facts
-export const TechFactSparker = () => {
+interface TechFactSparkerProps {
+  facts: Array<{
+    title: string;
+    fact: string;
+    icon: string;
+    color: string;
+  }>;
+}
+
+export const TechFactSparker = ({ facts }: TechFactSparkerProps) => {
   const [currentFact, setCurrentFact] = useState(0);
   const [discovered, setDiscovered] = useState<number[]>([]);
-
-  const facts = [
-    {
-      title: "OAuth2 Magic",
-      fact: "VALCORE uses OAuth2 to safely backup 40,000+ Discord users without storing passwords",
-      icon: "fas fa-shield-alt",
-      color: "coral"
-    },
-    {
-      title: "Luau Performance", 
-      fact: "My Roblox game handles 400+ concurrent players with optimized Luau scripts",
-      icon: "fas fa-tachometer-alt",
-      color: "purple"
-    },
-    {
-      title: "React Wizardry",
-      fact: "This portfolio uses 15+ interactive components, all built from scratch",
-      icon: "fab fa-react",
-      color: "cyan"
-    },
-    {
-      title: "Node.js Power",
-      fact: "Backend APIs handle thousands of requests with 99.9% uptime",
-      icon: "fab fa-node-js", 
-      color: "amber"
-    },
-    {
-      title: "Database Design",
-      fact: "PostgreSQL schemas designed for scalability across multiple platforms",
-      icon: "fas fa-database",
-      color: "purple"
-    }
-  ];
 
   const discoverFact = () => {
     if (!discovered.includes(currentFact)) {

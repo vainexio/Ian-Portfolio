@@ -1,12 +1,13 @@
-import { PersonalInfo } from "@shared/schema";
+import { PersonalInfo, InteractiveElements } from "@shared/schema";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import InteractivePlayground from "@/components/ui/interactive-playground";
 
 interface HeroProps {
   personal: PersonalInfo;
+  interactiveElements: InteractiveElements;
 }
 
-export default function Hero({ personal }: HeroProps) {
+export default function Hero({ personal, interactiveElements }: HeroProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   return (
@@ -48,7 +49,7 @@ export default function Hero({ personal }: HeroProps) {
           </div>
           
           <div className={`relative mt-8 lg:mt-0 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-            <InteractivePlayground />
+            <InteractivePlayground introData={interactiveElements.introduction} />
           </div>
         </div>
       </div>

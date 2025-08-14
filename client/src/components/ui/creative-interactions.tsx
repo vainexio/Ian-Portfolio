@@ -211,32 +211,17 @@ export const ProjectConstellation = () => {
 };
 
 // Creative Quote Generator
-export const CreativeQuoteGenerator = () => {
+interface CreativeQuoteGeneratorProps {
+  quotes: Array<{
+    text: string;
+    author: string;
+    color: string;
+  }>;
+}
+
+export const CreativeQuoteGenerator = ({ quotes }: CreativeQuoteGeneratorProps) => {
   const [currentQuote, setCurrentQuote] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-
-  const quotes = [
-    {
-      text: "Code is poetry written in logic.",
-      author: "Ian's Dev Philosophy",
-      color: "coral"
-    },
-    {
-      text: "Every bug is a feature waiting for the right perspective.",
-      author: "Debugging Wisdom",
-      color: "purple"
-    },
-    {
-      text: "Building bridges between ideas and reality, one function at a time.",
-      author: "Development Mindset",
-      color: "cyan"
-    },
-    {
-      text: "In the world of code, creativity meets precision.",
-      author: "Tech Philosophy",
-      color: "amber"
-    }
-  ];
 
   const nextQuote = () => {
     if (isAnimating) return;
@@ -285,18 +270,18 @@ export const CreativeQuoteGenerator = () => {
 };
 
 // Interactive Skills Radar
-export const SkillsRadar = () => {
+interface SkillsRadarProps {
+  skills: Array<{
+    name: string;
+    level: number;
+    angle: number;
+    color: string;
+  }>;
+}
+
+export const SkillsRadar = ({ skills }: SkillsRadarProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
-  const skills = [
-    { name: 'JavaScript', level: 95, angle: 0, color: '#F39C12' },
-    { name: 'TypeScript', level: 90, angle: 60, color: '#3498DB' },
-    { name: 'React', level: 88, angle: 120, color: '#1ABC9C' },
-    { name: 'Node.js', level: 85, angle: 180, color: '#9B59B6' },
-    { name: 'Discord.js', level: 92, angle: 240, color: '#E94560' },
-    { name: 'Luau/Roblox', level: 80, angle: 300, color: '#E67E22' }
-  ];
 
   useEffect(() => {
     const canvas = canvasRef.current;

@@ -1,126 +1,90 @@
 import { useState, useEffect, useRef } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-interface CodeSnippet {
-  id: string;
-  title: string;
-  language: string;
-  code: string;
-  preview: string;
-  color: string;
+interface PersonalIntroData {
+  introduction: {
+    language: string;
+    code: string;
+    preview: string;
+    color: string;
+  };
 }
 
-const codeSnippets: CodeSnippet[] = [
-  {
-    id: 'discord-bot',
-    title: 'Discord Bot Magic',
-    language: 'javascript',
-    code: `// VALCORE Bot Authentication
-const discord = require('discord.js');
-const client = new discord.Client();
-
-client.on('ready', () => {
-  console.log('🚀 Bot is online!');
-  client.user.setActivity('Protecting 850+ servers', { type: 'WATCHING' });
-});
-
-client.on('guildCreate', (guild) => {
-  console.log(\`✨ Joined: \${guild.name}\`);
-});`,
-    preview: '🤖 850+ servers protected',
-    color: 'coral'
-  },
-  {
-    id: 'luau-game',
-    title: 'Game Development',
-    language: 'luau',
-    code: `-- U.N.I. Survival Mechanics
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local function onPlayerSpawn(player)
-    local character = player.Character
-    local humanoid = character:WaitForChild("Humanoid")
-    
-    -- Apply post-apocalyptic effects
-    humanoid.WalkSpeed = 12
-    character.Head.face.Transparency = 0.3
-    
-    print("🏃‍♂️ Player spawned in NU Laguna")
-end`,
-    preview: '🎮 4K+ visits achieved',
-    color: 'purple'
-  },
-  {
-    id: 'web-magic',
-    title: 'Frontend Wizardry',
-    language: 'typescript',
-    code: `// Dynamic Portfolio Component
-interface ProjectCard {
-  title: string;
-  tech: string[];
-  featured: boolean;
-}
-
-const renderProject = (project: ProjectCard) => {
-  const techBadges = project.tech.map(tech => 
-    \`<span class="badge">\${tech}</span>\`
-  ).join('');
+// Default fallback data
+const defaultIntro = {
+  language: 'javascript',
+  code: `// About Ian Iglipa - Full Stack Developer
+const developer = {
+  name: "Ian Iglipa",
+  passion: "Building innovative solutions that bridge creativity and functionality",
+  mission: "Transforming ideas into powerful digital experiences",
   
-  return \`
-    <div class="project-card \${project.featured ? 'featured' : ''}">
-      <h3>\${project.title}</h3>
-      <div class="tech-stack">\${techBadges}</div>
-    </div>
-  \`;
-};`,
-    preview: '💻 Interactive & responsive',
-    color: 'cyan'
+  approach: {
+    frontend: "Creating immersive, interactive user experiences",
+    backend: "Designing scalable, reliable server architectures", 
+    collaboration: "Working closely with teams to exceed expectations"
+  },
+  
+  philosophy: "Every line of code is an opportunity to solve problems and create value",
+  
+  currentFocus: [
+    "Discord bot ecosystems serving 850+ communities",
+    "Engaging game experiences with 4K+ active players", 
+    "Interactive web applications that inspire and engage"
+  ],
+  
+  getInTouch: () => {
+    return "Let's collaborate on your next big idea!";
   }
-];
+};
 
-export default function InteractivePlayground() {
-  const [activeSnippet, setActiveSnippet] = useState(0);
+console.log(\`Hello! I'm \${developer.name}\`);
+console.log(developer.getInTouch());`,
+  preview: '👋 Nice to meet you!',
+  color: 'coral'
+};
+
+interface InteractivePlaygroundProps {
+  introData?: PersonalIntroData['introduction'];
+}
+
+export default function InteractivePlayground({ introData }: InteractivePlaygroundProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [displayedCode, setDisplayedCode] = useState('');
   const typewriterRef = useRef<NodeJS.Timeout>();
 
+  const introduction = introData || defaultIntro;
+
   const typeWriter = (text: string, index = 0) => {
     if (index < text.length) {
       setDisplayedCode(text.substring(0, index + 1));
-      typewriterRef.current = setTimeout(() => typeWriter(text, index + 1), 50);
+      typewriterRef.current = setTimeout(() => typeWriter(text, index + 1), 30);
     } else {
       setIsTyping(false);
     }
   };
 
-  const handleSnippetChange = (index: number) => {
-    if (index === activeSnippet) return;
-    
+  const restartAnimation = () => {
     setIsTyping(true);
     setDisplayedCode('');
-    setActiveSnippet(index);
     
     if (typewriterRef.current) {
       clearTimeout(typewriterRef.current);
     }
     
     setTimeout(() => {
-      typeWriter(codeSnippets[index].code);
+      typeWriter(introduction.code);
     }, 300);
   };
 
   useEffect(() => {
-    typeWriter(codeSnippets[0].code);
+    typeWriter(introduction.code);
     return () => {
       if (typewriterRef.current) {
         clearTimeout(typewriterRef.current);
       }
     };
-  }, []);
-
-  const currentSnippet = codeSnippets[activeSnippet];
+  }, [introduction.code]);
 
   return (
     <div className="glass-dark rounded-3xl p-6 md:p-8 transform hover:scale-105 transition-all duration-500 max-w-2xl mx-auto">
@@ -137,34 +101,23 @@ export default function InteractivePlayground() {
         </div>
       </div>
 
-      {/* Project Tabs */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {codeSnippets.map((snippet, index) => (
-          <Button
-            key={snippet.id}
-            onClick={() => handleSnippetChange(index)}
-            variant={index === activeSnippet ? "default" : "ghost"}
-            size="sm"
-            className={`text-xs transition-all duration-300 ${
-              index === activeSnippet 
-                ? `bg-${snippet.color}/20 text-${snippet.color} border border-${snippet.color}/50` 
-                : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            {snippet.title}
-          </Button>
-        ))}
+      {/* Introduction Title */}
+      <div className="text-center mb-6">
+        <h3 className={`text-lg font-bold text-${introduction.color} mb-2`}>
+          Personal Introduction
+        </h3>
+        <p className="text-xs text-gray-400">Get to know me through code</p>
       </div>
 
       {/* Code Display */}
       <div className="relative">
         <div className="bg-black/30 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden">
           <div className="flex items-center mb-2">
-            <span className={`text-${currentSnippet.color} text-xs`}>
-              {currentSnippet.language.toUpperCase()}
+            <span className={`text-${introduction.color} text-xs`}>
+              {introduction.language.toUpperCase()}
             </span>
             <div className="ml-auto flex items-center space-x-2">
-              <div className={`w-2 h-2 bg-${currentSnippet.color} rounded-full ${isTyping ? 'animate-pulse' : ''}`}></div>
+              <div className={`w-2 h-2 bg-${introduction.color} rounded-full ${isTyping ? 'animate-pulse' : ''}`}></div>
               <span className="text-xs text-gray-500">
                 {isTyping ? 'Typing...' : 'Ready'}
               </span>
@@ -179,14 +132,20 @@ export default function InteractivePlayground() {
 
         {/* Preview Badge */}
         <div className="flex items-center justify-between">
-          <div className={`bg-${currentSnippet.color}/20 border border-${currentSnippet.color}/30 rounded-lg px-3 py-2 text-sm`}>
-            <span className={`text-${currentSnippet.color} font-medium`}>
-              {currentSnippet.preview}
+          <div className={`bg-${introduction.color}/20 border border-${introduction.color}/30 rounded-lg px-3 py-2 text-sm`}>
+            <span className={`text-${introduction.color} font-medium`}>
+              {introduction.preview}
             </span>
           </div>
-          <div className="text-xs text-gray-400">
-            Click tabs to explore different projects →
-          </div>
+          <Button 
+            onClick={restartAnimation}
+            variant="ghost"
+            size="sm"
+            className="text-xs text-gray-400 hover:text-white"
+          >
+            <i className="fas fa-redo mr-1"></i>
+            Replay
+          </Button>
         </div>
       </div>
     </div>
