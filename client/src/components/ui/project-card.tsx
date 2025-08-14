@@ -1,8 +1,4 @@
-import { useState } from "react";
 import { Project, ProjectCategory } from "@shared/schema";
-import CodePlayground from "./code-playground";
-import InteractiveDemo from "./interactive-demo";
-import { getCodeExamplesByProjectId } from "@/data/code-examples";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,9 +6,6 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, projectCategories }: ProjectCardProps) {
-  const [showInteractive, setShowInteractive] = useState(false);
-  const [activeTab, setActiveTab] = useState<"demo" | "code">("demo");
-  
   const getCategoryConfig = (categoryId: string) => {
     return projectCategories?.find(cat => cat.id === categoryId) || {
       id: categoryId,
@@ -23,8 +16,6 @@ export default function ProjectCard({ project, projectCategories }: ProjectCardP
   };
 
   const categoryConfig = getCategoryConfig(project.category);
-  const codeExamples = getCodeExamplesByProjectId(project.id);
-  const hasInteractiveContent = codeExamples.length > 0;
 
   const getActionIcon = () => {
     if (project.playStore) return "fab fa-google-play";
@@ -34,16 +25,6 @@ export default function ProjectCard({ project, projectCategories }: ProjectCardP
 
   const getActionLink = () => {
     return project.demo || project.playStore || project.roblox || "#";
-  };
-
-  const getDemoType = (): "discord-bot" | "game-controls" | "mobile-app" | "api-demo" => {
-    switch (project.id) {
-      case "1": return "discord-bot";
-      case "2": return "game-controls"; 
-      case "3": return "mobile-app";
-      case "4": return "api-demo";
-      default: return "discord-bot";
-    }
   };
 
   return (
@@ -102,15 +83,6 @@ export default function ProjectCard({ project, projectCategories }: ProjectCardP
             ))}
           </div>
           <div className="flex space-x-1 md:space-x-2">
-            {hasInteractiveContent && (
-              <button
-                onClick={() => setShowInteractive(!showInteractive)}
-                className="btn-3d text-white hover:text-amber transition-colors p-1.5 md:p-2 rounded-lg text-sm md:text-base"
-                title="Try Interactive Demo"
-              >
-                <i className={showInteractive ? "fas fa-times" : "fas fa-play"}></i>
-              </button>
-            )}
             {project.github && (
               <a
                 href={project.github}
@@ -133,50 +105,6 @@ export default function ProjectCard({ project, projectCategories }: ProjectCardP
             </a>
           </div>
         </div>
-        
-        {/* Interactive Content Section */}
-        {showInteractive && hasInteractiveContent && (
-          <div className="mt-6 pt-6 border-t border-white/10 interactive-fade-in">
-            {/* Tab Navigation */}
-            <div className="flex mb-4">
-              <button
-                onClick={() => setActiveTab("demo")}
-                className={`flex-1 px-3 py-2 text-sm font-medium rounded-l-lg transition-all duration-200 tab-indicator ${
-                  activeTab === "demo" ? "active bg-coral text-white" : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
-                }`}
-              >
-                <i className="fas fa-gamepad mr-2"></i>
-                Interactive Demo
-              </button>
-              <button
-                onClick={() => setActiveTab("code")}
-                className={`flex-1 px-3 py-2 text-sm font-medium rounded-r-lg transition-all duration-200 tab-indicator ${
-                  activeTab === "code" ? "active bg-coral text-white" : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
-                }`}
-              >
-                <i className="fas fa-code mr-2"></i>
-                Code Example
-              </button>
-            </div>
-            
-            {/* Tab Content */}
-            {activeTab === "demo" && (
-              <InteractiveDemo
-                title={`Try ${project.title}`}
-                description="Experience the core functionality"
-                demoType={getDemoType()}
-                className="mb-4"
-              />
-            )}
-            
-            {activeTab === "code" && codeExamples.length > 0 && (
-              <CodePlayground
-                example={codeExamples[0]}
-                className="mb-4"
-              />
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
