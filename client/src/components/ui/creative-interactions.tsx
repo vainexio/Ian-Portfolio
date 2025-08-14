@@ -281,7 +281,41 @@ interface SkillsRadarProps {
 
 export const SkillsRadar = ({ skills }: SkillsRadarProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [animationProgress, setAnimationProgress] = useState(0);
+  const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
+  const animationRef = useRef<number>();
+
+  // Responsive canvas sizing
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const size = Math.min(containerWidth, 400);
+        setCanvasSize({ width: size, height: size });
+      }
+    };
+
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  // Animation loop
+  useEffect(() => {
+    const animate = () => {
+      setAnimationProgress(prev => (prev + 0.01) % (Math.PI * 2));
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -290,39 +324,69 @@ export const SkillsRadar = ({ skills }: SkillsRadarProps) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    canvas.width = 300;
-    canvas.height = 300;
+    canvas.width = canvasSize.width;
+    canvas.height = canvasSize.height;
 
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const maxRadius = 120;
+    const maxRadius = Math.min(canvas.width, canvas.height) * 0.35;
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw radar circles
+      // Create radial gradient background
+      const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+      gradient.addColorStop(0, 'rgba(0, 255, 255, 0.05)');
+      gradient.addColorStop(0.5, 'rgba(255, 107, 157, 0.03)');
+      gradient.addColorStop(1, 'rgba(155, 89, 182, 0.02)');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, maxRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw animated radar circles with glow effect
       for (let i = 1; i <= 5; i++) {
+        const radius = (maxRadius * i) / 5;
+        const alpha = 0.15 + Math.sin(animationProgress + i * 0.5) * 0.05;
+        
+        // Outer glow
+        ctx.shadowColor = 'rgba(0, 255, 255, 0.3)';
+        ctx.shadowBlur = 2;
         ctx.beginPath();
-        ctx.arc(centerX, centerY, (maxRadius * i) / 5, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(0, 255, 255, ${alpha})`;
         ctx.lineWidth = 1;
         ctx.stroke();
+        ctx.shadowBlur = 0;
+        
+        // Inner circle with pulse effect
+        if (i === 5) {
+          const pulseAlpha = 0.1 + Math.sin(animationProgress * 2) * 0.05;
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255, 107, 157, ${pulseAlpha})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
       }
 
-      // Draw radar lines
-      skills.forEach(skill => {
+      // Draw animated radar lines
+      skills.forEach((skill, index) => {
         const angle = (skill.angle * Math.PI) / 180;
+        const lineAlpha = 0.2 + Math.sin(animationProgress + index * 0.8) * 0.1;
+        
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(
           centerX + Math.cos(angle - Math.PI / 2) * maxRadius,
           centerY + Math.sin(angle - Math.PI / 2) * maxRadius
         );
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
+        ctx.lineWidth = 1;
         ctx.stroke();
       });
 
-      // Draw skill points
+      // Draw connecting polygon with glow
       ctx.beginPath();
       skills.forEach((skill, index) => {
         const angle = (skill.angle * Math.PI) / 180;
@@ -335,24 +399,75 @@ export const SkillsRadar = ({ skills }: SkillsRadarProps) => {
         } else {
           ctx.lineTo(x, y);
         }
+      });
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(0, 255, 255, 0.1)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 255, 255, 0.3)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
-        // Draw skill point
-        ctx.save();
+      // Draw skill points with enhanced effects
+      skills.forEach((skill, index) => {
+        const angle = (skill.angle * Math.PI) / 180;
+        const radius = (skill.level / 100) * maxRadius;
+        const x = centerX + Math.cos(angle - Math.PI / 2) * radius;
+        const y = centerY + Math.sin(angle - Math.PI / 2) * radius;
+        
+        const isHovered = hoveredSkill === skill.name;
+        const pointSize = isHovered ? 12 : 8;
+        const pulseEffect = Math.sin(animationProgress * 3 + index) * 0.3 + 1;
+
+        // Outer glow for skill points
+        if (isHovered) {
+          ctx.shadowColor = skill.color;
+          ctx.shadowBlur = 15;
+        }
+        
+        // Main skill point
         ctx.beginPath();
-        ctx.arc(x, y, hoveredSkill === skill.name ? 8 : 5, 0, Math.PI * 2);
+        ctx.arc(x, y, pointSize * (isHovered ? pulseEffect : 1), 0, Math.PI * 2);
         ctx.fillStyle = skill.color;
         ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Inner highlight
+        ctx.beginPath();
+        ctx.arc(x, y, (pointSize * 0.4) * (isHovered ? pulseEffect : 1), 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fill();
+
+        // Skill level indicator
+        ctx.save();
+        ctx.font = `${isHovered ? '10px' : '8px'} Inter`;
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${skill.level}%`, x, y + 3);
         ctx.restore();
 
-        // Draw skill label
+        // Enhanced skill labels
         ctx.save();
-        ctx.font = '12px Inter';
-        ctx.fillStyle = hoveredSkill === skill.name ? skill.color : 'white';
+        ctx.font = `${isHovered ? 'bold 14px' : '12px'} Inter`;
+        ctx.fillStyle = isHovered ? skill.color : 'white';
         ctx.textAlign = 'center';
-        const labelRadius = radius + 20;
+        const labelRadius = radius + 25;
         const labelX = centerX + Math.cos(angle - Math.PI / 2) * labelRadius;
         const labelY = centerY + Math.sin(angle - Math.PI / 2) * labelRadius;
-        ctx.fillText(skill.name, labelX, labelY);
+        
+        // Label background for better readability
+        if (isHovered) {
+          const textMetrics = ctx.measureText(skill.name);
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          ctx.fillRect(
+            labelX - textMetrics.width / 2 - 4,
+            labelY - 8,
+            textMetrics.width + 8,
+            16
+          );
+          ctx.fillStyle = skill.color;
+        }
+        
+        ctx.fillText(skill.name, labelX, labelY + 4);
         ctx.restore();
       });
 
@@ -365,64 +480,83 @@ export const SkillsRadar = ({ skills }: SkillsRadarProps) => {
     };
 
     draw();
+  }, [skills, hoveredSkill, animationProgress, canvasSize]);
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+  const handleMouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-      let closestSkill: string | null = null;
-      let minDistance = Infinity;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (event.clientX - rect.left) * scaleX;
+    const y = (event.clientY - rect.top) * scaleY;
 
-      skills.forEach(skill => {
-        const angle = (skill.angle * Math.PI) / 180;
-        const radius = (skill.level / 100) * maxRadius;
-        const x = centerX + Math.cos(angle - Math.PI / 2) * radius;
-        const y = centerY + Math.sin(angle - Math.PI / 2) * radius;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const maxRadius = Math.min(canvas.width, canvas.height) * 0.35;
 
-        const distance = Math.sqrt((mouseX - x) ** 2 + (mouseY - y) ** 2);
-        if (distance < 15 && distance < minDistance) {
-          minDistance = distance;
-          closestSkill = skill.name;
-        }
-      });
+    let hoveredSkillName: string | null = null;
 
-      setHoveredSkill(closestSkill);
-      draw();
-    };
+    skills.forEach(skill => {
+      const angle = (skill.angle * Math.PI) / 180;
+      const radius = (skill.level / 100) * maxRadius;
+      const skillX = centerX + Math.cos(angle - Math.PI / 2) * radius;
+      const skillY = centerY + Math.sin(angle - Math.PI / 2) * radius;
 
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', () => {
-      setHoveredSkill(null);
-      draw();
+      const distance = Math.sqrt((x - skillX) ** 2 + (y - skillY) ** 2);
+      if (distance < 20) {
+        hoveredSkillName = skill.name;
+      }
     });
 
-    return () => {
-      canvas.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [hoveredSkill]);
+    setHoveredSkill(hoveredSkillName);
+  };
 
   return (
-    <div className="glass rounded-2xl p-6 max-w-sm mx-auto">
+    <div ref={containerRef} className="glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-500 group max-w-lg mx-auto backdrop-blur-lg border border-white/10">
       <div className="text-center mb-4">
-        <h3 className="text-lg font-bold text-white mb-2">
-          <i className="fas fa-radar-alt mr-2 text-coral"></i>
-          Skills Radar
-        </h3>
-        <p className="text-sm text-gray-400">
-          Hover over points to explore my expertise
-        </p>
+        <h4 className="text-lg font-bold gradient-text mb-2">Skills Radar</h4>
+        <p className="text-xs text-gray-400">Interactive skill visualization</p>
       </div>
-      <div className="flex justify-center">
-        <canvas ref={canvasRef} className="cursor-crosshair" />
+      
+      <div className="relative">
+        <canvas
+          ref={canvasRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => setHoveredSkill(null)}
+          className="cursor-pointer w-full h-auto rounded-lg"
+          style={{ maxWidth: '100%' }}
+        />
+        
+        {/* Overlay effects */}
+        <div className="absolute inset-0 rounded-lg pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-coral/5 via-transparent to-purple/5 rounded-lg"></div>
+        </div>
       </div>
+      
       {hoveredSkill && (
-        <div className="text-center mt-4">
-          <p className="text-sm text-coral">
-            {skills.find(s => s.name === hoveredSkill)?.level}% proficiency in {hoveredSkill}
-          </p>
+        <div className="mt-4 p-3 glass rounded-lg animate-slide-in">
+          <div className="text-center">
+            <p className="text-sm font-bold text-coral mb-1">{hoveredSkill}</p>
+            <div className="flex items-center justify-center space-x-2">
+              <div className="flex-1 bg-gray-700 rounded-full h-2">
+                <div 
+                  className="h-2 rounded-full bg-gradient-to-r from-coral to-cyan transition-all duration-500"
+                  style={{ width: `${skills.find(s => s.name === hoveredSkill)?.level}%` }}
+                ></div>
+              </div>
+              <span className="text-xs text-gray-300 font-mono">
+                {skills.find(s => s.name === hoveredSkill)?.level}%
+              </span>
+            </div>
+          </div>
         </div>
       )}
+      
+      <div className="mt-4 text-center">
+        <p className="text-xs text-gray-500">Hover over points to explore skills</p>
+      </div>
     </div>
   );
 };

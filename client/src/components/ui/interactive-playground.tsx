@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { getHighlightedCodeWithTyping } from '@/utils/syntax-highlighter';
 
 interface PersonalIntroData {
   introduction: {
@@ -51,9 +52,26 @@ interface InteractivePlaygroundProps {
 export default function InteractivePlayground({ introData }: InteractivePlaygroundProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [displayedCode, setDisplayedCode] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const typewriterRef = useRef<NodeJS.Timeout>();
 
   const introduction = introData || defaultIntro;
+
+  // Detect theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    return () => observer.disconnect();
+  }, []);
 
   const typeWriter = (text: string, index = 0) => {
     if (index < text.length) {
@@ -111,23 +129,26 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
 
       {/* Code Display */}
       <div className="relative">
-        <div className="bg-black/30 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden">
+        <div className={`${isDarkMode ? 'bg-black/40' : 'bg-white/90'} backdrop-blur-sm rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} shadow-lg`}>
           <div className="flex items-center mb-2">
-            <span className={`text-${introduction.color} text-xs`}>
+            <span className={`text-${introduction.color} text-xs font-semibold`}>
               {introduction.language.toUpperCase()}
             </span>
             <div className="ml-auto flex items-center space-x-2">
               <div className={`w-2 h-2 bg-${introduction.color} rounded-full ${isTyping ? 'animate-pulse' : ''}`}></div>
-              <span className="text-xs text-gray-500">
+              <span className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 {isTyping ? 'Typing...' : 'Ready'}
               </span>
             </div>
           </div>
           
-          <pre className="text-gray-300 whitespace-pre-wrap break-words">
-            {displayedCode}
-            {isTyping && <span className="animate-pulse">|</span>}
-          </pre>
+          <div 
+            className="whitespace-pre-wrap break-words leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html: getHighlightedCodeWithTyping(displayedCode, displayedCode.length, isDarkMode) + 
+                     (isTyping ? '<span class="animate-pulse text-coral">|</span>' : '')
+            }}
+          />
         </div>
 
         {/* Preview Badge */}
