@@ -1,7 +1,6 @@
 import { PersonalInfo, InteractiveElements } from "@shared/schema";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import InteractivePlayground from "@/components/ui/interactive-playground";
-import { useState, useEffect, useRef } from 'react';
 
 interface HeroProps {
   personal: PersonalInfo;
@@ -10,70 +9,6 @@ interface HeroProps {
 
 export default function Hero({ personal, interactiveElements }: HeroProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
-  const [displayedName, setDisplayedName] = useState('');
-  const [isTypingName, setIsTypingName] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
-  const nameTypewriterRef = useRef<NodeJS.Timeout>();
-  
-  // Reset animation state when personal.name changes (for development)
-  useEffect(() => {
-    setDisplayedName('');
-    setIsTypingName(false);
-    setHasStarted(false);
-  }, [personal.name]);
-
-  // Enhanced human-like typing for name (slower speed) - simplified and reliable
-  const typeWriterName = (text: string, index = 0) => {
-    console.log(`Typing character ${index} of ${text.length}: "${text[index]}"`);
-    
-    if (index < text.length) {
-      const char = text[index];
-      let nextDelay = 200 + Math.random() * 150; // Slower base typing speed
-      
-      // Add natural pauses for spaces
-      if (char === ' ') nextDelay += 300;
-      
-      // Type the character
-      setDisplayedName(prev => {
-        const newText = text.substring(0, index + 1);
-        console.log(`Setting displayed name to: "${newText}"`);
-        return newText;
-      });
-      
-      nameTypewriterRef.current = setTimeout(() => {
-        typeWriterName(text, index + 1);
-      }, nextDelay);
-    } else {
-      console.log('Typing animation completed');
-      setIsTypingName(false);
-    }
-  };
-
-  // Start typing animation when component becomes visible (one time only)
-  useEffect(() => {
-    console.log('Hero effect:', { isVisible, hasStarted, name: personal.name });
-    if (isVisible && !hasStarted && personal.name) {
-      console.log('Starting typing animation for:', personal.name);
-      setHasStarted(true);
-      setIsTypingName(true);
-      setDisplayedName(''); // Clear any existing name
-      // Add small delay before starting name typing
-      const startTimeout = setTimeout(() => {
-        typeWriterName(personal.name);
-      }, 800);
-
-      return () => clearTimeout(startTimeout);
-    }
-  }, [isVisible, hasStarted, personal.name]);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (nameTypewriterRef.current) {
-        clearTimeout(nameTypewriterRef.current);
-      }
-    };
-  }, []);
 
   return (
     <section id="hero" ref={ref} className="min-h-screen relative overflow-hidden flex items-center">
@@ -83,9 +18,8 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
             <div className="glass rounded-2xl p-2 inline-block">
               <span className="text-coral font-medium px-3 md:px-4 py-2 text-white text-sm md:text-base">👋 Hello, I'm</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold gradient-text leading-tight min-h-[1.2em]">
-              {hasStarted ? displayedName : personal.name}
-              {isTypingName && <span className="animate-pulse text-coral ml-1">|</span>}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold gradient-text leading-tight">
+              {personal.name}
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {personal.bio}
