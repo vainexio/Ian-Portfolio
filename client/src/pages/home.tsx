@@ -93,7 +93,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-gray-300">© 2024 {portfolio.personal.name}. All rights reserved.</p>
+              <p className="text-gray-300">© 2025 {portfolio.personal.name}. All rights reserved.</p>
             </div>
             <div className="flex space-x-6">
               <a href={`https://${portfolio.contact.github}`} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-coral transition-colors">
