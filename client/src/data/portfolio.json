@@ -1,8 +1,8 @@
 {
   "personal": {
     "name": "Ian Iglipa",
-    "title": "Full-Stack Developer & Game Creator",
-    "bio": "I’m a developer who’s spent the past 3+ years bringing ideas to life — from web apps and mobile tools to immersive Roblox games. My focus is on building smooth, scalable software that’s as fun to use as it is to make.",
+    "title": "Application Developer & Game Creator",
+    "bio": "I’m a developer who’s spent the past several years bringing ideas to life, from web apps and mobile tools to immersive Roblox games. My focus is on building smooth, scalable software that’s as fun to use as it is to make.",
     "email": "ian.iglipa@gmail.com",
     "github": "https://github.com/vainexio",
     "linkedin": "linkedin.com/in/ianiglipa",
@@ -39,12 +39,6 @@
     }
   ],
   "projectCategories": [
-    {
-      "id": "web",
-      "label": "Web Dev",
-      "color": "coral",
-      "colorClass": "bg-coral/20 text-coral"
-    },
     {
       "id": "app",
       "label": "Server App",
@@ -108,6 +102,30 @@
       "icon": "fab fa-python"
     },
     {
+      "name": "Java",
+      "level": 85,
+      "color": "#f89820",
+      "icon": "fab fa-java"
+    },
+    {
+      "name": "Kotlin",
+      "level": 78,
+      "color": "#E94560",
+      "icon": "fab fa-android"
+    },
+    {
+      "name": "Luau",
+      "level": 88,
+      "color": "#E94560",
+      "icon": "fas fa-moon"
+    },
+    {
+      "name": "HTML/CSS",
+      "level": 95,
+      "color": "#3498DB",
+      "icon": "fab fa-html5"
+    },
+    {
       "name": "React.js",
       "level": 88,
       "color": "#3498DB",
@@ -120,21 +138,9 @@
       "icon": "fab fa-node-js"
     },
     {
-      "name": "Kotlin",
-      "level": 78,
-      "color": "#E94560",
-      "icon": "fab fa-android"
-    },
-    {
-      "name": "HTML/CSS",
-      "level": 95,
-      "color": "#3498DB",
-      "icon": "fab fa-html5"
-    },
-    {
       "name": "MongoDB",
       "level": 75,
-      "color": "#F39C12",
+      "color": "#47A248",
       "icon": "fas fa-database"
     },
     {
@@ -148,12 +154,6 @@
       "level": 72,
       "color": "#9B59B6",
       "icon": "fas fa-database"
-    },
-    {
-      "name": "Luau",
-      "level": 88,
-      "color": "#E94560",
-      "icon": "fas fa-gamepad"
     },
     {
       "name": "Jetpack Compose",
@@ -252,7 +252,7 @@
   "interactiveElements": {
     "introduction": {
       "language": "javascript",
-      "code": "// About Ian Iglipa - Full Stack Developer\nconst developer = {\n  name: \"Ian Iglipa\",\n  passion: \"Merging creativity with functionality\",\n  mission: \"Turning ideas into impactful digital experiences\",\n  getInTouch: () => \"Let's create something amazing!\"\n};\n\nconsole.log(`Hi! I'm ${developer.name}`);\nconsole.log(developer.getInTouch());",
+      "code": "// About Ian Iglipa - Application Developer\nconst developer = {\n  name: \"Ian Iglipa\",\n  passion: \"Merging creativity with functionality\",\n  mission: \"Turning ideas into impactful digital experiences\",\n  getInTouch: () => \"Let's create something amazing :D\"\n};\n\nconsole.log(`Hi! I'm ${developer.name}`);\nconsole.log(developer.getInTouch());",
       "preview": "👋 Nice to meet you!",
       "color": "coral"
     },
@@ -276,105 +276,6 @@
         "text": "In the world of code, creativity meets precision.",
         "author": "Tech Philosophy",
         "color": "amber"
-      }
-    ],
-    "skillsRadar": [
-      { "name": "JavaScript", "level": 95, "angle": 0, "color": "#F39C12" },
-      { "name": "TypeScript", "level": 90, "angle": 60, "color": "#3498DB" },
-      { "name": "React", "level": 88, "angle": 120, "color": "#1ABC9C" },
-      { "name": "Node.js", "level": 85, "angle": 180, "color": "#9B59B6" },
-      { "name": "Discord.js", "level": 92, "angle": 240, "color": "#E94560" },
-      { "name": "Luau/Roblox", "level": 80, "angle": 300, "color": "#E67E22" }
-    ],
-    "talents": [
-      {
-        "clue": "I've helped 850+ Discord servers stay connected during outages...",
-        "talent": "🤖 Discord Bot Architect",
-        "description": "Creating resilient bot ecosystems that keep communities together"
-      },
-      {
-        "clue": "My survival game has players fighting through post-apocalyptic trials...",
-        "talent": "🎮 Game World Builder", 
-        "description": "Crafting immersive experiences that challenge and engage players"
-      },
-      {
-        "clue": "I turn complex data into beautiful, interactive visualizations...",
-        "talent": "📊 Data Storyteller",
-        "description": "Making numbers dance and tell compelling stories"
-      },
-      {
-        "clue": "My code bridges creativity and functionality seamlessly...",
-        "talent": "✨ Creative Technologist",
-        "description": "Where art meets algorithms, magic happens"
-      }
-    ],
-    "journey": [
-      {
-        "year": "2021",
-        "title": "The Beginning",
-        "description": "Started coding journey with ambitious projects and endless curiosity",
-        "color": "coral",
-        "icon": "fas fa-rocket"
-      },
-      {
-        "year": "2022", 
-        "title": "Discord Revolution",
-        "description": "VALCORE Bot launched - transforming how communities handle server outages",
-        "color": "purple",
-        "icon": "fab fa-discord"
-      },
-      {
-        "year": "2023",
-        "title": "Game Development",
-        "description": "U.N.I. survival game created - bringing post-apocalyptic adventures to life",
-        "color": "cyan",
-        "icon": "fas fa-gamepad"
-      },
-      {
-        "year": "2024",
-        "title": "Portfolio Evolution", 
-        "description": "Crafting immersive web experiences that showcase creativity and technical skill",
-        "color": "amber",
-        "icon": "fas fa-code"
-      },
-      {
-        "year": "2025",
-        "title": "What's Next?",
-        "description": "The future is unwritten - ready to collaborate on your next big idea!",
-        "color": "purple",
-        "icon": "fas fa-question"
-      }
-    ],
-    "techFacts": [
-      {
-        "title": "OAuth2 Magic",
-        "fact": "VALCORE uses OAuth2 to safely backup 40,000+ Discord users without storing passwords",
-        "icon": "fas fa-shield-alt",
-        "color": "coral"
-      },
-      {
-        "title": "Luau Performance", 
-        "fact": "My Roblox game handles 400+ concurrent players with optimized Luau scripts",
-        "icon": "fas fa-tachometer-alt",
-        "color": "purple"
-      },
-      {
-        "title": "React Wizardry",
-        "fact": "This portfolio uses 15+ interactive components, all built from scratch",
-        "icon": "fab fa-react",
-        "color": "cyan"
-      },
-      {
-        "title": "Node.js Power",
-        "fact": "Backend APIs handle thousands of requests with 99.9% uptime",
-        "icon": "fab fa-node-js", 
-        "color": "amber"
-      },
-      {
-        "title": "Database Design",
-        "fact": "PostgreSQL schemas designed for scalability across multiple platforms",
-        "icon": "fas fa-database",
-        "color": "purple"
       }
     ]
   }
