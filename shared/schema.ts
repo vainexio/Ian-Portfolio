@@ -108,12 +108,23 @@ export interface Specialty {
   technologies: string[];
 }
 
+export interface ContactMethod {
+  id: string;
+  platform: string;
+  value: string;
+  href: string;
+  icon: string;
+  color: string;
+  order: number;
+}
+
 export interface ContactInfo {
   email: string;
   github: string;
   facebook: string;
   viber?: string;
   discord?: string;
+  contactMethods?: ContactMethod[];
 }
 
 export interface InteractiveElements {

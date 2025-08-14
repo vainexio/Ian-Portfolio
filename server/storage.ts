@@ -60,9 +60,22 @@ export class MemStorage implements IStorage {
           contact: {
             email: "ian.iglipa@email.com",
             github: "github.com/ianiglipa",
-            linkedin: "linkedin.com/in/ianiglipa",
-            twitter: "twitter.com/ianiglipa",
+            facebook: "facebook.com/ianiglipa",
+            viber: "+63 945 326 3549",
             discord: "discord.com/users/ianiglipa"
+          },
+          interactiveElements: {
+            introduction: {
+              language: "javascript",
+              code: "console.log('Hello World!');",
+              preview: "👋 Welcome!",
+              color: "coral"
+            },
+            quotes: [],
+            skillsRadar: [],
+            talents: [],
+            journey: [],
+            techFacts: []
           }
         };
       });

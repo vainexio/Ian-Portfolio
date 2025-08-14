@@ -271,7 +271,72 @@
     "github": "github.com/vainexio",
     "facebook": "facebook.com/ianhehu",
     "viber": "+63 945 326 3549",
-    "discord": "@vainexio"
+    "discord": "@vainexio",
+    "contactMethods": [
+      {
+        "id": "email",
+        "platform": "Email",
+        "value": "ianpaolo.iglipa170@gmail.com",
+        "href": "mailto:ianpaolo.iglipa170@gmail.com",
+        "icon": "fas fa-envelope",
+        "color": "coral",
+        "order": 1
+      },
+      {
+        "id": "github",
+        "platform": "GitHub",
+        "value": "github.com/vainexio",
+        "href": "https://github.com/vainexio",
+        "icon": "fab fa-github",
+        "color": "purple",
+        "order": 2
+      },
+      {
+        "id": "facebook",
+        "platform": "Facebook",
+        "value": "facebook.com/ianhehu",
+        "href": "https://facebook.com/ianhehu",
+        "icon": "fab fa-facebook",
+        "color": "cyan",
+        "order": 3
+      },
+      {
+        "id": "viber",
+        "platform": "Viber",
+        "value": "+63 945 326 3549",
+        "href": "viber://chat?number=%2B63%20945%20326%203549",
+        "icon": "fab fa-viber",
+        "color": "amber",
+        "order": 4
+      },
+      {
+        "id": "discord",
+        "platform": "Discord",
+        "value": "@vainexio",
+        "href": "https://discord.com/users/vainexio",
+        "icon": "fab fa-discord",
+        "color": "purple",
+        "order": 5
+      },
+      {
+        "id": "linkedin",
+        "platform": "LinkedIn",
+        "value": "linkedin.com/in/ianiglipa",
+        "href": "https://linkedin.com/in/ianiglipa",
+        "icon": "fab fa-linkedin",
+        "color": "cyan",
+        "order": 6
+      },
+      {
+        "id": "telegram",
+        "platform": "Telegram",
+        "value": "@vainexio",
+        "href": "https://t.me/vainexio",
+        "icon": "fab fa-telegram",
+        "color": "amber",
+        "order": 7
+      }
+    ]
   },
   "interactiveElements": {
     "introduction": {

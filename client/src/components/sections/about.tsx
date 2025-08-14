@@ -1,6 +1,6 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Achievement, Experience, Specialty, InteractiveElements } from "@shared/schema";
-import { ProjectConstellation, CreativeQuoteGenerator } from "@/components/ui/creative-interactions";
+import { CreativeQuoteGenerator } from "@/components/ui/creative-interactions";
 
 interface AboutProps {
   specialties: Specialty[];
@@ -62,41 +62,97 @@ export default function About({ specialties, achievements, experience, interacti
             {/* Timeline Line - placed behind cards */}
             <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-1 h-full bg-gradient-to-b from-coral via-cyan to-purple rounded-full opacity-30 z-0 pointer-events-none"></div>
 
-            <div className="space-y-12 relative z-10">
+            <div className="space-y-8 md:space-y-12 relative z-10">
               {experience.map((exp, index) => (
                 <div 
                   key={index}
-                  className={`relative flex items-center transition-all duration-1000 ${
+                  className={`group relative transition-all duration-1000 hover:scale-[1.02] ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-                  } ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  }`}
                   style={{ transitionDelay: `${(index + 3) * 150}ms` }}
                 >
-                  {/* Timeline Dot - moved behind by lowering z-index and responsive positioning */}
-                  <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 bg-coral rounded-full z-0 animate-pulse pointer-events-none"></div>
-
-                  {/* Job Icon */}
-                  <div className={`w-16 h-16 bg-gradient-to-br from-coral to-purple rounded-full flex items-center justify-center text-white text-xl mx-8 shadow-lg relative z-20 ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
-                    <i className="fas fa-briefcase"></i>
-                  </div>
-
-                  {/* Content Card */}
-                  <div className={`glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-500 flex-1 max-w-md relative z-20 ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
-                    <div className="mb-4">
-                      <h4 className="text-xl font-bold text-coral mb-1">{exp.position}</h4>
-                      <p className="text-cyan font-medium">{exp.company}</p>
-                      <span className="text-amber text-sm">{exp.period}</span>
+                  {/* Enhanced Timeline Structure for Mobile and Desktop */}
+                  <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
+                    
+                    {/* Mobile: Timeline Dot and Icon Side by Side */}
+                    <div className="flex md:hidden items-center gap-4 w-full">
+                      {/* Timeline Dot */}
+                      <div className="w-4 h-4 bg-coral rounded-full animate-pulse flex-shrink-0 relative">
+                        <div className="absolute inset-0 bg-coral rounded-full animate-ping opacity-75"></div>
+                        <div className="absolute inset-0 bg-coral rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                      </div>
+                      
+                      {/* Job Icon */}
+                      <div className="w-12 h-12 bg-gradient-to-br from-coral to-purple rounded-full flex items-center justify-center text-white text-lg shadow-lg group-hover:shadow-2xl group-hover:shadow-coral/50 transition-all duration-500 group-hover:rotate-12 flex-shrink-0">
+                        <i className="fas fa-briefcase group-hover:scale-110 transition-transform duration-300"></i>
+                      </div>
+                      
+                      {/* Mobile Header */}
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-lg font-bold text-coral mb-1 truncate">{exp.position}</h4>
+                        <p className="text-cyan font-medium text-sm truncate">{exp.company}</p>
+                        <span className="text-amber text-xs">{exp.period}</span>
+                      </div>
                     </div>
-                    <p className="text-white mb-4 leading-relaxed">{exp.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, techIndex) => (
-                        <span 
-                          key={tech} 
-                          className="bg-purple/20 text-purple px-3 py-1 rounded-full text-sm hover:bg-purple/30 hover:scale-105 transition-all duration-300"
-                          style={{ animationDelay: `${techIndex * 100}ms` }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
+
+                    {/* Desktop: Alternating Layout */}
+                    <div className={`hidden md:flex items-center w-full ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                      
+                      {/* Content Card */}
+                      <div className={`glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-500 flex-1 max-w-md relative z-20 group-hover:shadow-2xl group-hover:shadow-coral/20 ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}>
+                        <div className="mb-4">
+                          <h4 className="text-xl font-bold text-coral mb-1 group-hover:text-white transition-colors duration-300">{exp.position}</h4>
+                          <p className="text-cyan font-medium group-hover:text-amber transition-colors duration-300">{exp.company}</p>
+                          <span className="text-amber text-sm group-hover:text-coral transition-colors duration-300">{exp.period}</span>
+                        </div>
+                        <p className="text-white mb-4 leading-relaxed group-hover:text-gray-100 transition-colors duration-300">{exp.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.technologies.map((tech, techIndex) => (
+                            <span 
+                              key={tech} 
+                              className="bg-purple/20 text-purple px-3 py-1 rounded-full text-sm hover:bg-purple/30 hover:scale-105 transition-all duration-300 group-hover:bg-coral/20 group-hover:text-coral"
+                              style={{ animationDelay: `${techIndex * 100}ms` }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Centered Job Icon with Focus Ring */}
+                      <div className="relative flex items-center justify-center flex-shrink-0">
+                        {/* Timeline Dot - Centered */}
+                        <div className="absolute w-4 h-4 bg-coral rounded-full animate-pulse z-10">
+                          <div className="absolute inset-0 bg-coral rounded-full animate-ping opacity-75"></div>
+                          <div className="absolute inset-0 bg-coral rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                        </div>
+                        
+                        {/* Focus Ring */}
+                        <div className="absolute w-20 h-20 border-2 border-coral/30 rounded-full group-hover:border-coral group-hover:scale-110 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+                        
+                        {/* Job Icon */}
+                        <div className="w-16 h-16 bg-gradient-to-br from-coral to-purple rounded-full flex items-center justify-center text-white text-xl shadow-lg relative z-20 group-hover:shadow-2xl group-hover:shadow-coral/50 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                          <i className="fas fa-briefcase group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mobile: Content Card (Full Width) */}
+                    <div className="md:hidden w-full ml-8 pl-4 border-l-2 border-coral/30">
+                      <div className="glass-dark rounded-xl p-4 hover:scale-[1.02] transition-all duration-500 group-hover:shadow-xl group-hover:shadow-coral/20">
+                        <p className="text-white text-sm mb-3 leading-relaxed group-hover:text-gray-100 transition-colors duration-300">{exp.description}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {exp.technologies.map((tech, techIndex) => (
+                            <span 
+                              key={tech} 
+                              className="bg-purple/20 text-purple px-2 py-1 rounded-full text-xs hover:bg-purple/30 hover:scale-105 transition-all duration-300 group-hover:bg-coral/20 group-hover:text-coral"
+                              style={{ animationDelay: `${techIndex * 100}ms` }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
