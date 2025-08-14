@@ -17,7 +17,12 @@
       "description": "Crafting responsive web applications with modern technologies including React.js, Node.js, and MongoDB.",
       "tagline": "Crafting digital experiences that matter",
       "color": "coral",
-      "technologies": ["JavaScript", "React.js", "Node.js", "MongoDB"]
+      "technologies": [
+        "JavaScript",
+        "React.js",
+        "Node.js",
+        "MongoDB"
+      ]
     },
     {
       "id": "android",
@@ -26,7 +31,11 @@
       "description": "Building native Android applications with Kotlin and Jetpack Compose for modern, performant mobile experiences.",
       "tagline": "Mobile-first solutions for everyone",
       "color": "amber",
-      "technologies": ["Kotlin", "Jetpack Compose", "Android SDK"]
+      "technologies": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Android SDK"
+      ]
     },
     {
       "id": "game",
@@ -35,7 +44,11 @@
       "description": "Creating engaging Roblox games with Lua scripting, focusing on immersive gameplay and user interaction.",
       "tagline": "Where creativity meets technology",
       "color": "purple",
-      "technologies": ["Roblox Studio", "Lua", "Game Design"]
+      "technologies": [
+        "Roblox Studio",
+        "Lua",
+        "Game Design"
+      ]
     }
   ],
   "projectCategories": [
@@ -60,16 +73,16 @@
   ],
   "achievements": [
     {
-  "title": "Certiport IT Specialist – Databases",
-  "organization": "Certiport (issued via Credly)",
-  "date": "2025",
-  "description": "Demonstrated foundational knowledge in relational database design, querying, administration, including MySQL, Microsoft SQL Server, and Oracle."
+      "title": "Certiport IT Specialist – Databases",
+      "organization": "Certiport (issued via Credly)",
+      "date": "2025",
+      "description": "Demonstrated foundational knowledge in relational database design, querying, administration, including MySQL, Microsoft SQL Server, and Oracle."
     },
     {
-  "title": "Registered Intellectual Property – ADHS",
-  "organization": "Intellectual Property Office of the Philippines (IPOPHL)",
-  "date": "2024",
-  "description": "Created and registered the conceptual design for the Advanced Drainage Hygiene System (ADHS), a proposed innovative approach to improve sanitation and hygiene in drainage infrastructure."
+      "title": "Registered Intellectual Property – ADHS",
+      "organization": "Intellectual Property Office of the Philippines (IPOPHL)",
+      "date": "2024",
+      "description": "Created and registered the conceptual design for the Advanced Drainage Hygiene System (ADHS), a proposed innovative approach to improve sanitation and hygiene in drainage infrastructure."
     }
   ],
   "experience": [
@@ -78,14 +91,25 @@
       "company": "Freelance / Community Projects",
       "period": "2021 - Present",
       "description": "Designed and developed custom Discord bots for multiple communities and servers to automate processes such as moderation, ticketing system, data tracking, and user engagement.",
-      "technologies": ["JavaScript", "Node.js", "Discord.js", "MongoDB", "REST APIs"]
+      "technologies": [
+        "JavaScript",
+        "Node.js",
+        "Discord.js",
+        "MongoDB",
+        "REST APIs"
+      ]
     },
     {
-    "position": "Android IoT Developer",
-    "company": "13th IT Skills Olympic",
-    "period": "November 2024",
-    "description": "Competed in the Android Development – IoT category, developing a prototype Android app integrated with IoT functionalities.",
-    "technologies": ["Android Studio", "Kotlin", "IoT Devices", "Firebase"]
+      "position": "Android IoT Developer",
+      "company": "13th IT Skills Olympic",
+      "period": "November 2024",
+      "description": "Competed in the Android Development – IoT category, developing a prototype Android app integrated with IoT functionalities.",
+      "technologies": [
+        "Android Studio",
+        "Kotlin",
+        "IoT Devices",
+        "Firebase"
+      ]
     }
   ],
   "skills": [
@@ -260,22 +284,42 @@
       {
         "text": "Code is poetry written in logic.",
         "author": "Dev Philosophy",
-        "color": "coral"
+        "color": "#FF6F61"
       },
       {
         "text": "Every bug is a feature waiting for the right perspective.",
         "author": "Debugging Wisdom",
-        "color": "purple"
+        "color": "#9B59B6"
       },
       {
         "text": "Building bridges between ideas and reality, one function at a time.",
         "author": "Development Mindset",
-        "color": "cyan"
+        "color": "#00CED1"
       },
       {
         "text": "In the world of code, creativity meets precision.",
         "author": "Tech Philosophy",
-        "color": "amber"
+        "color": "#FFC107"
+      },
+      {
+        "text": "Code is like humor. When you have to explain it, it’s bad.",
+        "author": "Cory House",
+        "color": "#FF4500"
+      },
+      {
+        "text": "Programming isn’t about what you know; it’s about what you can figure out.",
+        "author": "Chris Pine",
+        "color": "#00FF7F"
+      },
+      {
+        "text": "Make it work, make it right, make it fast.",
+        "author": "Kent Beck",
+        "color": "#1E90FF"
+      },
+      {
+        "text": "Move fast and break things.",
+        "author": "Mark Zuckerberg",
+        "color": "#FF1493"
       }
     ]
   }
