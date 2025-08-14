@@ -1,5 +1,6 @@
 import { PersonalInfo } from "@shared/schema";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import InteractivePlayground from "@/components/ui/interactive-playground";
 
 interface HeroProps {
   personal: PersonalInfo;
@@ -47,25 +48,7 @@ export default function Hero({ personal }: HeroProps) {
           </div>
           
           <div className={`relative mt-8 lg:mt-0 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-            <div className="glass-dark rounded-3xl p-4 md:p-6 lg:p-8 transform hover:rotate-1 transition-transform duration-500 mx-auto max-w-md lg:max-w-none">
-              <img 
-                src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern coding workspace setup" 
-                className="rounded-2xl w-full h-auto object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent rounded-3xl"></div>
-              <div className="absolute bottom-4 md:bottom-6 lg:bottom-8 left-4 md:left-6 lg:left-8 right-4 md:right-6 lg:right-8">
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 md:w-3 md:h-3 bg-coral rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 md:w-3 md:h-3 bg-amber rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                    <div className="w-2 h-2 md:w-3 md:h-3 bg-purple rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-                  </div>
-                  <span className="text-xs md:text-sm text-gray-300">Currently coding...</span>
-                </div>
-              </div>
-            </div>
+            <InteractivePlayground />
           </div>
         </div>
       </div>

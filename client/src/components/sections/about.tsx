@@ -1,5 +1,6 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Achievement, Experience, Specialty } from "@shared/schema";
+import { ProjectConstellation, CreativeQuoteGenerator } from "@/components/ui/creative-interactions";
 
 interface AboutProps {
   specialties: Specialty[];
@@ -103,8 +104,20 @@ export default function About({ specialties, achievements, experience }: AboutPr
           </div>
         </div>
 
+        {/* Interactive Project Constellation */}
+        <div className={`mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+          <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Project Universe</h3>
+          <ProjectConstellation />
+        </div>
+
+        {/* Creative Philosophy */}
+        <div className={`mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+          <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Creative Philosophy</h3>
+          <CreativeQuoteGenerator />
+        </div>
+
         {/* Achievements Section */}
-        <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+        <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Achievements & Certifications</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {achievements.map((achievement, index) => (

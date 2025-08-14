@@ -9,6 +9,13 @@ import ParticleBackground from "@/components/ui/particle-background";
 import CursorFollower from "@/components/ui/cursor-follower";
 import SoundEffects from "@/components/ui/sound-effects";
 import MobileMenu from "@/components/ui/mobile-menu";
+import { 
+  FloatingSkillBubbles, 
+  ProjectConstellation, 
+  CreativeQuoteGenerator, 
+  SkillsRadar 
+} from "@/components/ui/creative-interactions";
+import { TalentDiscovery, ProjectJourney } from "@/components/ui/curiosity-triggers";
 
 import SectionDivider from "@/components/ui/section-divider";
 import { PortfolioData } from "@shared/schema";
@@ -67,7 +74,8 @@ export default function Home() {
       {/* Optional sound effects */}
       <SoundEffects enabled={false} volume={0.2} />
       
-
+      {/* Creative Interactive Elements */}
+      <FloatingSkillBubbles />
       
       {/* Content */}
       <div className="relative z-10 text-white">
@@ -81,6 +89,28 @@ export default function Home() {
         <SectionDivider direction="down" color="cyan" />
         <Projects projects={portfolio.projects} projectCategories={portfolio.projectCategories} />
         <SectionDivider direction="up" color="amber" />
+        
+        {/* Curiosity & Engagement Section */}
+        <section className="py-16 relative">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold gradient-text mb-6">Explore My World</h2>
+              <p className="text-xl text-white max-w-2xl mx-auto">
+                Discover unique insights, interact with my journey, and uncover hidden talents
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <TalentDiscovery />
+              </div>
+              <div>
+                <ProjectJourney />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <SectionDivider direction="down" color="coral" />
         <Contact contact={portfolio.contact} />
         
         {/* Footer */}

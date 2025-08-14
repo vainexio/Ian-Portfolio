@@ -51,8 +51,8 @@ export default function ParticleBackground({
         x: Math.random() * canvas.offsetWidth,
         y: Math.random() * canvas.offsetHeight,
         size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 2,
-        speedY: (Math.random() - 0.5) * 2,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5,
         opacity: Math.random() * 0.5 + 0.2,
         color: colors[Math.floor(Math.random() * colors.length)]
       });

@@ -284,6 +284,20 @@
     80% { transform: translate(2px, -2px); }
     100% { transform: translate(0); }
   }
+
+  /* Pulse animation for interactive elements */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(233, 69, 96, 0.8);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
 }
   
   .section-divider {
