@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Project, ProjectCategory } from "@shared/schema";
 import ProjectCard from "@/components/ui/project-card";
-import EnhancedProjectCard from "@/components/ui/enhanced-project-card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 interface ProjectsProps {
@@ -77,12 +76,17 @@ export default function Projects({ projects, projectCategories }: ProjectsProps)
             </div>
           ) : (
             filteredProjects.map((project, index) => (
-              <EnhancedProjectCard 
+              <div 
                 key={`project-${project.id}`}
-                project={project} 
-                projectCategories={projectCategories}
-                index={index}
-              />
+                className="opacity-100 translate-y-0"
+                style={{ 
+                  display: 'block',
+                  visibility: 'visible',
+                  height: 'auto'
+                }}
+              >
+                <ProjectCard project={project} projectCategories={projectCategories} />
+              </div>
             ))
           )}
         </div>
