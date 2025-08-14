@@ -29,10 +29,10 @@ This is a fully immersive and editable programmer's portfolio website for Ian Ig
 - ✅ Removed syntax-highlighter utility file
 
 **Current Features:**
-- Revolutionary diamond-shaped Achievements & Certifications section with cosmic theme
-- Unique diamond achievement cards with compact vertical layout and cosmic patterns
+- Clean rounded Achievements & Certifications section with modern glassmorphism design
+- Elegant rounded achievement cards with compact vertical layout and subtle animations
 - Floating trophy constellation background with random positioning
-- Central diamond achievement icons with rotating frames and orbiting elements
+- Circular achievement icons with rotating rings and orbiting elements
 - Enhanced About Me specialty cards with 3D hover effects and unique animations
 - Fixed technology display in project cards (no more duplicates)
 - Fixed-height Creative Philosophy section preventing layout shifts
@@ -44,13 +44,13 @@ This is a fully immersive and editable programmer's portfolio website for Ian Ig
 - Clean, streamlined portfolio layout focusing on core content
 
 **Technical Implementation:**
-- Diamond achievement cards with CSS clip-path polygon shapes for unique geometry
+- Rounded achievement cards with modern glassmorphism design and smooth animations
 - Compact vertical layout (140px height) with space-efficient design
 - Cosmic background with radial gradients and pulsing animations at different delays
-- Diamond-patterned geometric overlays with angular gradient combinations
-- Floating diamond particle system with random positioning and pulse animations
-- Diamond corner accent elements that appear on hover with colorful shapes
-- Diamond trophy containers with rotating frames and orbiting diamond elements
+- Subtle geometric overlays with minimal radial and linear gradient patterns
+- Floating light particle system with random positioning and pulse animations
+- Circular corner accent elements that appear on hover with soft glows
+- Circular trophy containers with rotating dashed rings and orbiting elements
 - 3D transformed specialty cards with perspective and smooth rotations on hover
 - Floating particle animations and orbit effects for enhanced visual appeal
 - Dynamic background patterns with color-matched blur effects

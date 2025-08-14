@@ -357,113 +357,94 @@ export default function About({ specialties, achievements, experience, interacti
                 >
                   {/* Compact Hexagonal Card Container */}
                   <div className="relative">
-                    {/* Main Diamond/Rhombus Shape - Perfect for Wide Cards */}
+                    {/* Rounded Achievement Card */}
                     <div 
-                      className="relative overflow-hidden transition-all duration-700 group-hover:scale-102"
+                      className="relative overflow-hidden transition-all duration-700 group-hover:scale-[1.02] group-hover:-translate-y-2"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0.9) 50%, rgba(0,0,0,0.7) 100%)',
-                        backdropFilter: 'blur(25px)',
-                        border: '2px solid rgba(255,255,255,0.1)',
-                        borderRadius: '12px',
-                        clipPath: 'polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%)',
-                        height: '140px'
+                        background: 'linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(25,25,25,0.98) 50%, rgba(15,15,15,0.95) 100%)',
+                        backdropFilter: 'blur(30px)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '24px',
+                        height: '140px',
+                        boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
                       }}
                       onMouseEnter={(e) => {
                         const target = e.currentTarget;
-                        target.style.background = 'linear-gradient(135deg, rgba(255,193,7,0.08) 0%, rgba(0,0,0,0.85) 50%, rgba(147,51,234,0.08) 100%)';
-                        target.style.borderColor = 'rgba(255,193,7,0.3)';
-                        target.style.boxShadow = '0 0 40px rgba(255,193,7,0.2), 0 0 60px rgba(147,51,234,0.15)';
+                        target.style.background = 'linear-gradient(135deg, rgba(255,193,7,0.05) 0%, rgba(25,25,25,0.98) 30%, rgba(147,51,234,0.05) 100%)';
+                        target.style.borderColor = 'rgba(255,193,7,0.25)';
+                        target.style.boxShadow = '0 20px 60px rgba(255,193,7,0.15), 0 0 40px rgba(147,51,234,0.1)';
                       }}
                       onMouseLeave={(e) => {
                         const target = e.currentTarget;
-                        target.style.background = 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,20,20,0.9) 50%, rgba(0,0,0,0.7) 100%)';
-                        target.style.borderColor = 'rgba(255,255,255,0.1)';
-                        target.style.boxShadow = 'none';
+                        target.style.background = 'linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(25,25,25,0.98) 50%, rgba(15,15,15,0.95) 100%)';
+                        target.style.borderColor = 'rgba(255,255,255,0.08)';
+                        target.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
                       }}
                     >
-                      {/* Diamond Pattern Overlay */}
-                      <div className="absolute inset-0 opacity-10 group-hover:opacity-25 transition-opacity duration-700">
+                      {/* Subtle Pattern Overlay */}
+                      <div className="absolute inset-0 opacity-5 group-hover:opacity-15 transition-opacity duration-700">
                         <div className="absolute inset-0" style={{
                           backgroundImage: `
-                            linear-gradient(45deg, rgba(255,193,7,0.1) 25%, transparent 25%),
-                            linear-gradient(-45deg, rgba(147,51,234,0.1) 25%, transparent 25%),
-                            linear-gradient(45deg, transparent 75%, rgba(34,197,94,0.1) 75%),
-                            linear-gradient(-45deg, transparent 75%, rgba(255,193,7,0.1) 75%)
+                            radial-gradient(circle at 20% 20%, rgba(255,193,7,0.3) 1px, transparent 1px),
+                            radial-gradient(circle at 80% 80%, rgba(147,51,234,0.3) 1px, transparent 1px),
+                            linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%)
                           `,
-                          backgroundSize: '20px 20px, 20px 20px, 20px 20px, 20px 20px',
-                          backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+                          backgroundSize: '50px 50px, 50px 50px, 100px 100px'
                         }}></div>
                       </div>
 
-                      {/* Floating Diamond Elements */}
+                      {/* Floating Light Elements */}
                       <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        {[...Array(3)].map((_, i) => (
+                        {[...Array(4)].map((_, i) => (
                           <div
                             key={i}
                             className="absolute animate-pulse"
                             style={{
-                              top: `${40 + Math.random() * 20}%`,
-                              left: `${15 + i * 25 + Math.random() * 10}%`,
-                              animationDelay: `${i * 600}ms`,
-                              animationDuration: '2.5s'
+                              top: `${30 + Math.random() * 40}%`,
+                              left: `${10 + i * 20 + Math.random() * 15}%`,
+                              animationDelay: `${i * 500}ms`,
+                              animationDuration: '3s'
                             }}
                           >
-                            <div 
-                              className="w-2 h-2 bg-gradient-to-r from-amber to-purple opacity-60"
-                              style={{
-                                clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-                                transform: 'rotate(45deg)'
-                              }}
-                            ></div>
+                            <div className="w-1 h-1 bg-amber rounded-full opacity-40"></div>
                           </div>
                         ))}
                       </div>
 
                       <div className="relative z-10 flex items-center h-full px-8 py-6">
-                        {/* Diamond Achievement Icon */}
+                        {/* Circular Achievement Icon */}
                         <div className="flex-shrink-0 mr-6">
                           <div className="relative">
-                            {/* Rotating Diamond Frame */}
+                            {/* Rotating Ring */}
                             <div className="absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                              <div 
-                                className="w-full h-full border-2 border-amber animate-spin" 
-                                style={{ 
-                                  animationDuration: '12s',
-                                  clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
-                                }}
-                              ></div>
+                              <div className="w-full h-full border-2 border-amber border-dashed rounded-full animate-spin" style={{ animationDuration: '15s' }}></div>
                             </div>
                             
-                            {/* Diamond Icon Container */}
+                            {/* Icon Container */}
                             <div 
-                              className="relative w-16 h-16 flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-12"
+                              className="relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-700 group-hover:scale-110"
                               style={{
-                                background: 'linear-gradient(135deg, rgba(255,193,7,0.8), rgba(147,51,234,0.8), rgba(34,197,94,0.8), rgba(255,193,7,0.8))',
-                                clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
+                                background: 'conic-gradient(from 0deg, rgba(255,193,7,0.9), rgba(147,51,234,0.9), rgba(34,197,94,0.9), rgba(255,193,7,0.9))',
                                 padding: '2px'
                               }}
                             >
-                              <div 
-                                className="w-full h-full bg-black flex items-center justify-center"
-                                style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                              >
-                                <i className="fas fa-trophy text-amber text-xl group-hover:animate-bounce"></i>
+                              <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
+                                <i className="fas fa-trophy text-amber text-xl group-hover:animate-bounce transition-transform duration-300"></i>
                               </div>
                             </div>
 
-                            {/* Floating Diamond Elements */}
+                            {/* Floating Orbs */}
                             <div className="absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                               {[0, 120, 240].map((rotation, i) => (
                                 <div
                                   key={i}
-                                  className="absolute w-1.5 h-1.5 bg-gradient-to-r from-amber to-purple"
+                                  className="absolute w-2 h-2 bg-gradient-to-r from-amber to-purple rounded-full"
                                   style={{
                                     top: '50%',
                                     left: '50%',
                                     transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-14px)`,
-                                    animation: `orbit 4s linear infinite`,
-                                    animationDelay: `${i * 1.3}s`,
-                                    clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                                    animation: `orbit 5s linear infinite`,
+                                    animationDelay: `${i * 1.6}s`
                                   }}
                                 ></div>
                               ))}
@@ -496,43 +477,31 @@ export default function About({ specialties, achievements, experience, interacti
                               </p>
                             </div>
 
-                            {/* Diamond Achievement Number Badge */}
+                            {/* Circular Achievement Number Badge */}
                             <div className="ml-4 flex-shrink-0">
-                              <div 
-                                className="w-8 h-8 bg-gradient-to-r from-amber to-purple flex items-center justify-center text-black text-xs font-bold transition-transform duration-300 group-hover:rotate-45"
-                                style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                              >
+                              <div className="w-10 h-10 bg-gradient-to-br from-amber via-orange-400 to-purple rounded-full flex items-center justify-center text-black text-sm font-bold transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
                                 {index + 1}
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        {/* Diamond Corner Accents */}
-                        <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div 
-                            className="w-3 h-3 bg-amber"
-                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                          ></div>
+                        {/* Subtle Corner Indicators */}
+                        <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-60 transition-all duration-500">
+                          <div className="w-2 h-2 bg-amber rounded-full"></div>
                         </div>
-                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div 
-                            className="w-3 h-3 bg-purple"
-                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                          ></div>
+                        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-60 transition-all duration-500">
+                          <div className="w-2 h-2 bg-purple rounded-full"></div>
                         </div>
-                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div 
-                            className="w-3 h-3 bg-cyan"
-                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                          ></div>
+                        <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-60 transition-all duration-500">
+                          <div className="w-2 h-2 bg-cyan rounded-full"></div>
                         </div>
-                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <div 
-                            className="w-3 h-3 bg-amber"
-                            style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
-                          ></div>
+                        <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-60 transition-all duration-500">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                         </div>
+
+                        {/* Bottom Accent Line */}
+                        <div className="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-700 ease-out bg-gradient-to-r from-amber via-purple to-cyan rounded-full"></div>
                       </div>
                     </div>
                   </div>
