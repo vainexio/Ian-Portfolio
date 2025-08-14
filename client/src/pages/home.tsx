@@ -82,7 +82,7 @@ export default function Home() {
         <MobileMenu />
         <Hero personal={portfolio.personal} interactiveElements={portfolio.interactiveElements} />
         <SectionDivider direction="down" color="coral" />
-        <About specialties={portfolio.specialties} achievements={portfolio.achievements} experience={portfolio.experience} />
+        <About specialties={portfolio.specialties} achievements={portfolio.achievements} experience={portfolio.experience} interactiveElements={portfolio.interactiveElements} />
         <SectionDivider direction="up" color="purple" />
         <Skills skills={portfolio.skills} interactiveElements={portfolio.interactiveElements} />
         <SectionDivider direction="down" color="cyan" />
@@ -105,12 +105,6 @@ export default function Home() {
               <div>
                 <ProjectJourney journey={portfolio.interactiveElements.journey} />
               </div>
-            </div>
-            
-            {/* Creative Philosophy Section */}
-            <div className="mt-16 text-center">
-              <h3 className="text-2xl font-bold gradient-text mb-8">Creative Philosophy</h3>
-              <CreativeQuoteGenerator quotes={portfolio.interactiveElements.quotes} />
             </div>
           </div>
         </section>

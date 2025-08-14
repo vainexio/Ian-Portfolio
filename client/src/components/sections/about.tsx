@@ -1,14 +1,15 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { Achievement, Experience, Specialty } from "@shared/schema";
+import { Achievement, Experience, Specialty, InteractiveElements } from "@shared/schema";
 import { ProjectConstellation, CreativeQuoteGenerator } from "@/components/ui/creative-interactions";
 
 interface AboutProps {
   specialties: Specialty[];
   achievements: Achievement[];
   experience: Experience[];
+  interactiveElements: InteractiveElements;
 }
 
-export default function About({ specialties, achievements, experience }: AboutProps) {
+export default function About({ specialties, achievements, experience, interactiveElements }: AboutProps) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   return (
@@ -109,7 +110,9 @@ export default function About({ specialties, achievements, experience }: AboutPr
         {/* Creative Philosophy */}
         <div className={`mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Creative Philosophy</h3>
-          {/* CreativeQuoteGenerator will be moved to Explore section */}
+          <div className="text-center">
+            <CreativeQuoteGenerator quotes={interactiveElements.quotes} />
+          </div>
         </div>
 
         {/* Achievements Section */}
