@@ -205,7 +205,7 @@
       "id": "3",
       "title": "Coinvert",
       "category": "android",
-      "featured": true,
+      "featured": false,
       "description": "A prototype application that converts your loose change into digital coins by scanning the QR from your receipt!",
       "technologies": [
         "Kotlin",
@@ -217,10 +217,10 @@
       "stats": {}
     },
     {
-      "id": "3",
+      "id": "4",
       "title": "Messenger Chatbot",
       "category": "app",
-      "featured": true,
+      "featured": false,
       "description": "Messenger chatbot (unofficial API) designed to deliver automation and integrations directly inside a platform users already know; no extra app or site needed.",
       "technologies": [
         "fca-unofficial",
