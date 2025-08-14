@@ -317,24 +317,6 @@
         "icon": "fab fa-discord",
         "color": "purple",
         "order": 5
-      },
-      {
-        "id": "linkedin",
-        "platform": "LinkedIn",
-        "value": "linkedin.com/in/ianiglipa",
-        "href": "https://linkedin.com/in/ianiglipa",
-        "icon": "fab fa-linkedin",
-        "color": "cyan",
-        "order": 6
-      },
-      {
-        "id": "telegram",
-        "platform": "Telegram",
-        "value": "@vainexio",
-        "href": "https://t.me/vainexio",
-        "icon": "fab fa-telegram",
-        "color": "amber",
-        "order": 7
       }
     ]
   },

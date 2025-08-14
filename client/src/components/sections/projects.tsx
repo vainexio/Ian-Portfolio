@@ -78,11 +78,11 @@ export default function Projects({ projects, projectCategories }: ProjectsProps)
             filteredProjects.map((project, index) => (
               <div 
                 key={`project-${project.id}`}
-                className="opacity-100 translate-y-0"
+                className={`transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
                 style={{ 
-                  display: 'block',
-                  visibility: 'visible',
-                  height: 'auto'
+                  animationDelay: `${index * 150}ms`,
                 }}
               >
                 <ProjectCard project={project} projectCategories={projectCategories} />
