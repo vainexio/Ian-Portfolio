@@ -72,7 +72,7 @@
   "description": "Demonstrated foundational knowledge in relational database design, querying, administration, including MySQL, Microsoft SQL Server, and Oracle."
     },
     {
-  "title": "Registered Intellectual Property – ADHS: Advanced Drainage Hygiene System (Concept)",
+  "title": "Registered Intellectual Property – ADHS",
   "organization": "Intellectual Property Office of the Philippines (IPOPHL)",
   "date": "2024",
   "description": "Created and registered the conceptual design for the Advanced Drainage Hygiene System (ADHS), a proposed innovative approach to improve sanitation and hygiene in drainage infrastructure."
@@ -87,7 +87,7 @@
       "technologies": ["JavaScript", "Node.js", "Discord.js", "MongoDB", "REST APIs"]
     },
     {
-    "position": "Mobile Application Developer",
+    "position": "Android IoT Developer",
     "company": "13th IT Skills Olympic",
     "period": "November 2024",
     "description": "Competed in the Android Development – IoT category, developing a prototype Android app integrated with IoT functionalities.",
@@ -165,7 +165,7 @@
   "projects": [
     {
       "id": "1",
-      "title": "VALCORE Discord Bot",
+      "title": "VALCORE",
       "category": "app",
       "featured": true,
       "description": "A Discord backup and assistant bot that uses Open Authorization 2.0 to safely move members to a backup server during critical outages. Used across 850+ servers.",
@@ -188,7 +188,7 @@
       "title": "U.N.I.",
       "category": "game",
       "featured": true,
-      "description": "A tense Roblox survival experience set in a post-apocalyptic version of NU Laguna.",
+      "description": "A tense Roblox survival game set in a post-apocalyptic NU Laguna, where players face a series of deadly trials, overcome harsh conditions, and compete to be the last one standing.",
       "technologies": [
         "Luau",
         "Roblox Studio"
@@ -203,38 +203,42 @@
     },
     {
       "id": "3",
+      "title": "Calibrium",
+      "category": "android",
+      "featured": false,
+      "description": "An Android app that works with an IoT device to instantly calculate a food’s calories from its weight, giving you accurate nutritional info in seconds.",
+      "technologies": [
+        "Kotlin",
+        "Firebase",
+        "C++",
+        "Arduino",
+        "Node.js",
+        "Jetpack Compose"
+      ],
+      "image": "https://i.imgur.com/pcgbl6O.png",
+      "stats": {
+        "Accuracy": "Near Exact",
+        "Connectivity": "Wi-Fi",
+        "Device Type": "Smart Scale"
+      }
+    },
+    {
+      "id": "4",
       "title": "Coinvert",
       "category": "android",
       "featured": false,
-      "description": "A prototype application that converts your loose change into digital coins by scanning the QR from your receipt!",
+      "description": "An innovative Android app that transforms your loose change into usable digital coins by simply scanning the QR code on your receipt. It lets you instantly store, track, and spend your change without the hassle of carrying coins.",
       "technologies": [
         "Kotlin",
         "Jetpack Compose",
         "Firebase",
         "Node.js"
       ],
-      "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-      "stats": {}
-    },
-    {
-      "id": "4",
-      "title": "Messenger Chatbot",
-      "category": "app",
-      "featured": false,
-      "description": "Messenger chatbot (unofficial API) designed to deliver automation and integrations directly inside a platform users already know; no extra app or site needed.",
-      "technologies": [
-        "fca-unofficial",
-        "OpenAI API",
-        "MongoDB",
-        "Node.js"
-      ],
-      "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-      "github": "https://github.com/ianiglipa/fittrack-pro",
-      "playStore": "https://play.google.com/store/apps/details?id=com.ianiglipa.fittrack",
+      "image": "https://i.imgur.com/NJlOXLh.png",
       "stats": {
-        "Conversations": "12+",
-        "Uptime": "60%",
-        "Model": "GPT-4"
+        "Conversion Speed": "Instant",
+        "Supported Currencies": "PHP",
+        "QR Scans": "Unlimited"
       }
     }
   ],
