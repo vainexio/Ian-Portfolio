@@ -73,7 +73,7 @@
   html, body {
   margin: 0;
   padding-top: env(safe-area-inset-top); /* pushes content below notch */
-  background-color: var(--background); /* your existing background */
+  background-color: var(--foreground); /* your existing background */
 }
 
   body {
