@@ -206,7 +206,7 @@
       "title": "Coinvert",
       "category": "android",
       "featured": true,
-      "description": "A prototype android app that turns your loose change into digital coins!",
+      "description": "A prototype application that converts your loose change into digital coins by scanning the QR from your receipt!",
       "technologies": [
         "Kotlin",
         "Jetpack Compose",
@@ -214,13 +214,11 @@
         "Node.js"
       ],
       "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-      "github": "https://github.com/ianiglipa/fittrack-pro",
-      "playStore": "https://play.google.com/store/apps/details?id=com.ianiglipa.fittrack",
       "stats": {}
     },
     {
       "id": "3",
-      "title": "Messenger chatbot",
+      "title": "Messenger Chatbot",
       "category": "app",
       "featured": true,
       "description": "Messenger chatbot (unofficial API) designed to deliver automation and integrations directly inside a platform users already know; no extra app or site needed.",
@@ -235,7 +233,8 @@
       "playStore": "https://play.google.com/store/apps/details?id=com.ianiglipa.fittrack",
       "stats": {
         "Conversations": "12+",
-        "Uptime": "60%"
+        "Uptime": "60%",
+        "Model": "GPT-4"
       }
     }
   ],
