@@ -433,22 +433,7 @@ export default function About({ specialties, achievements, experience, interacti
                               </div>
                             </div>
 
-                            {/* Floating Orbs - Hidden on mobile for cleaner look */}
-                            <div className="hidden sm:block absolute inset-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                              {[0, 120, 240].map((rotation, i) => (
-                                <div
-                                  key={i}
-                                  className="absolute w-2 h-2 bg-gradient-to-r from-amber to-purple rounded-full"
-                                  style={{
-                                    top: '50%',
-                                    left: '50%',
-                                    transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-14px)`,
-                                    animation: `orbit 5s linear infinite`,
-                                    animationDelay: `${i * 1.6}s`
-                                  }}
-                                ></div>
-                              ))}
-                            </div>
+
                           </div>
                         </div>
 
