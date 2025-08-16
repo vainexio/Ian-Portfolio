@@ -10,8 +10,6 @@ export default function MobileMenu({ className = "" }: MobileMenuProps) {
   const navItems = [
     { id: 'hero', label: 'Home', icon: 'fas fa-home' },
     { id: 'about', label: 'About', icon: 'fas fa-user' },
-    { id: 'experience', label: 'Experience', icon: 'fas fa-briefcase' },
-    { id: 'achievements', label: 'Achievements', icon: 'fas fa-trophy' },
     { id: 'skills', label: 'Skills', icon: 'fas fa-code' },
     { id: 'projects', label: 'Projects', icon: 'fas fa-folder-open' },
     { id: 'contact', label: 'Contact', icon: 'fas fa-envelope' },

@@ -6,25 +6,28 @@ export default function FloatingNav() {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + 100; // Simple offset from top
-      let currentSection = "hero"; // default
-
-      // Check all elements with IDs (including subsections)
-      const allElements = document.querySelectorAll("[id]");
-      const validSections = ["hero", "about", "experience", "achievements", "skills", "projects", "contact"];
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const sections = ["hero", "about", "skills", "projects", "contact"];
       
-      allElements.forEach((element) => {
-        if (validSections.includes(element.id)) {
-          const elementTop = (element as HTMLElement).offsetTop;
-          const elementHeight = (element as HTMLElement).offsetHeight;
+      let current = "hero";
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrollTop;
+          const elementHeight = element.offsetHeight;
           
-          if (scrollPosition >= elementTop && scrollPosition < elementTop + elementHeight) {
-            currentSection = element.id;
+          // Check if this section is currently in view (top 50% of viewport)
+          if (scrollTop >= elementTop - windowHeight * 0.5 && 
+              scrollTop < elementTop + elementHeight - windowHeight * 0.5) {
+            current = sectionId;
           }
         }
-      });
-
-      setActiveSection(currentSection);
+      }
+      
+      setActiveSection(current);
     };
 
     // Update on scroll
@@ -48,8 +51,6 @@ export default function FloatingNav() {
   const navItems = [
     { id: "hero", label: "Home", icon: "fas fa-home", color: "from-coral to-orange-500" },
     { id: "about", label: "About", icon: "fas fa-user", color: "from-purple to-pink-500" },
-    { id: "experience", label: "Experience", icon: "fas fa-briefcase", color: "from-blue-500 to-indigo-500" },
-    { id: "achievements", label: "Achievements", icon: "fas fa-trophy", color: "from-yellow-500 to-amber-500" },
     { id: "skills", label: "Skills", icon: "fas fa-code", color: "from-cyan to-blue-500" },
     { id: "projects", label: "Projects", icon: "fas fa-folder-open", color: "from-amber to-yellow-500" },
     { id: "contact", label: "Contact", icon: "fas fa-envelope", color: "from-green-400 to-emerald-500" },
