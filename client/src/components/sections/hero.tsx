@@ -68,99 +68,120 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                 ))}
               </div>
 
-              {/* Creative Name Display with Morphing Letters */}
-              <h1 className="relative text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-black leading-tight tracking-wider select-none">
-                {nameLetters.map((letter, index) => (
-                  <span
-                    key={index}
-                    className={`inline-block relative cursor-pointer transition-all duration-700 transform ${
-                      showLetters[index] 
-                        ? 'opacity-100 translate-y-0 scale-100' 
-                        : 'opacity-0 translate-y-8 scale-75'
-                    } group/letter`}
-                    style={{
-                      color: letter === ' ' ? 'transparent' : '#ffffff',
-                      textShadow: letter === ' ' ? 'none' : '0 0 30px rgba(180, 200, 255, 0.6), 0 0 60px rgba(180, 200, 255, 0.4), 0 0 90px rgba(180, 200, 255, 0.2)',
-                      filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3))',
-                      transitionDelay: `${index * 50}ms`,
-                      transformOrigin: 'center bottom'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (letter !== ' ') {
-                        e.currentTarget.style.transform = 'translateY(-8px) rotateX(15deg) rotateY(5deg) scale(1.1)';
-                        e.currentTarget.style.textShadow = '0 0 20px rgba(120, 180, 255, 0.8), 0 0 40px rgba(120, 180, 255, 0.6), 0 0 80px rgba(120, 180, 255, 0.4), 0 15px 30px rgba(0, 0, 0, 0.4)';
-                        e.currentTarget.style.filter = 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5))';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (letter !== ' ') {
-                        e.currentTarget.style.transform = 'translateY(0) rotateX(0deg) rotateY(0deg) scale(1)';
-                        e.currentTarget.style.textShadow = '0 0 30px rgba(180, 200, 255, 0.6), 0 0 60px rgba(180, 200, 255, 0.4), 0 0 90px rgba(180, 200, 255, 0.2)';
-                        e.currentTarget.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3))';
-                      }
-                    }}
-                  >
-                    {letter === ' ' ? '\u00A0' : letter}
-                    
-                    {/* Floating Light Orbs Around Letters */}
-                    {letter !== ' ' && (
-                      <>
-                        <div className="absolute inset-0 opacity-0 group-hover/letter:opacity-100 transition-all duration-500 pointer-events-none">
-                          {[...Array(3)].map((_, orbIndex) => (
+              {/* Matrix-Style Digital Rain Name Display */}
+              <div className="relative">
+                {/* Matrix Rain Background */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+                  {[...Array(12)].map((_, columnIndex) => (
+                    <div
+                      key={columnIndex}
+                      className="absolute top-0 w-4 h-full"
+                      style={{
+                        left: `${columnIndex * 8.33}%`,
+                        animationDelay: `${columnIndex * 0.2}s`
+                      }}
+                    >
+                      {[...Array(20)].map((_, charIndex) => (
+                        <div
+                          key={charIndex}
+                          className="absolute text-sm font-mono"
+                          style={{
+                            top: `${charIndex * 5}%`,
+                            color: `rgba(0, 255, 65, ${0.1 + Math.random() * 0.4})`,
+                            textShadow: '0 0 10px rgba(0, 255, 65, 0.5)',
+                            animation: `matrix-rain-${columnIndex % 3} ${3 + Math.random() * 2}s linear infinite`,
+                            animationDelay: `${charIndex * 0.1}s`,
+                            transform: `translateY(-${Math.random() * 100}px)`
+                          }}
+                        >
+                          {String.fromCharCode(65 + Math.floor(Math.random() * 26))}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+
+                <h1 className="relative text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-mono font-black leading-tight tracking-wider select-none z-10">
+                  {nameLetters.map((letter, index) => (
+                    <span
+                      key={index}
+                      className={`inline-block relative cursor-pointer transition-all duration-700 transform ${
+                        showLetters[index] 
+                          ? 'opacity-100 translate-y-0 scale-100' 
+                          : 'opacity-0 translate-y-8 scale-75'
+                      } group/letter`}
+                      style={{
+                        color: letter === ' ' ? 'transparent' : '#00ff41',
+                        textShadow: letter === ' ' ? 'none' : '0 0 20px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 65, 0.6), 0 0 60px rgba(0, 255, 65, 0.4)',
+                        filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5))',
+                        transitionDelay: `${index * 50}ms`,
+                        fontFamily: 'monospace',
+                        fontWeight: 'bold'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (letter !== ' ') {
+                          e.currentTarget.style.transform = 'translateY(-4px) scale(1.1)';
+                          e.currentTarget.style.textShadow = '0 0 15px rgba(0, 255, 65, 1), 0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(0, 255, 65, 0.6), 0 8px 20px rgba(0, 0, 0, 0.6)';
+                          e.currentTarget.style.filter = 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.2)';
+                          // Trigger digital glitch effect
+                          const originalText = e.currentTarget.textContent;
+                          const glitchChars = ['█', '▓', '▒', '░', '▄', '▀', '■', '□'];
+                          let glitchCount = 0;
+                          const glitchInterval = setInterval(() => {
+                            if (glitchCount < 3) {
+                              e.currentTarget.textContent = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                              glitchCount++;
+                            } else {
+                              e.currentTarget.textContent = originalText;
+                              clearInterval(glitchInterval);
+                            }
+                          }, 50);
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (letter !== ' ') {
+                          e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                          e.currentTarget.style.textShadow = '0 0 20px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 65, 0.6), 0 0 60px rgba(0, 255, 65, 0.4)';
+                          e.currentTarget.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)) brightness(1)';
+                        }
+                      }}
+                    >
+                      {letter === ' ' ? '\u00A0' : letter}
+                      
+                      {/* Matrix Code Streams */}
+                      {letter !== ' ' && (
+                        <div className="absolute inset-0 opacity-0 group-hover/letter:opacity-100 transition-all duration-300 pointer-events-none overflow-hidden">
+                          {[...Array(5)].map((_, streamIndex) => (
                             <div
-                              key={orbIndex}
-                              className="absolute w-2 h-2 rounded-full"
+                              key={streamIndex}
+                              className="absolute text-xs font-mono"
                               style={{
-                                background: 'radial-gradient(circle, rgba(180, 200, 255, 0.8) 0%, transparent 70%)',
-                                top: `${20 + Math.sin((orbIndex * 120) * Math.PI / 180) * 40}%`,
-                                left: `${50 + Math.cos((orbIndex * 120) * Math.PI / 180) * 40}%`,
-                                animation: `orbit-${orbIndex} 3s ease-in-out infinite`,
-                                animationDelay: `${orbIndex * 0.5}s`,
-                                boxShadow: '0 0 15px rgba(180, 200, 255, 0.6)'
+                                top: '-20px',
+                                left: `${20 + streamIndex * 15}%`,
+                                color: 'rgba(0, 255, 65, 0.6)',
+                                textShadow: '0 0 5px rgba(0, 255, 65, 0.8)',
+                                animation: `digital-fall ${0.5 + streamIndex * 0.1}s linear infinite`,
+                                animationDelay: `${streamIndex * 0.1}s`
                               }}
-                            />
+                            >
+                              {String.fromCharCode(48 + Math.floor(Math.random() * 10))}
+                            </div>
                           ))}
                         </div>
-                        
-                        {/* Energy Wave Effect */}
-                        <div className="absolute inset-0 opacity-0 group-hover/letter:opacity-100 transition-all duration-300 pointer-events-none">
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'radial-gradient(circle, transparent 30%, rgba(180, 200, 255, 0.1) 50%, transparent 70%)',
-                              animation: 'pulse-wave 2s ease-out infinite'
-                            }}
-                          />
-                        </div>
-                      </>
-                    )}
-                  </span>
-                ))}
-                
-                {/* Floating Constellation Effect */}
+                      )}
+                    </span>
+                  ))}
+                </h1>
+
+                {/* Matrix-style Digital Readout */}
                 {isVisible && (
-                  <div className="absolute inset-0 pointer-events-none opacity-70">
-                    {[...Array(8)].map((_, starIndex) => (
-                      <div
-                        key={starIndex}
-                        className="absolute w-1 h-1 rounded-full animate-pulse"
-                        style={{
-                          background: 'rgba(180, 200, 255, 0.8)',
-                          top: `${10 + Math.random() * 80}%`,
-                          left: `${5 + Math.random() * 90}%`,
-                          animationDelay: `${starIndex * 0.3}s`,
-                          animationDuration: `${2 + Math.random() * 2}s`,
-                          boxShadow: '0 0 8px rgba(180, 200, 255, 0.6)',
-                          opacity: 0
-                        }}
-                        onAnimationIteration={(e) => {
-                          e.currentTarget.style.opacity = Math.random() > 0.5 ? '1' : '0.3';
-                        }}
-                      />
-                    ))}
+                  <div className="absolute -bottom-8 left-0 right-0 flex justify-center opacity-60">
+                    <div className="text-sm font-mono text-green-400" style={{ textShadow: '0 0 10px rgba(0, 255, 65, 0.5)' }}>
+                      {'>'} INITIALIZING_PORTFOLIO.EXE {'<'}
+                    </div>
                   </div>
                 )}
-              </h1>
+              </div>
 
               {/* Subtle Background Enhancement */}
               <div className="absolute inset-0 pointer-events-none">
