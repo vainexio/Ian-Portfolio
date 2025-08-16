@@ -129,7 +129,7 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
   }, [introduction.code]);
 
   return (
-    <div className="glass-dark rounded-3xl p-6 md:p-8 transform hover:scale-105 transition-all duration-500 max-w-2xl mx-auto">
+    <div className="glass-dark rounded-3xl p-6 md:p-8 transform hover:scale-105 transition-all duration-500 max-w-2xl mx-auto relative overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex space-x-2">
@@ -154,8 +154,8 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
       {/* Code Display */}
       <div className="relative">
         <div 
-          className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl transition-all duration-300 ease-out"
-          style={{ height: `${expandHeight}px` }}
+          className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl transition-all duration-300 ease-out min-h-[400px] md:min-h-0"
+          style={{ height: expandHeight > 100 ? `${expandHeight}px` : '400px' }}
         >
           <div className="flex items-center mb-2">
             <span className={`text-${introduction.color} text-xs font-semibold`}>

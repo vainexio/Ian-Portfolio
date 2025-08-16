@@ -6,42 +6,23 @@ export default function FloatingNav() {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const scrollPosition = window.scrollY + 100; // Simple offset from top
       let currentSection = "hero"; // default
 
-      // Check main sections first
-      const sections = document.querySelectorAll("section[id]");
-      sections.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop;
-        const sectionHeight = (section as HTMLElement).offsetHeight;
-        const sectionBottom = sectionTop + sectionHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-          currentSection = section.id;
+      // Check all elements with IDs (including subsections)
+      const allElements = document.querySelectorAll("[id]");
+      const validSections = ["hero", "about", "experience", "achievements", "skills", "projects", "contact"];
+      
+      allElements.forEach((element) => {
+        if (validSections.includes(element.id)) {
+          const elementTop = (element as HTMLElement).offsetTop;
+          const elementHeight = (element as HTMLElement).offsetHeight;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementTop + elementHeight) {
+            currentSection = element.id;
+          }
         }
       });
-
-      // Then check for subsections within About (Experience and Achievements)
-      if (currentSection === "about") {
-        const experienceEl = document.getElementById("experience");
-        const achievementsEl = document.getElementById("achievements");
-        
-        if (experienceEl) {
-          const expTop = experienceEl.offsetTop;
-          const expBottom = expTop + experienceEl.offsetHeight;
-          if (scrollPosition >= expTop && scrollPosition < expBottom) {
-            currentSection = "experience";
-          }
-        }
-        
-        if (achievementsEl) {
-          const achTop = achievementsEl.offsetTop;
-          const achBottom = achTop + achievementsEl.offsetHeight;
-          if (scrollPosition >= achTop && scrollPosition <= achBottom) {
-            currentSection = "achievements";
-          }
-        }
-      }
 
       setActiveSection(currentSection);
     };
