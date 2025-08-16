@@ -180,7 +180,7 @@ export default function About({ specialties, achievements, experience, interacti
 
         {/* Experience Section - Timeline */}
         <div id="experience" className={`mb-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-          <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Professional Experience</h3>
+          <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Experience</h3>
           <div className="relative">
             {/* Timeline Line - placed behind cards */}
             <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-1 h-full bg-gradient-to-b from-coral via-cyan to-purple rounded-full opacity-30 z-0 pointer-events-none"></div>
@@ -288,7 +288,6 @@ export default function About({ specialties, achievements, experience, interacti
 
         {/* Creative Philosophy */}
         <div className={`mb-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-          <h3 className="text-3xl font-bold gradient-text mb-8 text-center">Creative Philosophy</h3>
           <div className="text-center">
             <CreativeQuoteGenerator quotes={interactiveElements.quotes} />
           </div>
