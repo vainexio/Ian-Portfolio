@@ -5,6 +5,8 @@ export default function FloatingNav() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    
     const updateActiveSection = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight;
@@ -19,9 +21,9 @@ export default function FloatingNav() {
           const elementTop = rect.top + scrollTop;
           const elementHeight = element.offsetHeight;
           
-          // Check if this section is currently in view (top 50% of viewport)
-          if (scrollTop >= elementTop - windowHeight * 0.5 && 
-              scrollTop < elementTop + elementHeight - windowHeight * 0.5) {
+          // Check if this section is currently in view (top 40% of viewport)
+          if (scrollTop >= elementTop - windowHeight * 0.4 && 
+              scrollTop < elementTop + elementHeight - windowHeight * 0.4) {
             current = sectionId;
           }
         }
@@ -30,14 +32,27 @@ export default function FloatingNav() {
       setActiveSection(current);
     };
 
-    // Update on scroll
-    window.addEventListener("scroll", updateActiveSection);
+    const handleScroll = () => {
+      // Clear previous timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      
+      // Debounce the update to avoid conflicts during animations
+      scrollTimeout = setTimeout(updateActiveSection, 50);
+    };
+
+    // Update on scroll with debounce
+    window.addEventListener("scroll", handleScroll);
     
-    // Update immediately
-    updateActiveSection();
+    // Update immediately after a short delay to let animations settle
+    setTimeout(updateActiveSection, 100);
 
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
     };
   }, []);
 
