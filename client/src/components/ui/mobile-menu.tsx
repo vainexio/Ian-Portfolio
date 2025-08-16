@@ -10,6 +10,8 @@ export default function MobileMenu({ className = "" }: MobileMenuProps) {
   const navItems = [
     { id: 'hero', label: 'Home', icon: 'fas fa-home' },
     { id: 'about', label: 'About', icon: 'fas fa-user' },
+    { id: 'experience', label: 'Experience', icon: 'fas fa-briefcase' },
+    { id: 'achievements', label: 'Achievements', icon: 'fas fa-trophy' },
     { id: 'skills', label: 'Skills', icon: 'fas fa-code' },
     { id: 'projects', label: 'Projects', icon: 'fas fa-folder-open' },
     { id: 'contact', label: 'Contact', icon: 'fas fa-envelope' },
@@ -45,7 +47,7 @@ export default function MobileMenu({ className = "" }: MobileMenuProps) {
                   onClick={() => scrollToSection(item.id)}
                   className="flex items-center w-full px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 group"
                 >
-                  <i className={`${item.icon} text-coral mr-3 group-hover:animate-pulse`}></i>
+                  <i className={`${item.icon} text-coral mr-3 group-hover:scale-110 transition-transform duration-300`}></i>
                   <span className="font-medium">{item.label}</span>
                 </button>
               ))}

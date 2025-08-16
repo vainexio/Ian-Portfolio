@@ -45,6 +45,8 @@ export default function FloatingNav() {
   const navItems = [
     { id: "hero", label: "Home", icon: "fas fa-home", color: "from-coral to-orange-500" },
     { id: "about", label: "About", icon: "fas fa-user", color: "from-purple to-pink-500" },
+    { id: "experience", label: "Experience", icon: "fas fa-briefcase", color: "from-blue-500 to-indigo-500" },
+    { id: "achievements", label: "Achievements", icon: "fas fa-trophy", color: "from-yellow-500 to-amber-500" },
     { id: "skills", label: "Skills", icon: "fas fa-code", color: "from-cyan to-blue-500" },
     { id: "projects", label: "Projects", icon: "fas fa-folder-open", color: "from-amber to-yellow-500" },
     { id: "contact", label: "Contact", icon: "fas fa-envelope", color: "from-green-400 to-emerald-500" },
@@ -54,7 +56,7 @@ export default function FloatingNav() {
     <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden md:block">
       <div className="relative">
         {/* Background glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-coral/20 via-purple/20 to-cyan/20 blur-xl animate-pulse rounded-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-coral/20 via-purple/20 to-cyan/20 blur-xl rounded-full opacity-60"></div>
         
         {/* Main navigation container */}
         <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-3 shadow-2xl">
@@ -99,9 +101,9 @@ export default function FloatingNav() {
                       isActive ? 'text-white scale-110' : isHovered ? 'text-white scale-105' : 'text-white/70'
                     }`} />
                     
-                    {/* Ripple effect */}
-                    <div className={`absolute inset-0 bg-white/20 rounded-xl scale-0 transition-transform duration-200 ${
-                      isActive ? 'animate-ping' : ''
+                    {/* Ripple effect - removed blinking animation */}
+                    <div className={`absolute inset-0 bg-white/20 rounded-xl transition-all duration-300 ${
+                      isActive ? 'scale-110 opacity-30' : 'scale-0 opacity-0'
                     }`} />
                   </button>
                   

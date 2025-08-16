@@ -141,7 +141,7 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
 
       {/* Code Display */}
       <div className="relative">
-        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl">
+        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl min-h-[400px] md:min-h-[450px]">
           <div className="flex items-center mb-2">
             <span className={`text-${introduction.color} text-xs font-semibold`}>
               {introduction.language.toUpperCase()}
