@@ -6,8 +6,6 @@ import Projects from "@/components/sections/projects";
 import Contact from "@/components/sections/contact";
 import FloatingNav from "@/components/ui/floating-nav";
 import ParticleBackground from "@/components/ui/particle-background";
-import CursorFollower from "@/components/ui/cursor-follower";
-import SoundEffects from "@/components/ui/sound-effects";
 import MobileMenu from "@/components/ui/mobile-menu";
 import { 
   CreativeQuoteGenerator
@@ -65,11 +63,6 @@ export default function Home() {
         />
       </div>
       
-      {/* Interactive cursor follower */}
-      <CursorFollower size={24} delay={0.1} />
-      
-      {/* Optional sound effects */}
-      <SoundEffects enabled={false} volume={0.2} />
       
       {/* Creative Interactive Elements removed */}
       
