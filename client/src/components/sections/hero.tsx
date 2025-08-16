@@ -39,7 +39,7 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className={`space-y-6 md:space-y-8 text-center lg:text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-            <div className="glass rounded-2xl p-2 inline-block">
+            <div className="glass rounded-2xl p-2 inline-block" data-logo="true">
               <span className="text-coral font-medium px-3 md:px-4 py-2 text-white text-sm md:text-base">👋 Hello, I'm</span>
             </div>
             {/* Enhanced Immersive Name Display */}
