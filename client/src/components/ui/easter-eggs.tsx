@@ -93,26 +93,7 @@ export function LogoEasterEgg() {
       setTimeout(() => heart.remove(), 3000);
     }
     
-    // Show message
-    const message = document.createElement('div');
-    message.innerHTML = '💖 Thanks for the love! You found a secret! 💖';
-    message.style.cssText = `
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      background: linear-gradient(45deg, #ff6b9d, #c44569);
-      color: white;
-      padding: 15px 25px;
-      border-radius: 25px;
-      font-weight: bold;
-      animation: bounce-in 0.5s ease-out;
-      text-align: center;
-    `;
-    document.body.appendChild(message);
-    
-    setTimeout(() => message.remove(), 3000);
+
   };
   
   return null;
