@@ -5,49 +5,33 @@ export default function FloatingNav() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find the section that's most visible in the viewport
-        let currentSection = null;
-        let maxRatio = 0;
-        
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const rect = entry.boundingClientRect;
-            const viewportHeight = window.innerHeight;
-            
-            // Calculate how much of the section is visible in the center of the viewport
-            const visibleTop = Math.max(0, rect.top);
-            const visibleBottom = Math.min(viewportHeight, rect.bottom);
-            const visibleHeight = visibleBottom - visibleTop;
-            
-            // Favor sections that are more centered in the viewport
-            const centerDistance = Math.abs((visibleTop + visibleBottom) / 2 - viewportHeight / 2);
-            const score = visibleHeight - centerDistance * 0.1;
-            
-            if (score > maxRatio) {
-              maxRatio = score;
-              currentSection = entry.target.id;
-            }
-          }
-        });
-        
-        if (currentSection) {
-          setActiveSection(currentSection);
-        }
-      },
-      { 
-        threshold: [0, 0.1, 0.3, 0.5, 0.7, 1.0], 
-        rootMargin: "-10% 0px -10% 0px" 
-      }
-    );
+    const updateActiveSection = () => {
+      const sections = document.querySelectorAll("section[id]");
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-    sections.forEach((section) => observer.observe(section));
+      let currentSection = "hero"; // default
+
+      sections.forEach((section) => {
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+        const sectionBottom = sectionTop + sectionHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+          currentSection = section.id;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    // Update on scroll
+    window.addEventListener("scroll", updateActiveSection);
+    
+    // Update immediately
+    updateActiveSection();
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      window.removeEventListener("scroll", updateActiveSection);
     };
   }, []);
 
