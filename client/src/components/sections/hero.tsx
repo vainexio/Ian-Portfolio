@@ -57,10 +57,11 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                     }}
                   >
                     <div 
-                      className="w-1 h-1 bg-coral rounded-full animate-pulse"
+                      className="w-1 h-1 rounded-full animate-pulse"
                       style={{
+                        background: 'rgba(180, 200, 255, 0.8)',
                         animationDuration: `${2 + Math.random() * 2}s`,
-                        boxShadow: '0 0 10px var(--coral)'
+                        boxShadow: '0 0 10px rgba(180, 200, 255, 0.6)'
                       }}
                     ></div>
                   </div>
@@ -78,26 +79,26 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                         : 'opacity-0 translate-y-8 scale-75'
                     } hover:scale-105 hover:-translate-y-1`}
                     style={{
-                      background: letter === ' ' ? 'transparent' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 25%, rgba(233, 69, 96, 0.8) 50%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0.95) 100%)',
+                      background: letter === ' ' ? 'transparent' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(220, 220, 255, 0.9) 25%, rgba(180, 200, 255, 0.85) 50%, rgba(230, 230, 255, 0.9) 75%, rgba(255, 255, 255, 0.98) 100%)',
                       backgroundSize: '200% 200%',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                       color: 'transparent',
                       animation: letter === ' ' ? 'none' : 'shimmer 4s ease-in-out infinite',
                       animationDelay: `${index * 0.1}s`,
-                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
+                      filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 25px rgba(180, 200, 255, 0.3))',
                       transitionDelay: `${index * 50}ms`
                     }}
                     onMouseEnter={(e) => {
                       if (letter !== ' ') {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 69, 96, 0.9) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(233, 69, 96, 0.9) 100%)';
-                        e.currentTarget.style.filter = 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 12px rgba(233, 69, 96, 0.2))';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(120, 180, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(150, 200, 255, 0.95) 100%)';
+                        e.currentTarget.style.filter = 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 20px rgba(120, 180, 255, 0.4))';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (letter !== ' ') {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 25%, rgba(233, 69, 96, 0.8) 50%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0.95) 100%)';
-                        e.currentTarget.style.filter = 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(220, 220, 255, 0.9) 25%, rgba(180, 200, 255, 0.85) 50%, rgba(230, 230, 255, 0.9) 75%, rgba(255, 255, 255, 0.98) 100%)';
+                        e.currentTarget.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 25px rgba(180, 200, 255, 0.3))';
                       }
                     }}
                   >
@@ -106,7 +107,7 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                     {/* Subtle Accent Line */}
                     {letter !== ' ' && (
                       <div className="absolute bottom-0 left-0 w-full h-0.5 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-0 h-full bg-gradient-to-r from-transparent via-coral/40 to-transparent group-hover:w-full transition-all duration-500"></div>
+                        <div className="w-0 h-full bg-gradient-to-r from-transparent via-blue-300/40 to-transparent group-hover:w-full transition-all duration-500"></div>
                       </div>
                     )}
                   </span>
@@ -115,12 +116,13 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                 {/* Typing Cursor Effect */}
                 {isVisible && (
                   <span 
-                    className="inline-block ml-2 w-1 bg-coral animate-pulse opacity-0"
+                    className="inline-block ml-2 w-1 animate-pulse opacity-0"
                     style={{
                       height: '0.8em',
+                      background: 'rgba(180, 200, 255, 0.9)',
                       animationDelay: `${nameLetters.length * 150 + 500}ms`,
                       animationDuration: '1s',
-                      boxShadow: '0 0 10px var(--coral)'
+                      boxShadow: '0 0 10px rgba(180, 200, 255, 0.6)'
                     }}
                     onAnimationStart={(e) => {
                       if (e.currentTarget) {
@@ -138,7 +140,7 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
 
               {/* Subtle Background Enhancement */}
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-coral/5 via-white/5 to-coral/5 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-white/5 to-blue-400/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
               </div>
             </div>
             <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
