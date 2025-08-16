@@ -35,7 +35,7 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
   }, [personal.name, isVisible]);
 
   return (
-    <section id="hero" ref={ref} className="min-h-screen relative overflow-hidden flex items-center">
+    <section id="hero" ref={ref} className="min-h-screen relative overflow-hidden flex items-center pt-8 md:pt-0">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className={`space-y-6 md:space-y-8 text-center lg:text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>

@@ -58,72 +58,21 @@ export function KonamiEasterEgg() {
   return null;
 }
 
-// Easter Egg 2: Secret Developer Console
-export function DevConsoleEasterEgg() {
-  useEffect(() => {
-    const originalLog = console.log;
-    console.log = (...args) => {
-      if (args[0] === 'unlock dev mode') {
-        showDevConsole();
-      }
-      originalLog.apply(console, args);
-    };
-    
-    return () => {
-      console.log = originalLog;
-    };
-  }, []);
-  
-  const showDevConsole = () => {
-    const devConsole = document.createElement('div');
-    devConsole.innerHTML = `
-      <div style="background: #000; color: #00ff00; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 12px;">
-        <div style="color: #ff6b35; margin-bottom: 10px;">🔓 DEVELOPER MODE UNLOCKED</div>
-        <div>System Status: ONLINE</div>
-        <div>Projects Loaded: 8</div>
-        <div>Easter Eggs Found: 2/5</div>
-        <div style="color: #ffa500; margin-top: 10px;">Tip: Try the famous cheat code! ⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️BA</div>
-        <button onclick="this.parentElement.parentElement.remove()" style="margin-top: 10px; background: #ff6b35; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Close</button>
-      </div>
-    `;
-    devConsole.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      animation: slideInRight 0.5s ease-out;
-    `;
-    document.body.appendChild(devConsole);
-    
-    setTimeout(() => {
-      if (devConsole.parentElement) {
-        devConsole.remove();
-      }
-    }, 15000);
-  };
-  
-  return null;
-}
+
 
 // Easter Egg 3: Double Click Logo Effect
 export function LogoEasterEgg() {
-  const [clicks, setClicks] = useState(0);
-  
   useEffect(() => {
     const handleLogoDoubleClick = (e: Event) => {
-      if ((e.target as HTMLElement).closest('[data-logo="true"]')) {
-        setClicks(prev => prev + 1);
-        if (clicks >= 1) {
-          triggerLogoEffect();
-          setClicks(0);
-        }
-        setTimeout(() => setClicks(0), 500);
+      const target = e.target as HTMLElement;
+      if (target.closest('[data-logo="true"]')) {
+        triggerLogoEffect();
       }
     };
     
     document.addEventListener('dblclick', handleLogoDoubleClick);
     return () => document.removeEventListener('dblclick', handleLogoDoubleClick);
-  }, [clicks]);
+  }, []);
   
   const triggerLogoEffect = () => {
     // Create floating hearts effect
@@ -326,95 +275,3 @@ export function SecretWordEasterEgg() {
   return null;
 }
 
-// Easter Egg 5: Mouse Pattern Recognition
-export function MousePatternEasterEgg() {
-  const [mousePositions, setMousePositions] = useState<{x: number, y: number}[]>([]);
-  
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePositions(prev => [...prev.slice(-20), {x: e.clientX, y: e.clientY}]);
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-  
-  useEffect(() => {
-    if (mousePositions.length >= 10) {
-      // Check for circular pattern
-      const isCircle = checkCircularPattern(mousePositions);
-      if (isCircle) {
-        triggerCircleEffect();
-        setMousePositions([]);
-      }
-    }
-  }, [mousePositions]);
-  
-  const checkCircularPattern = (positions: {x: number, y: number}[]) => {
-    if (positions.length < 10) return false;
-    
-    const recent = positions.slice(-10);
-    const center = {
-      x: recent.reduce((sum, p) => sum + p.x, 0) / recent.length,
-      y: recent.reduce((sum, p) => sum + p.y, 0) / recent.length
-    };
-    
-    const distances = recent.map(p => 
-      Math.sqrt(Math.pow(p.x - center.x, 2) + Math.pow(p.y - center.y, 2))
-    );
-    
-    const avgDistance = distances.reduce((sum, d) => sum + d, 0) / distances.length;
-    const variance = distances.reduce((sum, d) => sum + Math.pow(d - avgDistance, 2), 0) / distances.length;
-    
-    return variance < 1000 && avgDistance > 50; // Circular pattern detected
-  };
-  
-  const triggerCircleEffect = () => {
-    const center = {
-      x: mousePositions[mousePositions.length - 1].x,
-      y: mousePositions[mousePositions.length - 1].y
-    };
-    
-    // Create expanding circle effect
-    const circle = document.createElement('div');
-    circle.style.cssText = `
-      position: fixed;
-      left: ${center.x}px;
-      top: ${center.y}px;
-      width: 10px;
-      height: 10px;
-      border: 3px solid #ff6b9d;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      animation: expand-circle 2s ease-out forwards;
-      transform: translate(-50%, -50%);
-    `;
-    document.body.appendChild(circle);
-    
-    // Show message
-    const message = document.createElement('div');
-    message.innerHTML = '🌟 Nice mouse skills! You drew a circle! 🌟';
-    message.style.cssText = `
-      position: fixed;
-      left: ${center.x}px;
-      top: ${center.y - 50}px;
-      transform: translateX(-50%);
-      background: rgba(255, 107, 157, 0.9);
-      color: white;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-weight: bold;
-      z-index: 9999;
-      animation: fade-in-message 0.5s ease-out;
-    `;
-    document.body.appendChild(message);
-    
-    setTimeout(() => {
-      circle.remove();
-      message.remove();
-    }, 2000);
-  };
-  
-  return null;
-}
