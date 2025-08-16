@@ -98,7 +98,7 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
       }
     } else {
       setIsTyping(false);
-      setExpandHeight(450); // Final height
+      // Keep current height instead of expanding to 450px
     }
   };
 

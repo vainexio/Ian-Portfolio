@@ -67,7 +67,7 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                 ))}
               </div>
 
-              {/* Main Name Container */}
+              {/* Modern Sleek Name Container */}
               <h1 className="relative text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-black leading-tight tracking-wider">
                 {nameLetters.map((letter, index) => (
                   <span
@@ -76,46 +76,38 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                       showLetters[index] 
                         ? 'opacity-100 translate-y-0 scale-100' 
                         : 'opacity-0 translate-y-8 scale-75'
-                    } hover:scale-110 hover:-translate-y-2`}
+                    } hover:scale-105 hover:-translate-y-1`}
                     style={{
-                      background: letter === ' ' ? 'transparent' : 'linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 25%, #45B7D1 50%, #96CEB4 75%, #FFEAA7 100%)',
-                      backgroundSize: '300% 300%',
+                      background: letter === ' ' ? 'transparent' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 25%, rgba(233, 69, 96, 0.8) 50%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0.95) 100%)',
+                      backgroundSize: '200% 200%',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                       color: 'transparent',
-                      animation: letter === ' ' ? 'none' : 'shimmer 3s ease-in-out infinite',
+                      animation: letter === ' ' ? 'none' : 'shimmer 4s ease-in-out infinite',
                       animationDelay: `${index * 0.1}s`,
-                      filter: 'drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)) drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
-                      textShadow: letter === ' ' ? 'none' : '0 0 20px rgba(255, 107, 107, 0.6), 0 0 40px rgba(78, 205, 196, 0.4)',
+                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
                       transitionDelay: `${index * 50}ms`
                     }}
                     onMouseEnter={(e) => {
                       if (letter !== ' ') {
-                        e.currentTarget.style.filter = 'drop-shadow(0 0 20px rgba(255, 107, 107, 0.8)) drop-shadow(0 8px 16px rgba(0,0,0,0.4))';
-                        e.currentTarget.style.textShadow = '0 0 30px rgba(255, 107, 107, 0.9), 0 0 60px rgba(78, 205, 196, 0.6)';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(233, 69, 96, 0.9) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(233, 69, 96, 0.9) 100%)';
+                        e.currentTarget.style.filter = 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 12px rgba(233, 69, 96, 0.2))';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (letter !== ' ') {
-                        e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)) drop-shadow(0 4px 8px rgba(0,0,0,0.3))';
-                        e.currentTarget.style.textShadow = '0 0 20px rgba(255, 107, 107, 0.6), 0 0 40px rgba(78, 205, 196, 0.4)';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 25%, rgba(233, 69, 96, 0.8) 50%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0.95) 100%)';
+                        e.currentTarget.style.filter = 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))';
                       }
                     }}
                   >
                     {letter === ' ' ? '\u00A0' : letter}
                     
-                    {/* Individual Letter Glow */}
+                    {/* Subtle Accent Line */}
                     {letter !== ' ' && (
-                      <>
-                        <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                          <div className="absolute inset-0 bg-gradient-to-r from-coral via-cyan to-purple rounded-lg blur-md opacity-30 scale-110"></div>
-                        </div>
-                        
-                        {/* Sparkle Effect on Hover */}
-                        <div className="absolute -top-2 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                          <i className="fas fa-sparkles text-amber text-xs animate-pulse" style={{ animationDelay: `${index * 100}ms` }}></i>
-                        </div>
-                      </>
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-0 h-full bg-gradient-to-r from-transparent via-coral/40 to-transparent group-hover:w-full transition-all duration-500"></div>
+                      </div>
                     )}
                   </span>
                 ))}
@@ -144,9 +136,9 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                 )}
               </h1>
 
-              {/* Ambient Glow Layer */}
+              {/* Subtle Background Enhancement */}
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-coral/10 via-cyan/10 to-purple/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 scale-150"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-coral/5 via-white/5 to-coral/5 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
               </div>
             </div>
             <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed max-w-2xl mx-auto lg:mx-0">
