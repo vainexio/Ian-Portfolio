@@ -665,31 +665,66 @@
   }
 }
 
-/* Matrix Glitch Effect */
-.matrix-glitch {
-  animation: matrix-glitch 0.3s ease-in-out;
+/* Witty Letter Decoding Effects */
+.letter-decoding {
+  transform: translateY(-6px) scale(1.15) rotateZ(2deg);
+  text-shadow: 
+    0 0 8px rgba(0, 255, 100, 0.8), 
+    0 0 16px rgba(0, 255, 100, 0.6), 
+    0 0 24px rgba(0, 255, 100, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.6);
+  filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.8)) brightness(1.2) saturate(1.3);
+  animation: letter-decode-pulse 1s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes matrix-glitch {
+@keyframes letter-decode-pulse {
   0%, 100% {
-    transform: translateY(-4px) scale(1.1);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.1);
+    text-shadow: 
+      0 0 8px rgba(0, 255, 100, 0.8), 
+      0 0 16px rgba(0, 255, 100, 0.6), 
+      0 0 24px rgba(0, 255, 100, 0.4);
   }
-  10% {
-    transform: translateY(-4px) scale(1.1) skewX(2deg);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.3) contrast(1.2);
+  50% {
+    text-shadow: 
+      0 0 12px rgba(0, 255, 100, 1), 
+      0 0 24px rgba(0, 255, 100, 0.8), 
+      0 0 36px rgba(0, 255, 100, 0.6);
+  }
+}
+
+@keyframes fade-in-tooltip {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Binary digit floating animation */
+.letter-binary-overlay span {
+  animation: float-binary 2s ease-out forwards;
+}
+
+@keyframes float-binary {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
   }
   20% {
-    transform: translateY(-4px) scale(1.1) skewX(-1deg);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(0.9) contrast(1.1);
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
   }
-  30% {
-    transform: translateY(-4px) scale(1.1) skewX(1deg);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.2) contrast(1.3);
+  80% {
+    opacity: 1;
+    transform: translateY(-30px) scale(1);
   }
-  40% {
-    transform: translateY(-4px) scale(1.1) skewX(0deg);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.1) contrast(1);
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
   }
 }
 

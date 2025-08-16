@@ -120,19 +120,56 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                       }}
                       onMouseEnter={(e) => {
                         if (letter !== ' ' && e.currentTarget) {
-                          e.currentTarget.style.transform = 'translateY(-4px) scale(1.1)';
-                          e.currentTarget.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2), 0 8px 20px rgba(0, 0, 0, 0.6)';
-                          e.currentTarget.style.filter = 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.1)';
-                          // Add CSS-based glitch animation instead of JS manipulation
-                          e.currentTarget.classList.add('matrix-glitch');
+                          // Create witty "decoding" effect
+                          e.currentTarget.classList.add('letter-decoding');
+                          
+                          // Add floating binary code around the letter
+                          const letterElement = e.currentTarget;
+                          const binaryOverlay = document.createElement('div');
+                          binaryOverlay.className = 'absolute inset-0 pointer-events-none letter-binary-overlay';
+                          
+                          // Generate binary representation of the letter
+                          const binaryCode = letter.charCodeAt(0).toString(2).padStart(8, '0');
+                          
+                          // Create floating binary digits
+                          for (let i = 0; i < 8; i++) {
+                            const digit = document.createElement('span');
+                            digit.textContent = binaryCode[i];
+                            digit.className = 'absolute text-xs font-mono animate-bounce';
+                            digit.style.cssText = `
+                              color: rgba(0, 255, 100, 0.8);
+                              text-shadow: 0 0 5px rgba(0, 255, 100, 0.6);
+                              top: ${-20 - Math.random() * 20}px;
+                              left: ${Math.random() * 100}%;
+                              animation-delay: ${i * 0.1}s;
+                              animation-duration: ${0.5 + Math.random() * 0.5}s;
+                            `;
+                            binaryOverlay.appendChild(digit);
+                          }
+                          
+                          letterElement.appendChild(binaryOverlay);
+                          
+                          // Add ASCII code tooltip
+                          const asciiTooltip = document.createElement('div');
+                          asciiTooltip.className = 'absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-mono bg-black/80 px-2 py-1 rounded ascii-tooltip';
+                          asciiTooltip.textContent = `ASCII: ${letter.charCodeAt(0)}`;
+                          asciiTooltip.style.cssText = `
+                            color: rgba(0, 255, 100, 0.9);
+                            border: 1px solid rgba(0, 255, 100, 0.3);
+                            text-shadow: 0 0 5px rgba(0, 255, 100, 0.6);
+                            opacity: 0;
+                            animation: fade-in-tooltip 0.3s ease-out forwards;
+                          `;
+                          letterElement.appendChild(asciiTooltip);
                         }
                       }}
                       onMouseLeave={(e) => {
                         if (letter !== ' ' && e.currentTarget) {
-                          e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                          e.currentTarget.style.textShadow = '0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2), 0 0 45px rgba(255, 255, 255, 0.1)';
-                          e.currentTarget.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)) brightness(1)';
-                          e.currentTarget.classList.remove('matrix-glitch');
+                          e.currentTarget.classList.remove('letter-decoding');
+                          
+                          // Remove all overlay elements
+                          const overlays = e.currentTarget.querySelectorAll('.letter-binary-overlay, .ascii-tooltip');
+                          overlays.forEach(overlay => overlay.remove());
                         }
                       }}
                     >
