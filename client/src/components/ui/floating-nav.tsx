@@ -6,11 +6,11 @@ export default function FloatingNav() {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const sections = document.querySelectorAll("section[id]");
       const scrollPosition = window.scrollY + window.innerHeight / 2;
-
       let currentSection = "hero"; // default
 
+      // Check main sections first
+      const sections = document.querySelectorAll("section[id]");
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = (section as HTMLElement).offsetHeight;
@@ -20,6 +20,28 @@ export default function FloatingNav() {
           currentSection = section.id;
         }
       });
+
+      // Then check for subsections within About (Experience and Achievements)
+      if (currentSection === "about") {
+        const experienceEl = document.getElementById("experience");
+        const achievementsEl = document.getElementById("achievements");
+        
+        if (experienceEl) {
+          const expTop = experienceEl.offsetTop;
+          const expBottom = expTop + experienceEl.offsetHeight;
+          if (scrollPosition >= expTop && scrollPosition < expBottom) {
+            currentSection = "experience";
+          }
+        }
+        
+        if (achievementsEl) {
+          const achTop = achievementsEl.offsetTop;
+          const achBottom = achTop + achievementsEl.offsetHeight;
+          if (scrollPosition >= achTop && scrollPosition <= achBottom) {
+            currentSection = "achievements";
+          }
+        }
+      }
 
       setActiveSection(currentSection);
     };

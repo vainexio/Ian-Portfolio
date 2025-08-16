@@ -52,6 +52,7 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
   const [isTyping, setIsTyping] = useState(false);
   const [displayedCode, setDisplayedCode] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [expandHeight, setExpandHeight] = useState(0);
   const typewriterRef = useRef<NodeJS.Timeout>();
 
   const introduction = introData || defaultIntro;
@@ -61,6 +62,12 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
     if (index < text.length) {
       const char = text[index];
       let nextDelay = 10 + Math.random() * 100; // Base typing speed with variation
+      
+      // Update expanding height based on content
+      const currentText = text.substring(0, index + 1);
+      const lineCount = currentText.split('\n').length;
+      const newHeight = Math.min(lineCount * 20 + 100, 450); // Max height cap
+      setExpandHeight(newHeight);
       
       // Add natural pauses
       if (char === '\n') nextDelay += 100;
@@ -91,12 +98,14 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
       }
     } else {
       setIsTyping(false);
+      setExpandHeight(450); // Final height
     }
   };
 
   const restartAnimation = () => {
     setIsTyping(true);
     setDisplayedCode('');
+    setExpandHeight(100); // Start small
     
     if (typewriterRef.current) {
       clearTimeout(typewriterRef.current);
@@ -108,7 +117,10 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
   };
 
   useEffect(() => {
-    typeWriter(introduction.code);
+    setExpandHeight(100); // Start small
+    setTimeout(() => {
+      typeWriter(introduction.code);
+    }, 100);
     return () => {
       if (typewriterRef.current) {
         clearTimeout(typewriterRef.current);
@@ -141,7 +153,10 @@ export default function InteractivePlayground({ introData }: InteractivePlaygrou
 
       {/* Code Display */}
       <div className="relative">
-        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl min-h-[400px] md:min-h-[450px]">
+        <div 
+          className="bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-lg p-4 mb-4 font-mono text-sm overflow-hidden border border-gray-700 shadow-2xl transition-all duration-300 ease-out"
+          style={{ height: `${expandHeight}px` }}
+        >
           <div className="flex items-center mb-2">
             <span className={`text-${introduction.color} text-xs font-semibold`}>
               {introduction.language.toUpperCase()}
