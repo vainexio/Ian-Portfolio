@@ -87,8 +87,8 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                           className="absolute text-sm font-mono"
                           style={{
                             top: `${charIndex * 5}%`,
-                            color: `rgba(0, 255, 65, ${0.1 + Math.random() * 0.4})`,
-                            textShadow: '0 0 10px rgba(0, 255, 65, 0.5)',
+                            color: `rgba(255, 255, 255, ${0.1 + Math.random() * 0.3})`,
+                            textShadow: '0 0 8px rgba(255, 255, 255, 0.3)',
                             animation: `matrix-rain-${columnIndex % 3} ${3 + Math.random() * 2}s linear infinite`,
                             animationDelay: `${charIndex * 0.1}s`,
                             transform: `translateY(-${Math.random() * 100}px)`
@@ -111,38 +111,28 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                           : 'opacity-0 translate-y-8 scale-75'
                       } group/letter`}
                       style={{
-                        color: letter === ' ' ? 'transparent' : '#00ff41',
-                        textShadow: letter === ' ' ? 'none' : '0 0 20px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 65, 0.6), 0 0 60px rgba(0, 255, 65, 0.4)',
+                        color: letter === ' ' ? 'transparent' : 'rgba(255, 255, 255, 0.9)',
+                        textShadow: letter === ' ' ? 'none' : '0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2), 0 0 45px rgba(255, 255, 255, 0.1)',
                         filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5))',
                         transitionDelay: `${index * 50}ms`,
                         fontFamily: 'monospace',
                         fontWeight: 'bold'
                       }}
                       onMouseEnter={(e) => {
-                        if (letter !== ' ') {
+                        if (letter !== ' ' && e.currentTarget) {
                           e.currentTarget.style.transform = 'translateY(-4px) scale(1.1)';
-                          e.currentTarget.style.textShadow = '0 0 15px rgba(0, 255, 65, 1), 0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(0, 255, 65, 0.6), 0 8px 20px rgba(0, 0, 0, 0.6)';
-                          e.currentTarget.style.filter = 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.2)';
-                          // Trigger digital glitch effect
-                          const originalText = e.currentTarget.textContent;
-                          const glitchChars = ['█', '▓', '▒', '░', '▄', '▀', '■', '□'];
-                          let glitchCount = 0;
-                          const glitchInterval = setInterval(() => {
-                            if (glitchCount < 3) {
-                              e.currentTarget.textContent = glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                              glitchCount++;
-                            } else {
-                              e.currentTarget.textContent = originalText;
-                              clearInterval(glitchInterval);
-                            }
-                          }, 50);
+                          e.currentTarget.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2), 0 8px 20px rgba(0, 0, 0, 0.6)';
+                          e.currentTarget.style.filter = 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7)) brightness(1.1)';
+                          // Add CSS-based glitch animation instead of JS manipulation
+                          e.currentTarget.classList.add('matrix-glitch');
                         }
                       }}
                       onMouseLeave={(e) => {
-                        if (letter !== ' ') {
+                        if (letter !== ' ' && e.currentTarget) {
                           e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                          e.currentTarget.style.textShadow = '0 0 20px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 65, 0.6), 0 0 60px rgba(0, 255, 65, 0.4)';
+                          e.currentTarget.style.textShadow = '0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2), 0 0 45px rgba(255, 255, 255, 0.1)';
                           e.currentTarget.style.filter = 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)) brightness(1)';
+                          e.currentTarget.classList.remove('matrix-glitch');
                         }
                       }}
                     >
@@ -158,8 +148,8 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                               style={{
                                 top: '-20px',
                                 left: `${20 + streamIndex * 15}%`,
-                                color: 'rgba(0, 255, 65, 0.6)',
-                                textShadow: '0 0 5px rgba(0, 255, 65, 0.8)',
+                                color: 'rgba(255, 255, 255, 0.5)',
+                                textShadow: '0 0 5px rgba(255, 255, 255, 0.4)',
                                 animation: `digital-fall ${0.5 + streamIndex * 0.1}s linear infinite`,
                                 animationDelay: `${streamIndex * 0.1}s`
                               }}
@@ -176,7 +166,7 @@ export default function Hero({ personal, interactiveElements }: HeroProps) {
                 {/* Matrix-style Digital Readout */}
                 {isVisible && (
                   <div className="absolute -bottom-8 left-0 right-0 flex justify-center opacity-60">
-                    <div className="text-sm font-mono text-green-400" style={{ textShadow: '0 0 10px rgba(0, 255, 65, 0.5)' }}>
+                    <div className="text-sm font-mono text-white/60" style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}>
                       {'>'} INITIALIZING_PORTFOLIO.EXE {'<'}
                     </div>
                   </div>
