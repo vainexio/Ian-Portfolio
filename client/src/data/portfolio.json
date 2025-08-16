@@ -349,25 +349,10 @@
         "color": "#FFC107"
       },
       {
-        "text": "Code is like humor. When you have to explain it, it’s bad.",
-        "author": "Cory House",
-        "color": "#FF4500"
-      },
-      {
         "text": "Programming isn’t about what you know; it’s about what you can figure out.",
         "author": "Chris Pine",
         "color": "#00FF7F"
       },
-      {
-        "text": "Make it work, make it right, make it fast.",
-        "author": "Kent Beck",
-        "color": "#1E90FF"
-      },
-      {
-        "text": "Move fast and break things.",
-        "author": "Mark Zuckerberg",
-        "color": "#FF1493"
-      }
     ]
   }
 }
