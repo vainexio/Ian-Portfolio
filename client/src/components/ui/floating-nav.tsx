@@ -9,13 +9,28 @@ export default function FloatingNav() {
     
     const observer = new IntersectionObserver(
       (entries) => {
+        // Find the section that's most visible in the viewport
         let currentSection = null;
         let maxRatio = 0;
         
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            maxRatio = entry.intersectionRatio;
-            currentSection = entry.target.id;
+          if (entry.isIntersecting) {
+            const rect = entry.boundingClientRect;
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate how much of the section is visible in the center of the viewport
+            const visibleTop = Math.max(0, rect.top);
+            const visibleBottom = Math.min(viewportHeight, rect.bottom);
+            const visibleHeight = visibleBottom - visibleTop;
+            
+            // Favor sections that are more centered in the viewport
+            const centerDistance = Math.abs((visibleTop + visibleBottom) / 2 - viewportHeight / 2);
+            const score = visibleHeight - centerDistance * 0.1;
+            
+            if (score > maxRatio) {
+              maxRatio = score;
+              currentSection = entry.target.id;
+            }
           }
         });
         
@@ -24,8 +39,8 @@ export default function FloatingNav() {
         }
       },
       { 
-        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0], 
-        rootMargin: "-20% 0px -20% 0px" 
+        threshold: [0, 0.1, 0.3, 0.5, 0.7, 1.0], 
+        rootMargin: "-10% 0px -10% 0px" 
       }
     );
 
