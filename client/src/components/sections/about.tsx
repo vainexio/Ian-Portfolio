@@ -18,7 +18,7 @@ export default function About({ specialties, achievements, experience, interacti
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <h2 className="text-5xl font-bold gradient-text mb-6">About Me</h2>
           <p className="text-xl text-white max-w-3xl mx-auto">
-            Passionate developer with expertise across multiple platforms, creating solutions that bridge creativity and functionality.
+            I enjoy shaping ideas into tools people actually use
           </p>
         </div>
 
