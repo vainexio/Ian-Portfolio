@@ -325,7 +325,7 @@
     "github": "github.com/vainexio",
     "facebook": "facebook.com/ianhehu",
     "viber": "+63 945 326 3549",
-    "discord": "@vainexio",
+    "discord": "https://discord.com/users/497918770187075595",
     "contactMethods": [
       {
         "id": "email",
@@ -337,18 +337,9 @@
         "order": 1
       },
       {
-        "id": "github",
-        "platform": "GitHub",
-        "value": "github.com/vainexio",
-        "href": "https://github.com/vainexio",
-        "icon": "fab fa-github",
-        "color": "purple",
-        "order": 2
-      },
-      {
         "id": "facebook",
         "platform": "Facebook",
-        "value": "facebook.com/ianhehu",
+        "value": "Ian Iglipa",
         "href": "https://facebook.com/ianhehu",
         "icon": "fab fa-facebook",
         "color": "cyan",
@@ -367,9 +358,9 @@
         "id": "discord",
         "platform": "Discord",
         "value": "@vainexio",
-        "href": "https://discord.com/users/vainexio",
+        "href": "https://discord.com/users/497918770187075595",
         "icon": "fab fa-discord",
-        "color": "purple",
+        "color": "blue",
         "order": 5
       }
     ]
