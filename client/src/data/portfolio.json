@@ -256,13 +256,40 @@
         "Kotlin",
         "Jetpack Compose",
         "Firebase",
-        "Node.js"
+        "Node.js",
+        "Express.js",
+        "JavaScript"
       ],
       "image": "https://i.imgur.com/NJlOXLh.png",
       "stats": {
         "Conversion Speed": "Instant",
         "Currency": "PHP",
         "QR Scans": "Unlimited"
+      }
+    },
+    {
+      "id": "4",
+      "title": "Inventory Management (Panaderia Pantoja)",
+      "category": "android",
+      "featured": false,
+      "description": "A web-based inventory system integrated with an Android app for QR scanning. The website manages and monitors stock levels, while the mobile app allows staff to quickly scan products for stock-in and stock-out transactions, ensuring accurate and real-time inventory tracking for the bakery.",
+      "technologies": [
+        "Kotlin",
+        "Firebase",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Render",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "image": "https://i.imgur.com/PjU25lB.png",
+      "demo": "https://panaderia-pantoja.onrender.com/",
+      "stats": {
+        "Products": "500+",
+        "Daily Transactions": "100+",
+        "Sync Delay": "<1s"
       }
     }
   ],
