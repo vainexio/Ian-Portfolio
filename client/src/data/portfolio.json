@@ -53,7 +53,7 @@
   ],
   "projectCategories": [
     {
-      "id": "app",
+      "id": "web",
       "label": "Web App",
       "color": "coral",
       "colorClass": "bg-coral/20 text-coral"
