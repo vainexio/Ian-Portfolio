@@ -268,9 +268,9 @@
       }
     },
     {
-      "id": "4",
+      "id": "5",
       "title": "Inventory Management (Panaderia Pantoja)",
-      "category": "android",
+      "category": "web",
       "featured": false,
       "description": "A web-based inventory system integrated with an Android app for QR scanning. The website manages and monitors stock levels, while the mobile app allows staff to quickly scan products for stock-in and stock-out transactions, ensuring accurate and real-time inventory tracking for the bakery.",
       "technologies": [
