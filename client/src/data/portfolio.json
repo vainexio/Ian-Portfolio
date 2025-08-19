@@ -281,7 +281,6 @@
       "description": "A web-based inventory system integrated with an Android app for QR scanning. The website manages and monitors stock levels, while the mobile app allows staff to quickly scan products for stock-in and stock-out transactions, ensuring accurate and real-time inventory tracking for the bakery.",
       "technologies": [
         "Kotlin",
-        "Firebase",
         "Node.js",
         "Express.js",
         "MongoDB",
@@ -303,7 +302,7 @@
       "title": "Bulldogs Care Center",
       "category": "web",
       "featured": false,
-      "description": "“A digital clinic portal for NU Laguna that lets students schedule appointments, access medical certificates, and manage health records.",
+      "description": "A digital clinic portal for NU Laguna that lets students schedule appointments, access medical certificates, and manage health records.",
       "technologies": [
         "Node.js",
         "Express.js",
