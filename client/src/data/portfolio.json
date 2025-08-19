@@ -297,6 +297,28 @@
         "Daily Transactions": "100+",
         "Sync Delay": "<1s"
       }
+    },
+    {
+      "id": "6",
+      "title": "Bulldogs Care Center",
+      "category": "web",
+      "featured": false,
+      "description": "“A digital clinic portal for NU Laguna that lets students schedule appointments, access medical certificates, and manage health records.",
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "image": "https://i.imgur.com/YUjtEzV.png",
+      "demo": "https://bulldogs-care-center.onrender.com/",
+      "stats": {
+        "Purpose": "Course Project",
+        "Dashboards": "Doctor/Patient",
+        "Type": "Demo Site"
+    }
     }
   ],
   "contact": {
