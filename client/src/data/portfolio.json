@@ -368,7 +368,7 @@
   "interactiveElements": {
     "introduction": {
       "language": "javascript",
-      "code": "// About Ian Iglipa - Application Developer\nconst developer = {\n  name: \"Ian Iglipa\",\n  passion: \"Merging creativity with functionality\",\n  mission: \"Turning ideas into impactful digital experiences\",\n  getInTouch: () => \"Let's create something amazing :D\"\n};\n\nconsole.log(`Hi! I'm ${developer.name}`);\nconsole.log(developer.getInTouch());",
+      "code": "// About Ian Iglipa - 3rd year BSIT\nconst developer = {\n  name: \"Ian Iglipa\",\n  passion: \"Merging creativity with functionality\",\n  mission: \"Turning ideas into impactful digital experiences\",\n  getInTouch: () => \"Let's create something amazing :D\"\n};\n\nconsole.log(`Hi! I'm ${developer.name}`);\nconsole.log(developer.getInTouch());",
       "preview": "👋 Nice to meet you!",
       "color": "coral"
     },
