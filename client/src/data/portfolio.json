@@ -330,8 +330,8 @@
       {
         "id": "email",
         "platform": "Email",
-        "value": "ianpaolo.iglipa170@gmail.com",
-        "href": "mailto:ianpaolo.iglipa170@gmail.com",
+        "value": "ian.iglipa@gmail.com",
+        "href": "mailto:ian.iglipa@gmail.com",
         "icon": "fas fa-envelope",
         "color": "coral",
         "order": 1
