@@ -195,6 +195,24 @@
   "projects": [
     {
       "id": "1",
+      "title": "Philippine Army Roleplay",
+      "category": "game",
+      "featured": true,
+      "description": "A Roblox Philippine Army roleplay where players join a unit, train in realistic drills, plan and execute jungle and urban operations across island terrain, coordinate in squads under a strict chain of command and complete high-stakes missions that test discipline and teamwork.",
+      "technologies": [
+        "Luau",
+        "Roblox Studio"
+      ],
+      "image": "https://i.imgur.com/umWrwWD.png",
+      "roblox": "https://www.roblox.com/games/135227206379162/Philippine-Army-Roleplay",
+      "stats": {
+        "visits": "51K+",
+        "rating": "87%",
+        "Avg. Playtime": "44mins"
+      }
+    },
+    {
+      "id": "2",
       "title": "VALCORE",
       "category": "app",
       "featured": true,
@@ -214,7 +232,7 @@
       }
     },
     {
-      "id": "2",
+      "id": "3",
       "title": "U.N.I.",
       "category": "game",
       "featured": true,
@@ -232,7 +250,7 @@
       }
     },
     {
-      "id": "3",
+      "id": "4",
       "title": "Calibrium",
       "category": "android",
       "featured": false,
@@ -253,7 +271,7 @@
       }
     },
     {
-      "id": "4",
+      "id": "5",
       "title": "Coinvert",
       "category": "android",
       "featured": false,
@@ -274,7 +292,7 @@
       }
     },
     {
-      "id": "5",
+      "id": "6",
       "title": "Inventory Management (Panaderia Pantoja)",
       "category": "web",
       "featured": false,
@@ -298,7 +316,7 @@
       }
     },
     {
-      "id": "6",
+      "id": "7",
       "title": "Bulldogs Care Center",
       "category": "web",
       "featured": false,
